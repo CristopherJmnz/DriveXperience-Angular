@@ -1,0 +1,145 @@
+
+/* FOOTER */
+
+footer{
+  grid-area: footer;
+  display: flex;
+  color: white;
+  width: 100%;
+  flex-direction: column;
+  background-color: black;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  /* background: linear-gradient(to right, #434343 0%, rgb(29, 28, 28) 100%); */
+  background-color: #131212;
+
+}
+
+footer div{
+  width: 100%;
+  align-items: center;
+  padding: 10px 30px;
+  /* border: solid; */
+}
+
+.map{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-top: 35px;
+}
+
+.footer-info{
+  padding: 25px 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-politica{
+  display: flex;
+  flex-direction: column;
+  font-weight: 200;
+  text-align: center;
+  width: 60%;
+  padding: 0;
+  gap: 15px;
+  font-size: 20px;
+}
+
+.footer-politica div{
+  padding:0 10px ;
+  width: fit-content;
+}
+.footer-redes{
+  width: fit-content;
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+  font-size: 25px;
+  justify-content: center;
+
+}
+
+.footer-redes div{
+  padding: 0;
+  width: fit-content;
+}
+
+
+.footer-redes div:hover, .footer-politica div:hover{
+  color: #ff0000;
+}
+
+
+.footer-redes div, .footer-politica div{
+  cursor: pointer;
+}
+
+.footer-derechos{
+  border-top: solid rgb(133, 133, 133) 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 200;
+}
+
+#ig:hover{
+  color: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+/* FOOTER */
+
+
+
+@media (max-width:834px) {
+
+  #icono-logo{
+      display: block;
+  }
+
+  #logo{
+      display: none;
+      width: 100px;
+      height: 100%;
+  }
+
+  .nav-logo{
+      width: 43px;
+  }
+
+
+  .menu{
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.868);
+  }
+
+  footer{
+      flex-direction: column;
+  }
+
+  .footer-info{
+      flex-direction: column;
+      padding: 5px;
+      gap: 10px;
+      font-size: 16px;
+  }
+
+  .footer-politica{
+      font-size: 16px;
+  }
+
+  .footer-redes{
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 16px;
+  }
+
+
+}

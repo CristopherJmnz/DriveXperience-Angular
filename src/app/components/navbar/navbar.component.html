@@ -1,0 +1,31 @@
+<nav>
+  <input type="checkbox" id="open" />
+  <label for="open" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <div class="menu">
+    <a [routerLink]="['/marcas']" class="nav-option box">Marcas</a>
+    <a [routerLink]="['/reservas']" class="nav-option box"
+      >Mis Reservas</a
+    >
+    <a
+      [routerLink]="['/catalogo']"
+      class="nav-option box"
+      >Catalogo</a
+    >
+  </div>
+  <a class="nav-logo" [routerLink]="['']">
+    <img src="assets/img/logo.png" alt="logo" id="logo" />
+    <img
+      src="assets/img/icono-logo.png"
+      alt="icono-logo"
+      id="icono-logo"
+    />
+  </a>
+  <div class="nav-user">
+    <div id="login" *ngIf="!usuarioService.isLogged()"><i class="fa-solid fa-user"></i></div>
+    <button class="sesion" *ngIf="usuarioService.isLogged()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </button>
+  </div>
+</nav>

@@ -1,1 +1,85 @@
-/* You can add global styles to this file, and also import other style files */
+ @import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;1,700&family=Montserrat:wght@200&display=swap%27');
+
+ :root{
+  --background-dark: #2d3548;
+  --text-light: rgba(255,255,255,0.6);
+  --text-lighter: rgba(255,255,255,0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: grid;
+    font-size: 14px;
+    grid-template-rows: 3.75rem 1fr auto;
+    grid-template-areas:
+        "nav"
+        "main"
+        "footer";
+    background: linear-gradient(to right, #0d0d0d 0%, rgb(29, 28, 28) 100%);
+}
+
+
+/* Estilo de la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  /* background-color: #F5F5F5; */
+}
+
+/* Estilo de la barra de desplazamiento cuando se está desplazando */
+::-webkit-scrollbar-thumb {
+  background-color: #b7b7b7;
+  border-radius: 5px;
+}
+
+/* Estilo de la barra de desplazamiento de fondo */
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #434343 0%, rgb(29, 28, 28) 100%);
+}
+
+/* Estilo de la barra de desplazamiento cuando se pasa el cursor */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #efefef;
+}
+
+/* MAIN */
+
+
+main {
+  grid-area: main;
+  background: linear-gradient(to right, #434343 0%, rgb(29, 28, 28) 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.banner{
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.banner img{
+  width: 100%;
+}
+
+.banner video{
+  width: 100%;
+
+}
+
+
+/* MAIN */

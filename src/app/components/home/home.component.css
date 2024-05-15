@@ -1,0 +1,272 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+app-home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  min-height: 100vh;
+  display: grid;
+  font-size: 14px;
+  grid-template-rows: 3.75rem 1fr auto;
+  grid-template-areas:
+      "nav"
+      "main"
+      "footer";
+  background: linear-gradient(to right, #434343 0%, rgb(29, 28, 28) 100%);
+
+}
+
+
+/* MAIN */
+main {
+  background-image: url("../../../assets/img/banner/parallax-bg.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content {
+  margin-right: 16px;
+  margin-left: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-top: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+gap: 80px;
+
+}
+
+
+h1{
+  color: #fff;
+}
+
+/* CONTENEDOR COCHE CON AMIMACIÓN */
+.card {
+  background-color: transparent !important;
+  display: flex ;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.card .img {
+  width: 65%;
+}
+
+.card .img img {
+  width: 100%;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.info {
+  width: 35%;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+}
+
+/* CONTENEDOR COCHE CON AMIMACIÓN */
+
+
+
+
+/* SLIDER MARCAS */
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+      -webkit-transform: translateX(0);
+      -moz-transform: translateX(0);
+      -ms-transform: translateX(0);
+      -o-transform: translateX(0)
+  }
+
+  100% {
+      transform: translateX(-1000px);
+      -webkit-transform: translateX(-1000px);
+      -moz-transform: translateX(-1000px);
+      -ms-transform: translateX(-1000px);
+      -o-transform: translateX(-1000px)
+  }
+}
+
+.slider {
+  background: rgba(0, 0, 0, 0);
+  height: 200px;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center
+}
+
+.slider .slide-track {
+  animation: scroll 15s linear infinite;
+  -webkit-animation: scroll 15s linear infinite;
+  animation-direction: alternate;
+  display: flex;
+  width: 100%;
+  height: 100%
+}
+
+.slider .slide {
+  display: flex;
+  align-items: center;
+  width: 25%;
+
+}
+
+.slider .slide img {
+  margin: 0 auto;
+  width: 100%
+}
+
+/* SLIDER MARCAS */
+
+
+
+
+/* MAIN */
+
+
+@media (max-width:834px) {
+  .card {
+      flex-direction: column;
+  }
+
+  .info {
+      text-align: center;
+      width: 100%;
+  }
+
+  .img {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+
+
+  .card .img {
+      width: 100%;
+  }
+
+
+}
+
+
+
+
+
+.resenias {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  padding-bottom: 20px;
+  color: #fff;
+  width: 100%;
+}
+
+.cartas-resenia {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.card-client {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #dd0000ec;
+  width: 300px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 4px solid #4a0e0e;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.card-client:hover {
+  transform: translateY(-10px);
+}
+
+.user-picture {
+  overflow: hidden;
+  object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+  border: 4px solid #581111;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.user-picture svg {
+  width: 2.5rem;
+  fill: currentColor;
+}
+
+.name-client {
+  margin: 0;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.com {
+  padding-top: 10px;
+  color: rgb(236, 236, 236);
+}
+
+
+.des {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 200;
+  font-size: 16px;
+  width: fit-content;
+}
+
+/* .info {
+  width: 45%;
+  color: whitesmoke;
+  vertical-align: middle;
+  display: flex;
+  font-size: 20px;
+  padding: 35px;
+  justify-content: center;
+  align-items: center;
+} */
+
+
+@media (max-width:1100px) {
+  .cartas-resenia{
+      flex-direction: column;
+  }
+
+
+  }
