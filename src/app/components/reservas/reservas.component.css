@@ -1,0 +1,63 @@
+body {
+  background-color: rgb(15, 15, 15);
+}
+
+
+main {
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+.car-info {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  background-color: rgb(41, 41, 41);
+  justify-content: space-evenly;
+  padding: 0px 20px 0px 20px;
+}
+
+.car-data {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.car-data div{
+  padding: 8px 16px;
+}
+
+.car-img img {
+  width: 100%;
+}
+
+.car-img {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.w3-hover-red:hover {
+  background-color: red !important;
+  color: rgb(0, 0, 0) !important;
+  font-weight: 600;
+}
+
+
+@media (max-width: 780px) {
+  .car-img {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+}

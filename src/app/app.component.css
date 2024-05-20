@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+app-navbar{
+  display: flex;
+  height: 100%;
+}
 
 
 body,app-root {

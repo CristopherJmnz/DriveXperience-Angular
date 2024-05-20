@@ -1,1 +1,85 @@
-<p>detalles-coche works!</p>
+<main>
+  <div *ngIf="showModal" class="login-cont form-wrapper modal">
+      <span class="form-close" (click)="handleModal()">&times;</span>
+      <div class="login-titulo">RESERVA</div>
+      <label class="login-label">Fecha de inicio</label>
+      <div class="login-inp"><input id="fechaInicio" class="inpF" type="date" required></div>
+      <label class="login-label">Fecha de fin</label>
+      <div class="login-inp"><input id="fechaFin" class="inpF" type="date" required></div>
+      <div class="login-button"><input id="buttonL" (click)="guardarFechas()" class="inpF" type="button"
+              value="Pagar"></div>
+  </div>
+  <button id="form-toggle" (click)="handleModal()">RESERVAR</button>
+  <div class="banner" *ngIf="coche">
+    <div class="overlay">
+      <h1 class="animate__animated animate__bounceInLeft">{{ coche.nombreCoche }}</h1>
+    </div>
+    <img src="../../../assets/img/coches/{{ coche.banner }}">
+  </div>
+  <div *ngIf="coche" class="proReserva-container">
+    <div class="procesoReserva-item" id="proReserva-item1">
+      <img src="../../../assets/img/coches/{{ coche.imagen2 }}" alt="">
+    </div>
+    <div class="procesoReserva-item" id="proReserva-item2" coche-aos-easing="linear" coche-aos-duration="1500">
+      <h1>Descripcion delantera</h1>
+      <p>{{ coche.descripcionFrontal }}</p>
+    </div>
+    <div class="procesoReserva-item" id="proReserva-item3" coche-aos-easing="linear" coche-aos-duration="1500">
+      <h1>Descripcion trasera</h1>
+      <p>{{ coche.descripcionTrasera }}</p>
+    </div>
+    <div class="procesoReserva-item" id="proReserva-item4">
+      <img src="../../../assets/img/coches/{{ coche.imagen3 }}" alt="">
+    </div>
+    <div class="procesoReserva-item" id="proReserva-item5">
+      <div class="caract1 cart">
+        <img src="../../../assets/img/iconos/automatic-transmission.png" alt="">
+        <h1>Cambio</h1>
+        <p>{{ coche.cambio }}</p>
+      </div>
+      <div class="caract2 cart">
+        <img src="../../../assets/img/iconos/velocimetro.png" alt="">
+        <h1>Velocidad Máxima</h1>
+        <p>{{ coche.velocidadMax }} Km/h</p>
+      </div>
+      <div class="caract3 cart">
+        <img src="../../../assets/img/iconos/tire.png" alt="">
+        <h1>Traccion</h1>
+        <p>{{ coche.traccion }}</p>
+      </div>
+      <div class="caractImg" coche-aos-anchor-placement="top-center">
+        <img src="../../../assets/img/coches/{{ coche.imagen4 }}" alt="">
+      </div>
+      <div class="caract4 cart">
+        <img src="../../../assets/img/iconos/velocimetro2.png" alt="">
+        <h1>Aceleración <br>(0-100km/h)</h1>
+        <p>{{ coche.aceleracion }} s</p>
+      </div>
+      <div class="caract5 cart">
+        <img src="../../../assets/img/iconos/motor.png" alt="">
+        <h1>CILINDRADA</h1>
+        <p>{{ coche.potenciaMax }} CV</p>
+      </div>
+      <div class="caract6 cart">
+        <img src="../../../assets/img/iconos/gasolinera.png" alt="">
+        <h1>Combustible</h1>
+        <p>{{ coche.combustible }}</p>
+      </div>
+    </div>
+    <div class="procesoReserva-item" id="proReserva-item6">
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <img src="../../../assets/img/coches/{{ coche.imagen5 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen5 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen5 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen5 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen6 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen7 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen8 }}">
+          <img src="../../../assets/img/coches/{{ coche.imagen9 }}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>

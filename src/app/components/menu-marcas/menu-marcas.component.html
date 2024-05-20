@@ -1,24 +1,24 @@
 <main>
   <div class="card-grid">
-      <a class="card" href="catalogo.html" onclick="recogerIdMarca(1)">
+      <a class="card" [routerLink]="['/detalles/1']" >
         <div class="card__background" style="background-image: url(../../../assets/img/prueba_marcas/lambo.jpg)"></div>
         <div class="card__content">
           <h3 class="card__heading">Lamborghini</h3>
         </div>
       </a>
-      <a class="card" href="catalogo.html" onclick="recogerIdMarca(3)">
+      <a class="card" [routerLink]="['/detalles/3']">
         <div class="card__background" style="background-image: url(../../../assets/img/prueba_marcas/ferrari2.jpg)"></div>
         <div class="card__content">
           <h3 class="card__heading">Ferrari</h3>
         </div>
       </a>
-      <a class="card" href="catalogo.html" onclick="recogerIdMarca(4)">
+      <a class="card" [routerLink]="['/detalles/4']">
           <div class="card__background" style="background-image: url(../../../assets/img/prueba_marcas/koenigsegg2.jpg)"></div>
           <div class="card__content">
             <h3 class="card__heading">Koenigsegg</h3>
           </div>
         </a>
-      <a class="card" href="catalogo.html" onclick="recogerIdMarca(2)">
+      <a class="card" [routerLink]="['/detalles/2']">
           <div class="card__background" style="background-image: url(../../../assets/img/prueba_marcas/bugatti.jpg)"></div>
           <div class="card__content">
               <h3 class="card__heading">Bugatti</h3>

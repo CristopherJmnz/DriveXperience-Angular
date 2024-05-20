@@ -12,6 +12,9 @@ import { DetallesCocheComponent } from './components/detalles-coche/detalles-coc
 import { MenuMarcasComponent } from './components/menu-marcas/menu-marcas.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ReservasComponent } from './components/reservas/reservas.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-reserva.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { RegistroComponent } from './components/registro/registro.component';
     DetallesCocheComponent,
     MenuMarcasComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ReservasComponent,
+    CatalogoComponent,
+    ProcesoReservaComponent
   ],
   imports: [
     BrowserModule,

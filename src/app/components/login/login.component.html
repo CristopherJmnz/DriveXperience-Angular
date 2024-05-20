@@ -1,1 +1,19 @@
-<p>login works!</p>
+<main>
+  <div class="containerLogin animate_animated  animate_fadeInUp">
+      <div class="login-cont" id="itLog1">
+      </div>
+      <div class="login-cont" id="itLog2">
+          <div class="login-titulo">LOGIN</div>
+          <label class="login-label" >Email</label>
+          <div class="login-inp"><input id="email1" type="email" required></div>
+          <label class="login-label">Contraseña</label>
+          <div class="login-inp"><input id="password1"type="password" required></div>
+          <div id="recuerdame">
+              <label class="login-label">Recuerdame</label>
+              <div class="login-inp"><input id="password"type="checkbox" required></div>
+          </div>
+          <div>No tienes una cuenta, <a [routerLink]="['/registro']">Registrate</a></div>
+          <div class="login-button"><input id="buttonL"  type="button" onclick="iniciarSesion()" value="Ingresar"></div>
+      </div>
+</div>
+</main>

@@ -1,3 +1,3 @@
 export const environment = {
-  "ApiUrl":"https://localhost:8083/",
+  "ApiUrl":"https://apidrivexperience.azurewebsites.net/",
 };

@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Castoro+Titling&family=Kanit:wght@100&display=swap');
+
+/**
+   * Contenedor global del login/img
+   */
+.containerLogin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 3%;
+
+}
+
+.login-cont {
+  padding: 50px;
+  height: 550px;
+  box-shadow: 3px 3px 32px 3px rgba(17, 15, 15, 0.5);
+}
+
+/**
+   * Contenedor independiente del login y img itLog
+   */
+#itLog1 {
+  background-image: url('/assets/img/fc.jpg');
+  background-size: cover;
+  font-family: 'Castoro Titling', cursive;
+  font-size: 10px;
+  text-align: center;
+  width: 600px;
+}
+
+/**
+   * logo pequeño
+   */
+#itLog1 img {
+  width: 200px;
+  height: auto;
+}
+
+#itLog2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+
+.login-titulo {
+  font-size: 50px;
+  padding: 0px 0px 50px;
+}
+
+.login-label {
+  font-size: 13px;
+  display: flex;
+  text-align: left;
+  margin-left: 10px;
+  padding-bottom: 4px;
+  font-weight: 600;
+}
+
+.login-inp {
+  padding: 0px 0px 11px;
+  color: #fff;
+}
+
+.login-inp>input {
+  border-radius: 13px;
+  border: solid #510404;
+  background-color: transparent;
+  height: 30px;
+  color: #fff;
+  padding: 6px;
+}
+
+.login-button {
+  padding-top: 20px;
+}
+
+#recuerdame {
+  display: flex;
+  flex-direction: row;
+  gap: 10%;
+  margin-left: -10px;
+}
+
+#recuerdame>.login-label {
+  padding-top: 7px;
+}
+
+#buttonL {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #0f0f0f;
+  padding: 0.8rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+}
+
+#buttonL:hover {
+  background-color: #dd0000;
+  box-shadow: 0 6px 12px rgba(191, 0, 0, 0.4);
+}
+
+/* ---------------Responsive ---------------*/
+/* movil*/
+
+@media (max-width: 767px) {
+
+  .containerLogin {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .login-cont {
+    height: auto;
+  }
+
+  #itLog1 {
+    width: 324px;
+    height: 142px;
+    background-size: cover;
+    padding: 20px;
+    background-color: #000000;
+  }
+
+  #itLog2 {
+    height: 448px;
+    padding-top: 4%;
+    width: 324px;
+  }
+
+  #itLog1 img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .login-titulo {
+    font-size: 40px;
+    padding: 20px 0;
+  }
+
+  .login-label {
+    font-size: 12px;
+  }
+
+  .login-inp {
+    padding: 0 0 10px;
+  }
+
+  .login-button {
+    padding-top: 15px;
+  }
+
+  #buttonL {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0f0f0f;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+  }
+
+}
+
+/* Tablet*/
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  #itLog2 {
+    height: 480px;
+    width: 255px;
+  }
+
+  .containerLogin {
+    padding: 20px;
+  }
+
+  .login-cont {
+    padding: 20px;
+
+  }
+
+  #itLog1 {
+    height: 480px;
+    width: 255px;
+  }
+
+  #itLog1 img {
+    width: 250px;
+  }
+
+  .login-titulo {
+    font-size: 40px;
+  }
+
+  .login-label {
+    font-size: 12px;
+  }
+
+  .login-inp {
+    padding: 0px 0px 5px;
+  }
+
+  .login-button {
+    padding-top: 10px;
+  }
+
+  #buttonL {
+    font-size: 0.8rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .login-cont h1 {
+    font-size: 24px;
+  }
+}
