@@ -3,19 +3,19 @@
       <div class="login-cont" id="itLog1">
           <img src="/assets/img/logo.png" alt="">
       </div>
-      <div class="login-cont" id="itLog2">
+      <form #registroForm="ngForm" (submit)="registro(registroForm)" class="login-cont" id="itLog2">
           <div class="login-titulo">REGISTRO</div>
           <label class="login-label">Nombre</label>
-          <div class="login-inp"><input id="nombre" type="text" required></div>
+          <div class="login-inp"><input id="nombre" ngModel name="nombre" type="text" required></div>
           <label class="login-label">Apellidos</label>
-          <div class="login-inp"><input id="apellidos" type="text" required></div>
+          <div class="login-inp"><input id="apellidos" ngModel name="apellidos" type="text" required></div>
           <label class="login-label">Email</label>
-          <div class="login-inp"><input id="email" type="email" required></div>
+          <div class="login-inp"><input id="email" ngModel name="email" type="email" required></div>
           <label class="login-label">Password</label>
-          <div class="login-inp"><input id="password" type="password" required></div>
+          <div class="login-inp"><input id="password" ngModel name="password" type="password" required></div>
           <label class="login-label">Fecha de nacimiento</label>
-          <div class="login-inp"><input id="fecha" type="date" required></div>
-          <div class="login-button"><input id="buttonL" onclick="registro()" type="button" value="Ingresar"></div>
-      </div>
+          <div class="login-inp"><input id="fecha" ngModel name="fecha" type="date" required></div>
+          <div class="login-button"><input id="buttonL" type="submit" value="Ingresar"></div>
+      </form>
   </div>
 </main>

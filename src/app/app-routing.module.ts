@@ -8,15 +8,28 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-reserva.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'marcas', component: MenuMarcasComponent },
   { path: 'detalles/:id', component: DetallesCocheComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'registro', component:RegistroComponent },
-  { path: 'catalogo', component:CatalogoComponent },
-  { path: 'reservas', component: ReservasComponent, canActivate:[loginGuard] },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'catalogo', component: CatalogoComponent },
+  { path: 'catalogo/:marca', component: CatalogoComponent },
+  {
+    path: 'MisReservas',
+    component: ReservasComponent,
+    canActivate: [loginGuard],
+  },
+  {
+    path: 'reservar',
+    component: ProcesoReservaComponent,
+    canActivate: [loginGuard],
+  },
+  { path: 'AboutUs', component: AboutUsComponent },
 ];
 
 @NgModule({

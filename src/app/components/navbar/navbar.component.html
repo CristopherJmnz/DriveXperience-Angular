@@ -5,8 +5,9 @@
   </label>
   <div class="menu">
     <a [routerLink]="['/marcas']" class="nav-option box">Marcas</a>
-    <a [routerLink]="['/reservas']" class="nav-option box">Mis Reservas</a>
+    <a [routerLink]="['/MisReservas']" class="nav-option box">Mis Reservas</a>
     <a [routerLink]="['/catalogo']" class="nav-option box">Catalogo</a>
+    <a [routerLink]="['/AboutUs']" class="nav-option box">Sobre nosotros</a>
   </div>
   <a class="nav-logo" [routerLink]="['']">
     <img src="assets/img/logo.png" alt="logo" id="logo" />
@@ -19,7 +20,7 @@
     <a
       class="sesion"
       *ngIf="usuarioService.isLogged()"
-      [routerLink]="['/registro']"
+      (click)="logout()"
     >
       <i class="fa-solid fa-right-from-bracket"></i>
     </a>

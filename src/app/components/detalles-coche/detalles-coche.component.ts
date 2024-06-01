@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Coche } from 'src/app/interfaces/coche';
 import { CocheService } from 'src/app/services/coche.service';
+import { DataSharingService } from 'src/app/services/data-sharing.service';
 
 @Component({
   selector: 'app-detalles-coche',
@@ -12,10 +14,13 @@ export class DetallesCocheComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   coche!: Coche;
   idcoche!: string | number;
-  showModal:boolean = false;
+  showModal: boolean = false;
 
-
-  constructor(private router: Router, private cocheService: CocheService) {}
+  constructor(
+    private router: Router,
+    private cocheService: CocheService,
+    private dataSharingService: DataSharingService
+  ) {}
 
   ngOnInit(): void {
     this.idcoche = this.activatedRoute.snapshot.params['id'];
@@ -30,12 +35,11 @@ export class DetallesCocheComponent implements OnInit {
 
   handleModal(): void {
     this.showModal = !this.showModal;
-    console.log(this.showModal);
   }
 
-  guardarFechas():void{
-
+  onSubmit(form: NgForm) {
+    const formData = form.value;
+    this.dataSharingService.setFormData(formData);
+    this.router.navigate(['/reservar']);
   }
-
-
 }

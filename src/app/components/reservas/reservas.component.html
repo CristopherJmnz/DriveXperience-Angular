@@ -1,4 +1,23 @@
 <main>
   <h1>Historial de reservas</h1>
-
+  <div *ngFor="let el of reservas">
+    <button
+      (click)="desplegar(el.idReserva.toString())"
+      class="w3-button w3-block w3-hover-red w3-black"
+    >
+      {{ el.coche.nombreCoche }} {{ el.fechaInicio }}
+    </button>
+    <div [id]="el.idReserva" class="w3-hide w3-animate-zoom">
+      <div class="w3-block w3-left-align car-info">
+        <div class="car-img">
+          <img [src]="'../../../assets/img/coches/' + el.coche.imagen1" alt="" />
+        </div>
+        <div class="car-data">
+          <h3>Marca: {{ el.coche.marca.nombreMarca }}</h3>
+          <div>Desde: {{ el.fechaInicio }}</div>
+          <div>Hasta: {{ el.fechaFin }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>

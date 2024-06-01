@@ -15,6 +15,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-reserva.component';
+import { CochesCardsComponent } from './components/coches-cards/coches-cards.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-re
     RegistroComponent,
     ReservasComponent,
     CatalogoComponent,
-    ProcesoReservaComponent
+    ProcesoReservaComponent,
+    CochesCardsComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

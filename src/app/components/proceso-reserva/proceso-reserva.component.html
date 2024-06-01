@@ -1,14 +1,14 @@
 <main>
-  <div id="precio"></div>
-  <div class="contenedor">
+  <div id="precio">{{paymentResume}}</div>
+  <form #formPago="ngForm" (ngSubmit)="handleReserva()" class="contenedor">
     <div id="formulario-tarjeta" class="formulario-tarjeta active">
       <div class="grupo">
         <label for="inputNumero">Número Tarjeta</label>
-        <input type="text" id="inputNumero" maxlength="19" autocomplete="off" />
+        <input type="text" id="inputNumero" maxlength="19" autocomplete="off" required/>
       </div>
       <div class="grupo">
         <label for="inputNombre">Nombre</label>
-        <input type="text" id="inputNombre" maxlength="19" autocomplete="off" />
+        <input type="text" id="inputNombre" maxlength="19" autocomplete="off" required/>
       </div>
       <div class="flexbox">
         <div class="grupo expira">
@@ -21,6 +21,7 @@
                 id="mes"
                 placeholder="Mes"
                 maxlength="2"
+                required
               />
             </div>
             <div class="grupo-select">
@@ -30,6 +31,7 @@
                 id="year"
                 placeholder="Año"
                 maxlength="4"
+                required
               />
             </div>
           </div>
@@ -37,10 +39,10 @@
 
         <div class="grupo ccv">
           <label for="inputCCV">CCV</label>
-          <input type="text" id="inputCCV" maxlength="3" />
+          <input type="text" id="inputCCV" maxlength="3" required/>
         </div>
       </div>
-      <button onclick="reservar()" class="btn-enviar">Enviar</button>
+      <button type="submit" class="btn-enviar">Enviar</button>
     </div>
-  </div>
+  </form>
 </main>
