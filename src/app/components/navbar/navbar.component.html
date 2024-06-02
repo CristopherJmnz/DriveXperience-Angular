@@ -1,4 +1,4 @@
-<nav>
+ <!-- <nav>
   <input type="checkbox" id="open" />
   <label for="open" class="checkbtn">
     <i class="fas fa-bars"></i>
@@ -26,3 +26,30 @@
     </a>
   </div>
 </nav>
+ -->
+
+ <nav>
+  <input type="checkbox" id="open" #menuCheckbox />
+  <label for="open" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <div class="menu">
+    <a [routerLink]="['/marcas']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Marcas</a>
+    <a [routerLink]="['/MisReservas']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Mis Reservas</a>
+    <a [routerLink]="['/catalogo']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Catalogo</a>
+    <a [routerLink]="['/AboutUs']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Sobre nosotros</a>
+  </div>
+  <a class="nav-logo" [routerLink]="['']">
+    <img src="assets/img/logo.png" alt="logo" id="logo" />
+    <img src="assets/img/icono-logo.png" alt="icono-logo" id="icono-logo" />
+  </a>
+  <div class="nav-user">
+    <a id="login" *ngIf="!usuarioService.isLogged()" [routerLink]="['/login']">
+      <i class="fa-solid fa-user"></i>
+    </a>
+    <a class="sesion" *ngIf="usuarioService.isLogged()" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+    </a>
+  </div>
+</nav>
+

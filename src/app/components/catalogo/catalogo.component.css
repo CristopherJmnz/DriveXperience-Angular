@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
 
 * {
@@ -8,52 +8,6 @@
 body {
   background-color: #252323;
 }
-
-/* .titulo {
-  width: 0;
-  font-size: 30px;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0 auto;
-  font-family: "Courier New";
-  border-right: 0.15em solid #ff0000;
-  animation: typing 2s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
-  color: #ffffff;
-}
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 15%;
-  }
-}
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-} */
-
-/* @keyframes escribir {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
-
-    }
-  }
-
-
-  #texto-animado {
-    font-size: 60px;
-    font-weight: bold;
-    color: #fffdfd;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: escribir 1.5s steps(40) forwards;
-    text-align: center;
-} */
 
 
 #tituloMarca {
@@ -144,4 +98,109 @@ body {
   #tituloMarca{
     font-size: 60px;
   }
+} */
+
+
+
+
+/* RESPONSIVE */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  box-sizing: border-box;
 }
+
+body {
+  background-color: #252323;
+}
+
+#tituloMarca {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  top: -15px;
+  font-size: 80px;
+  animation-name: aparecer;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  text-align: center;
+  color: aliceblue;
+}
+
+@keyframes aparecer {
+  from {
+    top: -15px;
+  }
+  to {
+    top: 20px;
+  }
+}
+
+#filtro {
+  color: #ffffff;
+  padding-top: 40px;
+  display: flex;
+  justify-content: right;
+  gap: 5px;
+  margin-right: 30px;
+}
+
+#filtro > p {
+  padding: 5px 15px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 5px 15px;
+  border: solid #b50b0b;
+  border-radius: 15px;
+  color: #ffffff;
+  z-index: 1;
+  background-color: transparent;
+  position: relative;
+  font-weight: 100;
+  transition: all 250ms;
+  overflow: hidden;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #b50b0b;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
+  transition: all 250ms;
+}
+
+.button:hover {
+  color: #e8e8e8;
+}
+
+.button:hover::before {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  #filtro {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin: 0 auto;
+    width: fit-content;
+    padding-bottom: 20px;
+  }
+
+  #tituloMarca {
+    font-size: 2rem;
+  }
+}
+

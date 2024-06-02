@@ -88,12 +88,30 @@ footer div{
   align-items: center;
   justify-content: center;
   font-weight: 200;
+  height: 150px;
 }
 
 #ig:hover{
   color: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
 }
 
+a{
+  text-decoration: none;
+  color: red;
+  transition: .2s;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+}
+a:hover{
+  color: white;
+}
+
+#icono-logo{
+  display: none;
+
+}
 /* FOOTER */
 
 

@@ -23,4 +23,8 @@ export class NavbarComponent {
     });
     this.router.navigate(['/login']);
   }
+
+  closeMenu(menuCheckbox: HTMLInputElement) {
+    menuCheckbox.checked = false;
+  }
 }

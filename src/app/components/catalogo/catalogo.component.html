@@ -1,7 +1,13 @@
-<div id="tituloMarca">{{titulo}}</div>
-<div id="filtro">
-  <p>Ordenar por precio:</p>
-  <button class="button" (click)="sortCochesMenorMayor(marcaId)">De menor a mayor</button>
-  <button class="button" (click)="sortCochesMayorMenor(marcaId)">De mayor a menor</button>
-</div>
-<app-coches-cards [coches]="coches"></app-coches-cards>
+<main>
+  <div id="tituloMarca">{{ titulo }}</div>
+  <div id="filtro">
+    <p>Ordenar por precio:</p>
+    <button class="button" (click)="sortCochesMenorMayor(marcaId)">
+      De menor a mayor
+    </button>
+    <button class="button" (click)="sortCochesMayorMenor(marcaId)">
+      De mayor a menor
+    </button>
+  </div>
+  <app-coches-cards [coches]="coches"></app-coches-cards>
+</main>
