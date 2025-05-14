@@ -1,5 +1,9 @@
 # DriveXperienceAngular
 
+DriveXperience es una plataforma web desarrollada con fines educativos como parte de un proyecto académico. Proporciona una experiencia de alquiler de coches de lujo, ofreciendo una amplia gama de vehículos exclusivos para reservar.
+
+Por favor, ten en cuenta que todas las imágenes y contenido utilizado en este proyecto están sujetos a derechos de autor y son utilizados únicamente con fines educativos y de demostración.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
