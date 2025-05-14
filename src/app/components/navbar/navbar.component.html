@@ -33,7 +33,7 @@
   <label for="open" class="checkbtn">
     <i class="fas fa-bars"></i>
   </label>
-  <div class="menu">
+  <div class="menu" #menu>
     <a [routerLink]="['/marcas']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Marcas</a>
     <a [routerLink]="['/MisReservas']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Mis Reservas</a>
     <a [routerLink]="['/catalogo']" class="nav-option box" (click)="closeMenu(menuCheckbox)">Catalogo</a>

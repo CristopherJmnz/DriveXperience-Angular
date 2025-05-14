@@ -8,9 +8,6 @@
     </ng-container>
     <!-- Actual cards -->
     <ng-template #cardsList>
-      <li class="card">
-        <app-skeleton-coche-card></app-skeleton-coche-card>
-      </li>
       <li class="card" *ngFor="let coche of coches">
         <a [routerLink]="['/detalles', coche.idCoche]">
           <img
