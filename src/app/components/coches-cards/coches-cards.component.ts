@@ -8,6 +8,7 @@ import { Coche } from 'src/app/interfaces/coche';
 })
 export class CochesCardsComponent implements OnInit{
   @Input() coches!: Array<Coche>;
+  @Input() isLoading!: boolean;
 
   ngOnInit(): void {
 

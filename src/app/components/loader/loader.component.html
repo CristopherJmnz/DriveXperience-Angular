@@ -1,0 +1,15 @@
+<div class="dxp-loader">
+  <div class="dxp-logo">
+    <span class="dxp-text">
+      <span *ngFor="let l of 'DRIVE'.split(''); let i = index"
+            class="dxp-red dxp-letter"
+            [style.animation-delay]="(i * 0.08)+'s'">{{l}}</span>
+      <span *ngFor="let l of 'XPERIENCE'.split(''); let i = index"
+            class="dxp-white dxp-letter"
+            [style.animation-delay]="((i+5) * 0.08)+'s'">{{l}}</span>
+    </span>
+    <div class="dxp-bar-container">
+      <div class="dxp-bar"></div>
+    </div>
+  </div>
+</div>

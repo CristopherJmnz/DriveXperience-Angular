@@ -17,6 +17,8 @@ import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-reserva.component';
 import { CochesCardsComponent } from './components/coches-cards/coches-cards.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { SkeletonCocheCardComponent } from './components/skeleton-coche-card/skeleton-coche-card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     CatalogoComponent,
     ProcesoReservaComponent,
     CochesCardsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    LoaderComponent,
+    SkeletonCocheCardComponent
   ],
   imports: [
     BrowserModule,

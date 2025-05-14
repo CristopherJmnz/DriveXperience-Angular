@@ -1,35 +1,57 @@
 <div class="card-grid">
   <ul class="cards">
-    <li class="card" *ngFor="let coche of coches">
-      <a [routerLink]="['/detalles',coche.idCoche]" >
-        <img src="../../../assets/img/coches/{{coche.imagen1}}" class="card__image" alt="" />
-        <div class="card__overlay">
-          <div class="card__header">
-            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>
-            <img class="card__thumb" src="../../../assets/img/logo_marcas/{{coche.marca.imagenLogo}}" alt="" />
-            <div class="card__header-text">
-              <h3 class="card__title">{{coche.nombreCoche}}</h3>
-              <span class="card__status">{{coche.precioDia}}</span>
+    <!-- Skeleton loader -->
+    <ng-container *ngIf="isLoading; else cardsList">
+      <li class="card" *ngFor="let skel of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+        <app-skeleton-coche-card></app-skeleton-coche-card>
+      </li>
+    </ng-container>
+    <!-- Actual cards -->
+    <ng-template #cardsList>
+      <li class="card">
+        <app-skeleton-coche-card></app-skeleton-coche-card>
+      </li>
+      <li class="card" *ngFor="let coche of coches">
+        <a [routerLink]="['/detalles', coche.idCoche]">
+          <img
+            src="../../../assets/img/coches/{{ coche.imagen1 }}"
+            class="card__image"
+            alt=""
+          />
+          <div class="card__overlay">
+            <div class="card__header">
+              <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                <path />
+              </svg>
+              <img
+                class="card__thumb"
+                src="../../../assets/img/logo_marcas/{{
+                  coche.marca.imagenLogo
+                }}"
+                alt=""
+              />
+              <div class="card__header-text">
+                <h3 class="card__title">{{ coche.nombreCoche }}</h3>
+                <span class="card__status">{{ coche.precioDia }}€</span>
+              </div>
+            </div>
+            <div class="card__description">
+              <div class="card__iconos">
+                <img src="../../../assets/img/iconos/kmh.png" alt="" />
+                <p>{{ coche.velocidadMax }} Km/h</p>
+              </div>
+              <div class="card__iconos">
+                <img src="../../../assets/img/iconos/cv.png" alt="" />
+                <p>{{ coche.potenciaMax }} CV</p>
+              </div>
+              <div class="card__iconos">
+                <img src="../../../assets/img/iconos/transmision.png" alt="" />
+                <p>{{ coche.cambio }}</p>
+              </div>
             </div>
           </div>
-          <div class="card__description">
-            <div class="card__iconos">
-              <img src="../../../assets/img/iconos/kmh.png" alt="">
-              <p>{{coche.velocidadMax}}</p>
-            </div>
-            <div class="card__iconos">
-              <img src="../../../assets/img/iconos/cv.png" alt="">
-              <p>{{coche.potenciaMax}}</p>
-            </div>
-            <div class="card__iconos">
-              <img src="../../../assets/img/iconos/transmision.png" alt="">
-              <p>{{coche.cambio}}</p>
-            </div>
-          </div>
-        </div>
-      </a>
-    </li>
+        </a>
+      </li>
+    </ng-template>
   </ul>
 </div>
-
-

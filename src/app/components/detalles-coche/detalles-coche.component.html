@@ -9,119 +9,150 @@
     <div class="login-titulo">RESERVA</div>
     <label class="login-label">Fecha de inicio</label>
     <div class="login-inp">
-      <input id="fechaInicio" class="inpF" ngModel  name="fechaInicio" type="date" required />
+      <input
+        id="fechaInicio"
+        class="inpF"
+        ngModel
+        name="fechaInicio"
+        type="date"
+        required
+      />
     </div>
     <label class="login-label">Fecha de fin</label>
     <div class="login-inp">
-      <input id="fechaFin" class="inpF" ngModel  name="fechaFin" type="date" required />
+      <input
+        id="fechaFin"
+        class="inpF"
+        ngModel
+        name="fechaFin"
+        type="date"
+        required
+      />
     </div>
-    <input id="precio" ngModel name="precio"  type="hidden" [ngModel]="coche.precioDia"/>
-    <input id="idCoche" ngModel name="idCoche"  type="hidden" [ngModel]="coche.idCoche"/>
+    <input
+      id="precio"
+      ngModel
+      name="precio"
+      type="hidden"
+      [ngModel]="coche.precioDia"
+    />
+    <input
+      id="idCoche"
+      ngModel
+      name="idCoche"
+      type="hidden"
+      [ngModel]="coche.idCoche"
+    />
     <div class="login-button">
       <input id="buttonL" class="inpF" type="submit" value="Pagar" />
     </div>
   </form>
   <button id="form-toggle" (click)="handleModal()">RESERVAR</button>
-  <div class="banner" *ngIf="coche">
-    <div class="overlay">
-      <h1 class="animate__animated animate__bounceInLeft">
-        {{ coche.nombreCoche }}
-      </h1>
+  <ng-container *ngIf="isLoading">
+    <app-loader></app-loader>
+  </ng-container>
+  <ng-container *ngIf="!isLoading">
+    <div class="banner" *ngIf="coche">
+      <div class="overlay">
+        <h1 class="animate__animated animate__bounceInLeft">
+          {{ coche.nombreCoche }}
+        </h1>
+      </div>
+      <img src="../../../assets/img/coches/{{ coche.banner }}" />
     </div>
-    <img src="../../../assets/img/coches/{{ coche.banner }}" />
-  </div>
-  <div *ngIf="coche" class="proReserva-container">
-    <div class="procesoReserva-item" id="proReserva-item1">
-      <img src="../../../assets/img/coches/{{ coche.imagen2 }}" alt="" />
-    </div>
-    <div
-      class="procesoReserva-item"
-      id="proReserva-item2"
-      coche-aos-easing="linear"
-      coche-aos-duration="1500"
-    >
-      <h1>Descripcion delantera</h1>
-      <p>{{ coche.descripcionFrontal }}</p>
-    </div>
-    <div
-      class="procesoReserva-item"
-      id="proReserva-item3"
-      coche-aos-easing="linear"
-      coche-aos-duration="1500"
-    >
-      <h1>Descripcion trasera</h1>
-      <p>{{ coche.descripcionTrasera }}</p>
-    </div>
-    <div class="procesoReserva-item" id="proReserva-item4">
-      <img src="../../../assets/img/coches/{{ coche.imagen3 }}" alt="" />
-    </div>
-    <div class="procesoReserva-item" id="proReserva-item5">
-      <div class="caract1 cart">
-        <img
-          src="../../../assets/img/iconos/automatic-transmission.png"
-          alt=""
-        />
-        <h1>Cambio</h1>
-        <p>{{ coche.cambio }}</p>
+    <div *ngIf="coche" class="proReserva-container">
+      <div class="procesoReserva-item" id="proReserva-item1">
+        <img src="../../../assets/img/coches/{{ coche.imagen2 }}" alt="" />
       </div>
-      <div class="caract2 cart">
-        <img src="../../../assets/img/iconos/velocimetro.png" alt="" />
-        <h1>Velocidad Máxima</h1>
-        <p>{{ coche.velocidadMax }} Km/h</p>
+      <div
+        class="procesoReserva-item"
+        id="proReserva-item2"
+        coche-aos-easing="linear"
+        coche-aos-duration="1500"
+      >
+        <h1>Descripcion delantera</h1>
+        <p>{{ coche.descripcionFrontal }}</p>
       </div>
-      <div class="caract3 cart">
-        <img src="../../../assets/img/iconos/tire.png" alt="" />
-        <h1>Traccion</h1>
-        <p>{{ coche.traccion }}</p>
+      <div
+        class="procesoReserva-item"
+        id="proReserva-item3"
+        coche-aos-easing="linear"
+        coche-aos-duration="1500"
+      >
+        <h1>Descripcion trasera</h1>
+        <p>{{ coche.descripcionTrasera }}</p>
       </div>
-      <div class="caractImg" coche-aos-anchor-placement="top-center">
-        <img src="../../../assets/img/coches/{{ coche.imagen4 }}" alt="" />
+      <div class="procesoReserva-item" id="proReserva-item4">
+        <img src="../../../assets/img/coches/{{ coche.imagen3 }}" alt="" />
       </div>
-      <div class="caract4 cart">
-        <img src="../../../assets/img/iconos/velocimetro2.png" alt="" />
-        <h1>Aceleración <br />(0-100km/h)</h1>
-        <p>{{ coche.aceleracion }} s</p>
-      </div>
-      <div class="caract5 cart">
-        <img src="../../../assets/img/iconos/motor.png" alt="" />
-        <h1>CILINDRADA</h1>
-        <p>{{ coche.potenciaMax }} CV</p>
-      </div>
-      <div class="caract6 cart">
-        <img src="../../../assets/img/iconos/gasolinera.png" alt="" />
-        <h1>Combustible</h1>
-        <p>{{ coche.combustible }}</p>
-      </div>
-    </div>
-    <div class="procesoReserva-item" id="proReserva-item6">
-      <div class="carousel-container">
-        <div class="carousel-slide">
+      <div class="procesoReserva-item" id="proReserva-item5">
+        <div class="caract1 cart">
           <img
-            *ngIf="coche.imagen5"
-            src="../../../assets/img/coches/{{ coche.imagen5 }}"
+            src="../../../assets/img/iconos/automatic-transmission.png"
+            alt=""
           />
-          <img
-            *ngIf="coche.imagen6"
-            src="../../../assets/img/coches/{{ coche.imagen6 }}"
-          />
-          <img
-            *ngIf="coche.imagen7"
-            src="../../../assets/img/coches/{{ coche.imagen7 }}"
-          />
-          <img
-            *ngIf="coche.imagen8"
-            src="../../../assets/img/coches/{{ coche.imagen8 }}"
-          />
-          <img
-            *ngIf="coche.imagen9"
-            src="../../../assets/img/coches/{{ coche.imagen9 }}"
-          />
-          <img
-            *ngIf="coche.imagen10"
-            src="../../../assets/img/coches/{{ coche.imagen10 }}"
-          />
+          <h1>Cambio</h1>
+          <p>{{ coche.cambio }}</p>
+        </div>
+        <div class="caract2 cart">
+          <img src="../../../assets/img/iconos/velocimetro.png" alt="" />
+          <h1>Velocidad Máxima</h1>
+          <p>{{ coche.velocidadMax }} Km/h</p>
+        </div>
+        <div class="caract3 cart">
+          <img src="../../../assets/img/iconos/tire.png" alt="" />
+          <h1>Traccion</h1>
+          <p>{{ coche.traccion }}</p>
+        </div>
+        <div class="caractImg" coche-aos-anchor-placement="top-center">
+          <img src="../../../assets/img/coches/{{ coche.imagen4 }}" alt="" />
+        </div>
+        <div class="caract4 cart">
+          <img src="../../../assets/img/iconos/velocimetro2.png" alt="" />
+          <h1>Aceleración <br />(0-100km/h)</h1>
+          <p>{{ coche.aceleracion }} s</p>
+        </div>
+        <div class="caract5 cart">
+          <img src="../../../assets/img/iconos/motor.png" alt="" />
+          <h1>CILINDRADA</h1>
+          <p>{{ coche.potenciaMax }} CV</p>
+        </div>
+        <div class="caract6 cart">
+          <img src="../../../assets/img/iconos/gasolinera.png" alt="" />
+          <h1>Combustible</h1>
+          <p>{{ coche.combustible }}</p>
+        </div>
+      </div>
+      <div class="procesoReserva-item" id="proReserva-item6">
+        <div class="carousel-container">
+          <div class="carousel-slide">
+            <img
+              *ngIf="coche.imagen5"
+              src="../../../assets/img/coches/{{ coche.imagen5 }}"
+            />
+            <img
+              *ngIf="coche.imagen6"
+              src="../../../assets/img/coches/{{ coche.imagen6 }}"
+            />
+            <img
+              *ngIf="coche.imagen7"
+              src="../../../assets/img/coches/{{ coche.imagen7 }}"
+            />
+            <img
+              *ngIf="coche.imagen8"
+              src="../../../assets/img/coches/{{ coche.imagen8 }}"
+            />
+            <img
+              *ngIf="coche.imagen9"
+              src="../../../assets/img/coches/{{ coche.imagen9 }}"
+            />
+            <img
+              *ngIf="coche.imagen10"
+              src="../../../assets/img/coches/{{ coche.imagen10 }}"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </main>

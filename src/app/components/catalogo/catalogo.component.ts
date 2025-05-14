@@ -22,6 +22,7 @@ export class CatalogoComponent {
   };
   public titulo: string = 'Todos los modelos';
   public marcaId!: number;
+  isLoading = true;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -40,39 +41,48 @@ export class CatalogoComponent {
       }
     });
   }
-
   getCoches() {
+    this.isLoading = true;
     this.cocheService.getAllCoches().subscribe((response: Array<Coche>) => {
       this.coches = response;
+      this.isLoading = false;
     });
   }
 
   getCochesPorMarca(id:number | string){
+    this.isLoading = true;
     this.cocheService.getCochesPorIdMarca(id).subscribe((response: Array<Coche>) => {
       this.coches = response;
+      this.isLoading = false;
     });
   }
 
   sortCochesMayorMenor(idMarca?: number){
+    this.isLoading = true;
     if (idMarca) {
       this.cocheService.getCochesMayorMenor(idMarca).subscribe((response: Array<Coche>) => {
         this.coches = response;
+        this.isLoading = false;
       });
     }
     else{
       this.cocheService.getCochesMayorMenor().subscribe((response: Array<Coche>) => {
         this.coches = response;
+        this.isLoading = false;
       });
     }
   }
   sortCochesMenorMayor(idMarca?: number) {
+    this.isLoading = true;
     if (idMarca) {
       this.cocheService.getCochesMenorMayor(idMarca).subscribe((response: Array<Coche>) => {
         this.coches = response;
+        this.isLoading = false;
       });
     } else {
       this.cocheService.getCochesMenorMayor().subscribe((response: Array<Coche>) => {
         this.coches = response;
+        this.isLoading = false;
       });
     }
   }

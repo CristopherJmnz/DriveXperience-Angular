@@ -15,6 +15,7 @@ export class DetallesCocheComponent implements OnInit {
   coche!: Coche;
   idcoche!: string | number;
   showModal: boolean = false;
+  isLoading: boolean = true;
 
   constructor(
     private router: Router,
@@ -28,8 +29,12 @@ export class DetallesCocheComponent implements OnInit {
   }
 
   findCoche(id: string | number): void {
+    this.isLoading = true;
     this.cocheService.findCoche(id).subscribe((response: Coche) => {
       this.coche = response;
+      setTimeout(() => {
+      this.isLoading = false;
+    }, 2500);
     });
   }
 

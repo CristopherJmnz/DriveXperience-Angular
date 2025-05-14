@@ -1,0 +1,91 @@
+.dxp-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  z-index: 1000;
+}
+
+.dxp-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  user-select: none;
+  width: 100%;
+}
+
+.dxp-text {
+  font-family: 'Orbitron', 'Arial', sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.dxp-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: dxp-type 0.3s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+@keyframes dxp-type {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dxp-red {
+  color: #b71c1c;
+}
+
+.dxp-white {
+  color: #fff;
+  margin-left: 2px;
+}
+
+/* Barra de carga animada */
+.dxp-bar-container {
+  width: 220px;
+  max-width: 80vw;
+  height: 6px;
+  background: #ffffff22;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+
+.dxp-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #b71c1c 0%, #fff 100%);
+  animation: dxp-barload 1.4s cubic-bezier(.4,0,.2,1) infinite;
+  border-radius: 3px;
+}
+
+@keyframes dxp-barload {
+  0% { width: 0%; }
+  60% { width: 100%; }
+  100% { width: 0%; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dxp-text {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+  .dxp-bar-container {
+    width: 140px;
+    margin-top: 12px;
+  }
+}
