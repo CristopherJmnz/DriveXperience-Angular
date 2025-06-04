@@ -1,12 +1,10 @@
-main{
-  background:url('../../../assets/img/banner/parallax-bg.jpg');
+main {
+  background: url("../../../assets/img/banner/parallax-bg.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-
 
 /* CONTENEDOR PRINCIPAL */
 .proReserva-container {
@@ -33,7 +31,6 @@ main{
 #proReserva-item1 {
   grid-area: proReserva-item1;
   width: 100%;
-
 }
 
 #proReserva-item1 img {
@@ -43,7 +40,6 @@ main{
 
 #proReserva-item2 {
   grid-area: proReserva-item2;
-
 }
 
 #proReserva-item3 {
@@ -76,15 +72,12 @@ main{
     "caract3 caractImg caract6";
 }
 
-
-
 .caract1 {
   grid-area: caract1;
 }
 
 .caract2 {
   grid-area: caract2;
-
 }
 
 .caract3 {
@@ -113,7 +106,6 @@ main{
 #proReserva-item6 {
   grid-area: proReserva-item6;
   width: 100%;
-
 }
 
 /* Textos, imagenes */
@@ -132,7 +124,6 @@ main{
   width: 90px;
   filter: invert();
 }
-
 
 .login-titulo {
   font-size: 30px;
@@ -172,7 +163,6 @@ main{
 .login-button {
   padding-top: 20px;
   text-align: center;
-
 }
 
 #buttonL {
@@ -192,10 +182,8 @@ main{
   box-shadow: 0 6px 12px rgba(14, 14, 14, 0.4);
 }
 
-
 /* BANNER */
 .banner {
-
   position: relative;
   width: 100%;
   height: 400px;
@@ -225,11 +213,9 @@ main{
 
 .overlay h1 {
   font-size: 7rem;
-  font-family: 'Bruno Ace SC', cursive;
+  font-family: "Bruno Ace SC", cursive;
   margin: 0;
-
 }
-
 
 /* Formulario */
 
@@ -264,7 +250,7 @@ main{
   padding: 0px 0px 20px;
 }
 
-.login-inp>input {
+.login-inp > input {
   border-radius: 13px;
   border: solid #510404;
   background-color: transparent;
@@ -293,10 +279,7 @@ button[type="submit"] {
   border-radius: 5px;
   cursor: pointer;
   z-index: 1000;
-
 }
-
-
 
 /* Botón reservar */
 #form-toggle {
@@ -320,7 +303,6 @@ button[type="submit"] {
 #form-toggle:hover {
   background-color: rgb(139, 7, 7);
   box-shadow: 0 6px 12px rgba(14, 14, 14, 0.4);
-
 }
 
 /* cerrar fomrulario x */
@@ -335,7 +317,6 @@ button[type="submit"] {
   width: 100%;
   overflow: hidden;
   overflow-x: scroll;
-
 }
 
 .carousel {
@@ -375,10 +356,7 @@ button[type="submit"] {
   transform: translateX(-100%);
 }
 
-
-
-@media(max-width:1100px) {
-
+@media (max-width: 1100px) {
   .overlay h1 {
     font-size: 5.5rem;
   }
@@ -386,27 +364,21 @@ button[type="submit"] {
   #form-toggle {
     right: 43.5%;
   }
-
 }
 
-@media(max-width:900px) {
-
+@media (max-width: 900px) {
   .overlay h1 {
     font-size: 4rem;
   }
 
-
   #form-toggle {
     right: 42%;
   }
-
 }
-
 
 /* ------------RESPONSIVE-------------- */
 /*móviles */
 @media (max-width: 780px) {
-
   .proReserva-container {
     display: flex;
     flex-wrap: wrap;
@@ -435,14 +407,12 @@ button[type="submit"] {
       "proReserva-item3"
       "proReserva-item4"
       "proReserva-item5";
-      align-content: start;
-
+    align-content: start;
   }
 
   #proReserva-item6 {
     display: none;
   }
-
 
   .procesoReserva-item {
     width: 100%;
@@ -481,8 +451,6 @@ button[type="submit"] {
     margin: 0;
   }
 
-
-
   #proReserva-item5 {
     display: flex;
     flex-wrap: wrap;
@@ -495,19 +463,17 @@ button[type="submit"] {
     margin-bottom: 50px;
   }
 
-
   .caractImg {
     display: none;
   }
 
-
-  [data-aos^=fade][data-aos^=fade].aos-animate {
+  [data-aos^="fade"][data-aos^="fade"].aos-animate {
     opacity: 1;
     transform: none;
   }
 
-  [data-aos][data-aos][data-aos-easing=ease],
-  body[data-aos-easing=ease] [data-aos] {
+  [data-aos][data-aos][data-aos-easing="ease"],
+  body[data-aos-easing="ease"] [data-aos] {
     transition-timing-function: none !important;
   }
 
@@ -516,46 +482,36 @@ button[type="submit"] {
     transition-duration: none !important;
   }
 
-  [data-aos^=fade][data-aos^=fade] {
+  [data-aos^="fade"][data-aos^="fade"] {
     opacity: 1 !important;
     transition-property: none !important;
   }
 
-  [data-aos=fade-right] {
+  [data-aos="fade-right"] {
     transform: none !important;
   }
 
-  [data-aos=fade-down] {
+  [data-aos="fade-down"] {
     transform: none !important;
   }
 
-  [data-aos=fade-left] {
+  [data-aos="fade-left"] {
     transform: none !important;
   }
-
-
-
-
 
   .banner {
-
     height: 200px;
   }
 
-
   .overlay h1 {
     font-size: 2rem;
-    font-family: 'Bruno Ace SC', cursive;
+    font-family: "Bruno Ace SC", cursive;
     width: 100%;
-
-
   }
-
 
   #form-toggle {
     right: 40%;
   }
-
 }
 
 /* tabletas */
