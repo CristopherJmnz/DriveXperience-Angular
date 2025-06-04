@@ -54,76 +54,72 @@
   <ng-container *ngIf="!isLoading">
     <div class="banner" *ngIf="coche">
       <div class="overlay">
-        <h1 class="animate__animated animate__bounceInLeft">
-          {{ coche.nombreCoche }}
+        <h1>
+          <span
+            *ngFor="let char of coche.nombreCoche.split(''); let i = index"
+            [style.animationDelay]="i * 0.05 + 's'"
+            [ngClass]="{ space: char === ' ' }"
+          >
+            {{ char }}
+          </span>
         </h1>
       </div>
       <img src="../../../assets/img/coches/{{ coche.banner }}" />
     </div>
-    <div *ngIf="coche" class="proReserva-container">
-      <div class="procesoReserva-item" id="proReserva-item1">
+    <div *ngIf="coche" class="proReserva-container fadeInDown">
+      <div class="procesoReserva-item fadeInRight" id="proReserva-item1">
         <img src="../../../assets/img/coches/{{ coche.imagen2 }}" alt="" />
       </div>
-      <div
-        class="procesoReserva-item"
-        id="proReserva-item2"
-        coche-aos-easing="linear"
-        coche-aos-duration="1500"
-      >
-        <h1>Descripcion delantera</h1>
+      <div class="procesoReserva-item fadeInRight" id="proReserva-item2">
+        <h2>Descripcion delantera</h2>
         <p>{{ coche.descripcionFrontal }}</p>
       </div>
-      <div
-        class="procesoReserva-item"
-        id="proReserva-item3"
-        coche-aos-easing="linear"
-        coche-aos-duration="1500"
-      >
-        <h1>Descripcion trasera</h1>
+      <div class="procesoReserva-item fadeInRight" id="proReserva-item3">
+        <h2>Descripcion trasera</h2>
         <p>{{ coche.descripcionTrasera }}</p>
       </div>
-      <div class="procesoReserva-item" id="proReserva-item4">
+      <div class="procesoReserva-item fadeInRight" id="proReserva-item4">
         <img src="../../../assets/img/coches/{{ coche.imagen3 }}" alt="" />
       </div>
-      <div class="procesoReserva-item" id="proReserva-item5">
-        <div class="caract1 cart">
+      <div class="procesoReserva-item fadeInUp" id="proReserva-item5">
+        <div class="caract1 cart fadeInLeft">
           <img
             src="../../../assets/img/iconos/automatic-transmission.png"
             alt=""
           />
-          <h1>Cambio</h1>
+          <h2>Cambio</h2>
           <p>{{ coche.cambio }}</p>
         </div>
-        <div class="caract2 cart">
+        <div class="caract2 cart fadeInLeft">
           <img src="../../../assets/img/iconos/velocimetro.png" alt="" />
-          <h1>Velocidad Máxima</h1>
+          <h2>Velocidad Máxima</h2>
           <p>{{ coche.velocidadMax }} Km/h</p>
         </div>
-        <div class="caract3 cart">
+        <div class="caract3 cart fadeInLeft">
           <img src="../../../assets/img/iconos/tire.png" alt="" />
-          <h1>Traccion</h1>
+          <h2>Traccion</h2>
           <p>{{ coche.traccion }}</p>
         </div>
-        <div class="caractImg" coche-aos-anchor-placement="top-center">
+        <div class="caractImg fadeInUp">
           <img src="../../../assets/img/coches/{{ coche.imagen4 }}" alt="" />
         </div>
-        <div class="caract4 cart">
+        <div class="caract4 cart fadeInRight">
           <img src="../../../assets/img/iconos/velocimetro2.png" alt="" />
-          <h1>Aceleración <br />(0-100km/h)</h1>
+          <h2>Aceleración <br />(0-100km/h)</h2>
           <p>{{ coche.aceleracion }} s</p>
         </div>
-        <div class="caract5 cart">
+        <div class="caract5 cart fadeInRight">
           <img src="../../../assets/img/iconos/motor.png" alt="" />
-          <h1>CILINDRADA</h1>
+          <h2>CILINDRADA</h2>
           <p>{{ coche.potenciaMax }} CV</p>
         </div>
-        <div class="caract6 cart">
+        <div class="caract6 cart fadeInRight">
           <img src="../../../assets/img/iconos/gasolinera.png" alt="" />
-          <h1>Combustible</h1>
+          <h2>Combustible</h2>
           <p>{{ coche.combustible }}</p>
         </div>
       </div>
-      <div class="procesoReserva-item" id="proReserva-item6">
+      <div class="procesoReserva-item fadeInDown" id="proReserva-item6">
         <div class="carousel-container">
           <div class="carousel-slide">
             <img

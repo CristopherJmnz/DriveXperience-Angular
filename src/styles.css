@@ -1,4 +1,6 @@
 
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap'); */
+
 :root {
   --background-dark: #2d3548;
   --text-light: rgba(255, 255, 255, 0.6);
@@ -13,6 +15,14 @@
   --curve: 40;
 }
 
+@font-face {
+  font-family: 'Orbitron';
+  src: url('./assets/fonts/Orbitron-VariableFont_wght.ttf') format('truetype'),
+       url('./assets/fonts/Orbitron-Medium.ttf') format('truetype'),
+       url('./assets/fonts/Orbitron-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   margin: 0;
@@ -22,7 +32,7 @@
 
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Orbitron','Roboto', sans-serif;
   min-height: 100vh;
   display: grid;
   font-size: 14px;

@@ -29,7 +29,6 @@ export class RegistroComponent {
       tarjetas:[]
     };
     this.usuarioService.registarUser(user).subscribe(response=>{
-      console.log(response==1);
       if (response==1) {
         this._router.navigate(['/login']);
         const Toast = Swal.mixin({

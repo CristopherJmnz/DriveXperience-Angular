@@ -1,4 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Coche } from 'src/app/interfaces/coche';
@@ -12,6 +18,7 @@ import { DataSharingService } from 'src/app/services/data-sharing.service';
 })
 export class DetallesCocheComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
+  private cdr = inject(ChangeDetectorRef);
   coche!: Coche;
   idcoche!: string | number;
   showModal: boolean = false;
@@ -28,13 +35,40 @@ export class DetallesCocheComponent implements OnInit {
     this.findCoche(this.idcoche);
   }
 
+  initializeObserver(): void {
+    const fadeInRight = document.querySelectorAll('.fadeInRight');
+    const fadeInUp = document.querySelectorAll('.fadeInUp');
+    const fadeInLeft = document.querySelectorAll('.fadeInLeft');
+    const fadeInDown = document.querySelectorAll('.fadeInDown');
+    const elements = [
+      ...Array.from(fadeInRight),
+      ...Array.from(fadeInUp),
+      ...Array.from(fadeInLeft),
+      ...Array.from(fadeInDown),
+    ];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+  }
+
   findCoche(id: string | number): void {
     this.isLoading = true;
     this.cocheService.findCoche(id).subscribe((response: Coche) => {
       this.coche = response;
       setTimeout(() => {
-      this.isLoading = false;
-    }, 2500);
+        this.isLoading = false;
+        this.cdr.detectChanges();
+        this.initializeObserver();
+      }, 1000);
     });
   }
 
