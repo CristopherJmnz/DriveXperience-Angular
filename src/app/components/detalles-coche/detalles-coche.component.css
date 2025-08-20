@@ -743,55 +743,24 @@ button[type="submit"] {
   -webkit-animation: fadeInDown 0.7s ease-out forwards;
 }
 
-/* Animación desde la izquierda */
-.scroll-progress.scroll-from-left {
-  opacity: 0;
-  transform: translateX(-250px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -webkit-transform: translateX(-250px);
-  -moz-transform: translateX(-250px);
-  -ms-transform: translateX(-250px);
-  -o-transform: translateX(-250px);
-  -webkit-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -moz-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -ms-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -o-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+/* IO-driven reveal (Apple-like): subtle blur + lift with springy ease */
+.scroll-progress{ opacity:0; transform:translate3d(var(--tx,0),var(--ty,24px),0) scale(.98); filter:blur(8px); will-change:transform,opacity; }
+.scroll-progress.scroll-from-left{ --tx:-24px; --ty:0 }
+.scroll-progress.scroll-from-right{ --tx:24px; --ty:0 }
+.scroll-progress{ animation:none }
+.scroll-progress.visible{ animation:dx-reveal .6s cubic-bezier(.22,1,.36,1) var(--d,0ms) both }
+
+@keyframes dx-reveal{
+  from{ opacity:0; transform:translate3d(var(--tx,0),var(--ty,24px),0) scale(.98); filter:blur(8px) }
+  to{ opacity:1; transform:translate3d(0,0,0) scale(1); filter:blur(0) }
 }
 
-/* Animación desde la derecha */
-.scroll-progress.scroll-from-right {
-  opacity: 0;
-  transform: translateX(250px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -webkit-transform: translateX(250px);
-  -moz-transform: translateX(250px);
-  -ms-transform: translateX(250px);
-  -o-transform: translateX(250px);
-  -webkit-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -moz-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -ms-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -o-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-/* Animación desde abajo */
-.scroll-progress.scroll-from-bottom {
-  opacity: 0;
-  transform: translateY(250px);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -webkit-transform: translateY(250px);
-  -moz-transform: translateY(250px);
-  -ms-transform: translateY(250px);
-  -o-transform: translateY(250px);
-  -webkit-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -moz-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -ms-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  -o-transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
-
-/* Cuando el elemento es visible */
-.scroll-progress.visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
+/* Only render off-screen sections when needed */
+.dx-section,
+.dx-stats,
+.dx-specs {
+  content-visibility: auto;
+  contain: layout paint;
 }
 
 /* Small tweaks for mobile spacing */

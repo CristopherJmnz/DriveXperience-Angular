@@ -52,28 +52,28 @@
     >
       <div class="dx-container">
         <div class="dx-stats__grid">
-          <div class="dx-stat scroll-progress scroll-from-left">
+          <div class="dx-stat scroll-progress scroll-from-left" style="--d:40ms">
             <div class="dx-stat__label">Velocidad Máxima</div>
             <div class="dx-stat__value">
               {{ coche.velocidadMax }}
               <span class="u-unit"> km/h</span>
             </div>
           </div>
-          <div class="dx-stat scroll-progress scroll-from-bottom">
+          <div class="dx-stat scroll-progress scroll-from-bottom" style="--d:120ms">
             <div class="dx-stat__label">Aceleración (0-100)</div>
             <div class="dx-stat__value">
               {{ coche.aceleracion }}
               <span class="u-unit"> s</span>
             </div>
           </div>
-          <div class="dx-stat scroll-progress scroll-from-right">
+          <div class="dx-stat scroll-progress scroll-from-right" style="--d:200ms">
             <div class="dx-stat__label">Potencia</div>
             <div class="dx-stat__value">
               {{ coche.potenciaMax }}
               <span class="u-unit"> CV</span>
             </div>
           </div>
-          <div class="dx-stat scroll-progress scroll-from-bottom">
+          <div class="dx-stat scroll-progress scroll-from-bottom" style="--d:280ms">
             <div class="dx-stat__label">Cambio</div>
             <div class="dx-stat__value">{{ coche.cambio }}</div>
           </div>
@@ -120,7 +120,7 @@
     <!-- Specs: nueva distribución con imagen a la izquierda y tarjetas a la derecha -->
     <section class="dx-section dx-specs" *ngIf="coche">
       <div class="dx-container dx-specs__layout">
-        <div class="dx-specs__image-side scroll-progress scroll-from-left">
+        <div class="dx-specs__image-side scroll-progress scroll-from-left" style="--d:60ms">
           <img
             src="../../../assets/img/coches/{{ coche.imagen4 }}"
             alt="vista aérea"
@@ -129,7 +129,7 @@
           />
         </div>
         <div class="dx-specs__cards">
-          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom" style="--d:80ms">
             <img
               src="../../../assets/img/iconos/automatic-transmission.png"
               alt="cambio"
@@ -137,7 +137,7 @@
             <h3>Cambio</h3>
             <p>{{ coche.cambio }}</p>
           </div>
-          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom" style="--d:140ms">
             <img
               src="../../../assets/img/iconos/velocimetro.png"
               alt="velocidad"
@@ -145,12 +145,12 @@
             <h3>Velocidad Máxima</h3>
             <p>{{ coche.velocidadMax }} Km/h</p>
           </div>
-          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom" style="--d:200ms">
             <img src="../../../assets/img/iconos/tire.png" alt="tracción" />
             <h3>Tracción</h3>
             <p>{{ coche.traccion }}</p>
           </div>
-          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom" style="--d:260ms">
             <img
               src="../../../assets/img/iconos/velocimetro2.png"
               alt="aceleración"
@@ -158,12 +158,12 @@
             <h3>Aceleración (0-100)</h3>
             <p>{{ coche.aceleracion }} s</p>
           </div>
-          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom" style="--d:320ms">
             <img src="../../../assets/img/iconos/motor.png" alt="potencia" />
             <h3>Cilindrada</h3>
             <p>{{ coche.potenciaMax }} CV</p>
           </div>
-          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom" style="--d:380ms">
             <img
               src="../../../assets/img/iconos/gasolinera.png"
               alt="combustible"
