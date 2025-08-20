@@ -1,0 +1,72 @@
+<div
+  class="dx-modal__backdrop"
+  [class.dx-modal__backdrop--open]="open"
+  (click)="onBackdropClick($event)"
+  [attr.aria-hidden]="!open"
+>
+  <div
+    class="dx-sheet"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="'Reserva ' + carName"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd()"
+    (touchcancel)="onTouchEnd()"
+  >
+    <div class="dx-sheet__grabber" aria-hidden="true"></div>
+
+    <header class="dx-sheet__header">
+      <button
+        class="dx-sheet__action"
+        (click)="handleClose()"
+        aria-label="Cancelar"
+      >
+        Cancelar
+      </button>
+      <div class="dx-sheet__title">Reserva</div>
+      <div class="dx-sheet__action dx-sheet__action--ghost" aria-hidden="true">
+        &nbsp;
+      </div>
+    </header>
+
+    <form
+      #formFechas="ngForm"
+      (ngSubmit)="onSubmit(formFechas)"
+      class="dx-sheet__content"
+    >
+      <div class="dx-field">
+        <label for="fechaInicio">Fecha de inicio</label>
+        <input
+          #fechaInicio
+          id="fechaInicio"
+          name="fechaInicio"
+          type="date"
+          ngModel
+          required
+        />
+      </div>
+
+      <div class="dx-field">
+        <label for="fechaFin">Fecha de fin</label>
+        <input id="fechaFin" name="fechaFin" type="date" ngModel required />
+      </div>
+
+      <input type="hidden" name="precio" [ngModel]="pricePerDay" />
+      <input type="hidden" name="idCoche" [ngModel]="idCoche" />
+
+      <div class="dx-sheet__footer">
+        <button
+          type="button"
+          class="dx-btn dx-btn--ghost"
+          (click)="handleClose()"
+        >
+          Cerrar
+        </button>
+        <button type="submit" class="dx-btn">
+          Pagar {{ pricePerDay | currency : "EUR" }}/día
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

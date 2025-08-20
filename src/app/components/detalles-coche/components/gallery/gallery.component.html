@@ -1,0 +1,66 @@
+<section
+  class="dx-section dx-gallery scroll-progress scroll-from-bottom"
+  *ngIf="images?.length"
+>
+  <div class="dx-container">
+    <div class="dx-gallery__rail">
+      <button
+        class="dx-gallery__item"
+        *ngFor="let img of images; let i = index"
+        type="button"
+        (click)="openLightbox(i)"
+      >
+        <img
+          [src]="'assets/img/coches/' + img"
+          [alt]="carName + ' - foto ' + (i + 1)"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="dx-gallery__zoom" aria-hidden="true">⤢</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox fullscreen -->
+<div
+  class="dx-lightbox"
+  *ngIf="lightboxOpen"
+  (click)="onLightboxBackdrop($event)"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)"
+>
+  <button
+    class="dx-lightbox__close"
+    type="button"
+    (click)="closeLightbox()"
+    aria-label="Cerrar"
+  >
+    ×
+  </button>
+  <button
+    class="dx-lightbox__nav dx-lightbox__nav--prev"
+    type="button"
+    (click)="prevImage()"
+    aria-label="Anterior"
+  >
+    ‹
+  </button>
+  <figure class="dx-lightbox__figure">
+    <img
+      [src]="'assets/img/coches/' + images[lightboxIndex]"
+      [alt]="carName + ' - foto ' + (lightboxIndex + 1)"
+    />
+    <figcaption class="dx-lightbox__caption">
+      {{ lightboxIndex + 1 }} / {{ images.length }}
+    </figcaption>
+  </figure>
+  <button
+    class="dx-lightbox__nav dx-lightbox__nav--next"
+    type="button"
+    (click)="nextImage()"
+    aria-label="Siguiente"
+  >
+    ›
+  </button>
+</div>

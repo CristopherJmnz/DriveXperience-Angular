@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { CochesCardsComponent } from './components/coches-cards/coches-cards.com
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SkeletonCocheCardComponent } from './components/skeleton-coche-card/skeleton-coche-card.component';
+import { DetallesCocheGalleryComponent } from './components/detalles-coche/components/gallery/gallery.component';
+import { DetallesCocheReservaModalComponent } from './components/detalles-coche/components/reserva-modal/reserva-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { SkeletonCocheCardComponent } from './components/skeleton-coche-card/ske
     FooterComponent,
     HomeComponent,
     DetallesCocheComponent,
+    DetallesCocheGalleryComponent,
+    DetallesCocheReservaModalComponent,
     MenuMarcasComponent,
     LoginComponent,
     RegistroComponent,
@@ -36,15 +40,10 @@ import { SkeletonCocheCardComponent } from './components/skeleton-coche-card/ske
     CochesCardsComponent,
     AboutUsComponent,
     LoaderComponent,
-    SkeletonCocheCardComponent
+    SkeletonCocheCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

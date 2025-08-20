@@ -1,154 +1,198 @@
 <main>
-  <form
-    class="login-cont form-wrapper modal"
-    *ngIf="showModal"
-    #formFechas="ngForm"
-    (ngSubmit)="onSubmit(formFechas)"
-  >
-    <span class="form-close" (click)="handleModal()">&times;</span>
-    <div class="login-titulo">RESERVA</div>
-    <label class="login-label">Fecha de inicio</label>
-    <div class="login-inp">
-      <input
-        id="fechaInicio"
-        class="inpF"
-        ngModel
-        name="fechaInicio"
-        type="date"
-        required
-      />
-    </div>
-    <label class="login-label">Fecha de fin</label>
-    <div class="login-inp">
-      <input
-        id="fechaFin"
-        class="inpF"
-        ngModel
-        name="fechaFin"
-        type="date"
-        required
-      />
-    </div>
-    <input
-      id="precio"
-      ngModel
-      name="precio"
-      type="hidden"
-      [ngModel]="coche.precioDia"
-    />
-    <input
-      id="idCoche"
-      ngModel
-      name="idCoche"
-      type="hidden"
-      [ngModel]="coche.idCoche"
-    />
-    <div class="login-button">
-      <input id="buttonL" class="inpF" type="submit" value="Pagar" />
-    </div>
-  </form>
-  <button id="form-toggle" (click)="handleModal()">RESERVAR</button>
+  <button id="form-toggle" (click)="handleModal()" [hidden]="showModal">
+    RESERVAR
+  </button>
   <ng-container *ngIf="isLoading">
     <app-loader></app-loader>
   </ng-container>
   <ng-container *ngIf="!isLoading">
+    <app-dx-reserva-modal
+      *ngIf="coche"
+      [open]="showModal"
+      [carName]="coche.nombreCoche"
+      [pricePerDay]="coche.precioDia"
+      [idCoche]="coche.idCoche"
+      (close)="handleModal()"
+      (submitForm)="onSubmit($event)"
+    ></app-dx-reserva-modal>
     <div class="banner" *ngIf="coche">
       <div class="overlay">
-        <h1>
-          <span
-            *ngFor="let char of coche.nombreCoche.split(''); let i = index"
-            [style.animationDelay]="i * 0.05 + 's'"
-            [ngClass]="{ space: char === ' ' }"
-          >
-            {{ char }}
-          </span>
-        </h1>
-      </div>
-      <img src="../../../assets/img/coches/{{ coche.banner }}" />
-    </div>
-    <div *ngIf="coche" class="proReserva-container fadeInDown">
-      <div class="procesoReserva-item fadeInRight" id="proReserva-item1">
-        <img src="../../../assets/img/coches/{{ coche.imagen2 }}" alt="" />
-      </div>
-      <div class="procesoReserva-item fadeInRight" id="proReserva-item2">
-        <h2>Descripcion delantera</h2>
-        <p>{{ coche.descripcionFrontal }}</p>
-      </div>
-      <div class="procesoReserva-item fadeInRight" id="proReserva-item3">
-        <h2>Descripcion trasera</h2>
-        <p>{{ coche.descripcionTrasera }}</p>
-      </div>
-      <div class="procesoReserva-item fadeInRight" id="proReserva-item4">
-        <img src="../../../assets/img/coches/{{ coche.imagen3 }}" alt="" />
-      </div>
-      <div class="procesoReserva-item fadeInUp" id="proReserva-item5">
-        <div class="caract1 cart fadeInLeft">
-          <img
-            src="../../../assets/img/iconos/automatic-transmission.png"
-            alt=""
-          />
-          <h2>Cambio</h2>
-          <p>{{ coche.cambio }}</p>
-        </div>
-        <div class="caract2 cart fadeInLeft">
-          <img src="../../../assets/img/iconos/velocimetro.png" alt="" />
-          <h2>Velocidad Máxima</h2>
-          <p>{{ coche.velocidadMax }} Km/h</p>
-        </div>
-        <div class="caract3 cart fadeInLeft">
-          <img src="../../../assets/img/iconos/tire.png" alt="" />
-          <h2>Traccion</h2>
-          <p>{{ coche.traccion }}</p>
-        </div>
-        <div class="caractImg fadeInUp">
-          <img src="../../../assets/img/coches/{{ coche.imagen4 }}" alt="" />
-        </div>
-        <div class="caract4 cart fadeInRight">
-          <img src="../../../assets/img/iconos/velocimetro2.png" alt="" />
-          <h2>Aceleración <br />(0-100km/h)</h2>
-          <p>{{ coche.aceleracion }} s</p>
-        </div>
-        <div class="caract5 cart fadeInRight">
-          <img src="../../../assets/img/iconos/motor.png" alt="" />
-          <h2>CILINDRADA</h2>
-          <p>{{ coche.potenciaMax }} CV</p>
-        </div>
-        <div class="caract6 cart fadeInRight">
-          <img src="../../../assets/img/iconos/gasolinera.png" alt="" />
-          <h2>Combustible</h2>
-          <p>{{ coche.combustible }}</p>
-        </div>
-      </div>
-      <div class="procesoReserva-item fadeInDown" id="proReserva-item6">
-        <div class="carousel-container">
-          <div class="carousel-slide">
-            <img
-              *ngIf="coche.imagen5"
-              src="../../../assets/img/coches/{{ coche.imagen5 }}"
-            />
-            <img
-              *ngIf="coche.imagen6"
-              src="../../../assets/img/coches/{{ coche.imagen6 }}"
-            />
-            <img
-              *ngIf="coche.imagen7"
-              src="../../../assets/img/coches/{{ coche.imagen7 }}"
-            />
-            <img
-              *ngIf="coche.imagen8"
-              src="../../../assets/img/coches/{{ coche.imagen8 }}"
-            />
-            <img
-              *ngIf="coche.imagen9"
-              src="../../../assets/img/coches/{{ coche.imagen9 }}"
-            />
-            <img
-              *ngIf="coche.imagen10"
-              src="../../../assets/img/coches/{{ coche.imagen10 }}"
-            />
+        <div class="overlay__content">
+          <h1>
+            <ng-container *ngFor="let line of arrayName">
+              <span
+                *ngFor="let char of line.split(''); let i = index"
+                [style.animationDelay]="i * 0.05 + 's'"
+                [ngClass]="{ space: char === ' ' }"
+              >
+                {{ char }}
+              </span>
+              <br />
+            </ng-container>
+          </h1>
+          <div class="dx-hero__meta scroll-progress scroll-from-bottom">
+            <span class="dx-hero__badge"
+              >Desde {{ coche.precioDia | currency : "EUR" }}/día</span
+            >
           </div>
         </div>
       </div>
+      <img
+        src="../../../assets/img/coches/{{ coche.banner }}"
+        alt="banner {{ coche.nombreCoche }}"
+        loading="eager"
+        decoding="async"
+      />
     </div>
+
+    <!-- Sección stats premium -->
+    <section
+      class="dx-section dx-stats scroll-progress scroll-from-bottom"
+      *ngIf="coche"
+    >
+      <div class="dx-container">
+        <div class="dx-stats__grid">
+          <div class="dx-stat scroll-progress scroll-from-left">
+            <div class="dx-stat__label">Velocidad Máxima</div>
+            <div class="dx-stat__value">
+              {{ coche.velocidadMax }}
+              <span class="u-unit"> km/h</span>
+            </div>
+          </div>
+          <div class="dx-stat scroll-progress scroll-from-bottom">
+            <div class="dx-stat__label">Aceleración (0-100)</div>
+            <div class="dx-stat__value">
+              {{ coche.aceleracion }}
+              <span class="u-unit"> s</span>
+            </div>
+          </div>
+          <div class="dx-stat scroll-progress scroll-from-right">
+            <div class="dx-stat__label">Potencia</div>
+            <div class="dx-stat__value">
+              {{ coche.potenciaMax }}
+              <span class="u-unit"> CV</span>
+            </div>
+          </div>
+          <div class="dx-stat scroll-progress scroll-from-bottom">
+            <div class="dx-stat__label">Cambio</div>
+            <div class="dx-stat__value">{{ coche.cambio }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split sección: Frontal -->
+    <section class="dx-section dx-split" *ngIf="coche">
+      <div class="dx-container dx-split__grid">
+        <div class="dx-split__media scroll-progress scroll-from-left">
+          <img
+            src="../../../assets/img/coches/{{ coche.imagen2 }}"
+            alt="frontal"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="dx-split__content scroll-progress scroll-from-right">
+          <h2>Descripción delantera</h2>
+          <p>{{ coche.descripcionFrontal }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Split sección: Trasera -->
+    <section class="dx-section dx-split" *ngIf="coche">
+      <div class="dx-container dx-split__grid dx-split__grid--reverse">
+        <div class="dx-split__content scroll-progress scroll-from-left">
+          <h2>Descripción trasera</h2>
+          <p>{{ coche.descripcionTrasera }}</p>
+        </div>
+        <div class="dx-split__media scroll-progress scroll-from-right">
+          <img
+            src="../../../assets/img/coches/{{ coche.imagen3 }}"
+            alt="trasera"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs: nueva distribución con imagen a la izquierda y tarjetas a la derecha -->
+    <section class="dx-section dx-specs" *ngIf="coche">
+      <div class="dx-container dx-specs__layout">
+        <div class="dx-specs__image-side scroll-progress scroll-from-left">
+          <img
+            src="../../../assets/img/coches/{{ coche.imagen4 }}"
+            alt="vista aérea"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="dx-specs__cards">
+          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+            <img
+              src="../../../assets/img/iconos/automatic-transmission.png"
+              alt="cambio"
+            />
+            <h3>Cambio</h3>
+            <p>{{ coche.cambio }}</p>
+          </div>
+          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+            <img
+              src="../../../assets/img/iconos/velocimetro.png"
+              alt="velocidad"
+            />
+            <h3>Velocidad Máxima</h3>
+            <p>{{ coche.velocidadMax }} Km/h</p>
+          </div>
+          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+            <img src="../../../assets/img/iconos/tire.png" alt="tracción" />
+            <h3>Tracción</h3>
+            <p>{{ coche.traccion }}</p>
+          </div>
+          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+            <img
+              src="../../../assets/img/iconos/velocimetro2.png"
+              alt="aceleración"
+            />
+            <h3>Aceleración (0-100)</h3>
+            <p>{{ coche.aceleracion }} s</p>
+          </div>
+          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+            <img src="../../../assets/img/iconos/motor.png" alt="potencia" />
+            <h3>Cilindrada</h3>
+            <p>{{ coche.potenciaMax }} CV</p>
+          </div>
+          <div class="dx-specs__card scroll-progress scroll-from-bottom">
+            <img
+              src="../../../assets/img/iconos/gasolinera.png"
+              alt="combustible"
+            />
+            <h3>Combustible</h3>
+            <p>{{ coche.combustible }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería mejorada (componentizada) -->
+    <app-dx-gallery
+      *ngIf="coche"
+      [images]="galleryImages"
+      [carName]="coche.nombreCoche"
+    >
+    </app-dx-gallery>
+
+    <section
+      class="dx-section coming-soon-section scroll-progress scroll-from-bottom"
+    >
+      <div class="dx-container">
+        <div class="text-3d">PRÓXIMAMENTE</div>
+        <p>
+          Estamos trabajando en una nueva funcionalidad para que pronto puedas
+          ver el coche en 3D.
+        </p>
+      </div>
+    </section>
   </ng-container>
 </main>
