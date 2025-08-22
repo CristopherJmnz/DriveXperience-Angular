@@ -7,15 +7,14 @@
   border-radius: 20px;
   padding: 1.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.2),
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    height: 100%;
 }
 
 .reserva-card:hover {
   transform: translateY(-4px);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.15);
 }
@@ -62,10 +61,13 @@
 .coche-detalles {
   flex: 1;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .coche-nombre {
-  font-family: 'Orbitron', monospace;
+  font-family: "Orbitron", monospace;
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
@@ -113,7 +115,7 @@
 
 .estado-completada {
   background: rgba(108, 117, 125, 0.15);
-  color: #6c757d;
+  color: rgba(255, 255, 255, 0.7);
   border-color: rgba(108, 117, 125, 0.3);
 }
 
@@ -173,53 +175,6 @@
   flex-shrink: 0;
 }
 
-/* ===== UBICACIONES ===== */
-.reserva-ubicaciones {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.ubicacion-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ubicacion-item i {
-  color: #c0c0c0;
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-.ubicacion-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-width: 0;
-}
-
-.ubicacion-label {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.ubicacion-valor {
-  font-size: 0.9rem;
-  color: white;
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 /* ===== FOOTER ===== */
 .reserva-footer {
   display: flex;
@@ -242,7 +197,7 @@
 }
 
 .precio-total {
-  font-family: 'Orbitron', monospace;
+  font-family: "Orbitron", monospace;
   font-size: 1.25rem;
   font-weight: 700;
   color: #c0c0c0;
@@ -291,6 +246,9 @@
 @media (max-width: 768px) {
   .reserva-card {
     padding: 1rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .reserva-header {
@@ -298,21 +256,37 @@
     gap: 1rem;
   }
 
+  .coche-info {
+    width: 100%;
+  }
+
   .estado-badge {
     align-self: flex-start;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .reserva-fechas {
     flex-direction: column;
     gap: 0.75rem;
+    padding: 0.8rem;
+  }
+
+  .fecha-item {
+    gap: 0.5rem;
   }
 
   .fecha-separador {
     transform: rotate(90deg);
+    align-self: center;
   }
 
-  .reserva-ubicaciones {
-    grid-template-columns: 1fr;
+  .coche-nombre {
+    font-size: 1rem;
+  }
+
+  .precio-total {
+    font-size: 1.1rem;
   }
 
   .reserva-footer {
@@ -330,26 +304,82 @@
     flex: 1;
     justify-content: center;
     min-width: 0;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
   }
 }
 
 @media (max-width: 480px) {
+  .reserva-card {
+    padding: 0.8rem;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+  }
+
   .coche-info {
     flex-direction: column;
     text-align: center;
+    gap: 0.75rem;
   }
 
   .coche-imagen {
     width: 100%;
-    height: 120px;
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  .coche-detalles {
+    width: 100%;
+  }
+
+  .coche-nombre {
+    font-size: 0.95rem;
+  }
+
+  .estado-badge {
+    align-self: center;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .reserva-fechas {
+    padding: 0.6rem;
+    gap: 0.5rem;
+  }
+
+  .fecha-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+  }
+
+  .fecha-item i {
+    font-size: 1rem;
+  }
+
+  .fecha-info {
+    align-items: center;
+  }
+
+  .fecha-separador {
+    margin: 0.25rem 0;
+  }
+
+  .precio-total {
+    font-size: 1rem;
   }
 
   .reserva-acciones {
     flex-direction: column;
+    gap: 0.5rem;
   }
 
   .btn-action {
     width: 100%;
+    padding: 0.6rem;
+    font-size: 0.8rem;
   }
 }
 

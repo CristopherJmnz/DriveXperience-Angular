@@ -24,9 +24,6 @@ export class ReservaEstadoService {
 
   constructor() { }
 
-  /**
-   * Hook principal que calcula toda la información del estado de una reserva
-   */
   public useReservaEstado(reserva: Reserva): EstadoReservaInfo {
     const estado = this.calculateEstado(reserva);
     const fechaInfo = this.calculateFechaInfo(reserva);
