@@ -1,0 +1,377 @@
+
+/* Apple-inspired Car Cards Component */
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  margin: 0 auto;
+}
+
+/* Car Card */
+.car-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Nuevo efecto hover para el contenido */
+.car-card:hover .car-card__content {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Efecto sutil en el precio */
+.car-card:hover .car-card__price-amount {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(209, 0, 0, 0.3);
+}
+
+/* Animación en las especificaciones */
+.car-card:hover .car-spec {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.car-card--skeleton {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.car-card__link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+/* Image Section */
+.car-card__image-container {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.car-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.car-card:hover .car-card__image {
+  transform: scale(1.05);
+}
+
+.car-card__overlay {
+  display: none; /* Removemos el overlay oscuro */
+}
+
+.car-card:hover .car-card__overlay {
+  display: none; /* No mostrar overlay en hover */
+}
+
+/* Content Section */
+.car-card__content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 20px 20px;
+}
+
+/* Header */
+.car-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.car-card__brand {
+  flex-shrink: 0;
+}
+
+.car-card__brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px;
+}
+
+.car-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.car-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.car-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.car-card__price-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #d10000;
+  background: linear-gradient(135deg, #d10000 0%, #ff3333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.car-card__price-period {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* Specifications */
+.car-card__specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.car-spec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.car-spec:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.car-spec__icon {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.car-spec__value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.car-spec__unit {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
+/* Removemos el hover overlay completamente */
+.car-card__hover-overlay {
+  display: none;
+}
+
+.car-card:hover .car-card__hover-overlay {
+  display: none;
+}
+
+.car-card__cta {
+  display: none; /* Removemos el botón "Ver detalles" */
+}
+
+.car-card:hover .car-card__cta {
+  transform: translateY(0);
+}
+
+.car-card__cta i {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.car-card__cta:hover i {
+  transform: translateX(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .car-card {
+    height: 420px;
+  }
+
+  .car-card__image-container {
+    height: 200px;
+  }
+
+  .car-card__content {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .car-card__title {
+    font-size: 1.125rem;
+  }
+
+  .car-card__price-amount {
+    font-size: 1.25rem;
+  }
+
+  .car-card__specs {
+    gap: 0.75rem;
+  }
+
+  .car-spec {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .car-spec__icon {
+    font-size: 1rem;
+  }
+
+  .car-spec__value {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cars-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .car-card {
+    height: 380px;
+  }
+
+  .car-card__image-container {
+    height: 180px;
+  }
+
+  .car-card__content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .car-card__header {
+    gap: 0.75rem;
+  }
+
+  .car-card__brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .car-card__title {
+    font-size: 1rem;
+  }
+
+  .car-card__specs {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .car-spec {
+    padding: 0.5rem 0.25rem;
+  }
+
+  .car-spec__value {
+    font-size: 0.8rem;
+  }
+
+  .car-spec__unit {
+    font-size: 0.7rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.car-card--skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Performance Optimizations */
+.car-card {
+  will-change: transform;
+}
+
+.car-card__image {
+  will-change: transform;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .car-card,
+  .car-card__image,
+  .car-card__cta {
+    transition: none;
+  }
+
+  .car-card--skeleton {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .car-card {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .car-spec {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}

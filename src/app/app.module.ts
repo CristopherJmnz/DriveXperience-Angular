@@ -15,14 +15,12 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-reserva.component';
-import { CochesCardsComponent } from './components/coches-cards/coches-cards.component';
+import { CochesCardsComponent } from './components/catalogo/components/coches-cards/coches-cards.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { SkeletonCocheCardComponent } from './components/skeleton-coche-card/skeleton-coche-card.component';
 import { DetallesCocheGalleryComponent } from './components/detalles-coche/components/gallery/gallery.component';
 import { DetallesCocheReservaModalComponent } from './components/detalles-coche/components/reserva-modal/reserva-modal.component';
-
-// Shared components
 import { DxFormFieldComponent } from './components/shared/dx-form-field/dx-form-field.component';
 import { DxButtonComponent } from './components/shared/dx-button/dx-button.component';
 import { DxAuthFormComponent } from './components/shared/dx-auth-form/dx-auth-form.component';

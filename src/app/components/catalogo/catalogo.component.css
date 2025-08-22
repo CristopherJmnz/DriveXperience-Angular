@@ -1,206 +1,198 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
-
-
-* {
-  box-sizing: border-box;
+/* Apple-inspired Catalogo Component */
+.catalogo-container {
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
 }
 
-body {
-  background-color: #252323;
-}
-
-
-#tituloMarca {
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-    position: relative;
-    top: -15px;
-    font-size: 80px;
-    animation-name: aparecer;
-    animation-duration: 1.5s;
-    animation-delay: 0.5s;
-    animation-fill-mode: forwards;
-    text-align: center;
-    color: aliceblue;
-}
-
-@keyframes aparecer {
-    from {
-        top: -15px;
-    }
-
-    to {
-      top:20px;
-    }
-  }
-
-#filtro{
-  color: #ffffff;
-  padding-top: 40px;
-  display: flex;
-  justify-content: right;
-  gap: 5px;
-  margin-right: 30px;
-
-}
-
-#filtro > p{
-  padding: 5px 15px;
-  font-size: 16px;
-}
-
-.button {
- padding: 5px 15px;
- border: solid #b50b0b;
- border-radius: 15px;
- color: #ffffff;
- z-index: 1;
- background-color: transparent;
- position: relative;
- font-weight: 100;
- transition: all 250ms;
- overflow: hidden;
-}
-
-.button::before {
- content: "";
- position: absolute;
- top: 0;
- left: 0;
- height: 100%;
- width: 0;
- border-radius: 15px;
- background-color: #b50b0b;
- z-index: -1;
- -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
- box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
- transition: all 250ms
-}
-
-.button:hover {
- color: #e8e8e8;
-}
-
-.button:hover::before {
- width: 100%;
-}
-
-@media(max-width: 800px){
-  #filtro{
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-    margin: 0 auto;
-    width: fit-content;
-    padding-bottom: 20px;
-  }
-  #tituloMarca{
-    font-size: 60px;
-  }
-} */
-
-
-
-
-/* RESPONSIVE */
-
-/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap'); */
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #252323;
-}
-
-#tituloMarca {
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  font-weight: 500;
-  position: relative;
-  top: -15px;
-  font-size: 80px;
-  animation-name: aparecer;
-  animation-duration: 1.5s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
+/* Header Section */
+.catalogo-header {
   text-align: center;
-  color: aliceblue;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
 }
 
-@keyframes aparecer {
+.catalogo-title {
+  font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.catalogo-subtitle {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  margin: 0;
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+  opacity: 0;
+}
+
+/* Filters Section */
+.catalogo-filters {
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.filters-container {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.filter-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.filter-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.filter-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.filter-btn i {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* Content Section */
+.catalogo-content {
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+  opacity: 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
   from {
-    top: -15px;
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    top: 20px;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-#filtro {
-  color: #ffffff;
-  padding-top: 40px;
-  display: flex;
-  justify-content: right;
-  gap: 5px;
-  margin-right: 30px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .catalogo-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .catalogo-header {
+    margin-bottom: 2rem;
+    padding: 1rem 0;
+  }
+
+  .catalogo-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .catalogo-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .filters-container {
+    padding: 1rem;
+  }
+
+  .filter-buttons {
+    width: 100%;
+  }
+
+  .filter-btn {
+    flex: 1;
+    min-width: auto;
+    padding: 0.875rem 1rem;
+    font-size: 0.8rem;
+  }
 }
 
-#filtro > p {
-  padding: 5px 15px;
-  font-size: 16px;
-}
+@media (max-width: 480px) {
+  .catalogo-container {
+    padding: 1rem 0.25rem;
+  }
 
-.button {
-  padding: 5px 15px;
-  border: solid #b50b0b;
-  border-radius: 15px;
-  color: #ffffff;
-  z-index: 1;
-  background-color: transparent;
-  position: relative;
-  font-weight: 100;
-  transition: all 250ms;
-  overflow: hidden;
-}
-
-.button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #b50b0b;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-}
-
-.button:hover {
-  color: #e8e8e8;
-}
-
-.button:hover::before {
-  width: 100%;
-}
-
-@media (max-width: 800px) {
-  #filtro {
-    display: flex;
+  .filter-buttons {
     flex-direction: column;
-    justify-content: right;
-    margin: 0 auto;
-    width: fit-content;
-    padding-bottom: 20px;
   }
 
-  #tituloMarca {
-    font-size: 2rem;
+  .filter-btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .filters-container {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .catalogo-title {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

@@ -1,0 +1,65 @@
+<div class="cars-grid">
+  <!-- Loading State -->
+  <ng-container *ngIf="isLoading; else carsList">
+    <div class="car-card car-card--skeleton" *ngFor="let skel of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+      <app-skeleton-coche-card></app-skeleton-coche-card>
+    </div>
+  </ng-container>
+
+  <!-- Cars List -->
+  <ng-template #carsList>
+    <article class="car-card" *ngFor="let coche of coches; trackBy: trackByCoche">
+      <a [routerLink]="['/detalles', coche.idCoche]" class="car-card__link">
+        <!-- Image Container -->
+        <div class="car-card__image-container">
+          <img
+            [src]="'assets/img/coches/' + coche.imagen1"
+            [alt]="coche.nombreCoche"
+            class="car-card__image"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Content -->
+        <div class="car-card__content">
+          <!-- Header -->
+          <header class="car-card__header">
+            <div class="car-card__brand">
+              <img
+                [src]="'assets/img/logo_marcas/' + coche.marca.imagenLogo"
+                [alt]="coche.marca.nombreMarca"
+                class="car-card__brand-logo"
+                loading="lazy"
+              />
+            </div>
+            <div class="car-card__info">
+              <h3 class="car-card__title">{{ coche.nombreCoche }}</h3>
+              <div class="car-card__price">
+                <span class="car-card__price-amount">{{ coche.precioDia }}€</span>
+                <span class="car-card__price-period">/día</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Specs -->
+          <div class="car-card__specs">
+            <div class="car-spec">
+              <i class="fas fa-tachometer-alt car-spec__icon"></i>
+              <span class="car-spec__value">{{ coche.velocidadMax }}</span>
+              <span class="car-spec__unit">km/h</span>
+            </div>
+            <div class="car-spec">
+              <i class="fas fa-bolt car-spec__icon"></i>
+              <span class="car-spec__value">{{ coche.potenciaMax }}</span>
+              <span class="car-spec__unit">CV</span>
+            </div>
+            <div class="car-spec">
+              <i class="fas fa-cogs car-spec__icon"></i>
+              <span class="car-spec__value">{{ coche.cambio }}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </article>
+  </ng-template>
+</div>

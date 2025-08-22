@@ -1,13 +1,37 @@
-<main>
-  <div id="tituloMarca">{{ titulo }}</div>
-  <div id="filtro">
-    <p>Ordenar por precio:</p>
-    <button class="button" (click)="sortCochesMenorMayor(marcaId)">
-      De menor a mayor
-    </button>
-    <button class="button" (click)="sortCochesMayorMenor(marcaId)">
-      De mayor a menor
-    </button>
-  </div>
-  <app-coches-cards [coches]="coches" [isLoading]="isLoading"></app-coches-cards>
+<main class="catalogo-container">
+  <!-- Header Section -->
+  <header class="catalogo-header">
+    <h1 class="catalogo-title">{{ titulo }}</h1>
+    <div class="catalogo-subtitle">
+      Descubre los supercoches más exclusivos del mundo
+    </div>
+  </header>
+
+  <!-- Filters Section -->
+  <section class="catalogo-filters">
+    <div class="filters-container">
+      <div class="filter-label">Ordenar por precio:</div>
+      <div class="filter-buttons">
+        <button
+          class="filter-btn filter-btn--secondary"
+          (click)="sortCochesMenorMayor(marcaId)"
+          [disabled]="isLoading">
+          <i class="fas fa-sort-amount-up"></i>
+          Menor a mayor
+        </button>
+        <button
+          class="filter-btn filter-btn--secondary"
+          (click)="sortCochesMayorMenor(marcaId)"
+          [disabled]="isLoading">
+          <i class="fas fa-sort-amount-down"></i>
+          Mayor a menor
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cars Grid -->
+  <section class="catalogo-content">
+    <app-coches-cards [coches]="coches" [isLoading]="isLoading"></app-coches-cards>
+  </section>
 </main>
