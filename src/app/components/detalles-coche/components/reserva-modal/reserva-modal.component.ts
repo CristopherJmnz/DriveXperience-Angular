@@ -54,6 +54,8 @@ export class DetallesCocheReservaModalComponent
     if (changes['open']) {
       this.syncBodyScroll();
       if (this.open) {
+        // Reset modal position when opening
+        this.resetModalPosition();
         // Save last focus and move focus into modal
         this.lastFocused = document.activeElement as HTMLElement;
         setTimeout(() => {
@@ -79,6 +81,8 @@ export class DetallesCocheReservaModalComponent
 
   handleClose() {
     this.unlockBodyScroll();
+    // Reset modal position when closing
+    this.resetModalPosition();
     this.close.emit();
   }
 
@@ -169,6 +173,17 @@ export class DetallesCocheReservaModalComponent
       this.renderer.setStyle(sheet, 'transform', 'translate3d(0, 0, 0)');
     }
     this.currentTranslateY = 0;
+  }
+
+  private resetModalPosition() {
+    // Reset modal position to initial state when opening
+    const sheet = this.host.nativeElement.querySelector('.dx-sheet');
+    if (sheet) {
+      this.renderer.removeStyle(sheet, 'transform');
+      this.renderer.removeStyle(sheet, 'transition');
+      this.currentTranslateY = 0;
+      this.isDragging = false;
+    }
   }
 
   private syncBodyScroll() {

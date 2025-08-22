@@ -206,22 +206,43 @@ img {
   transform: translateY(-2px);
 }
 
-/* Scroll-progress base */
+/* Scroll-progress animations (simplified like detalles-coche) */
 .scroll-progress {
   opacity: 0;
-  transform: translate3d(0, 250px, 0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translate3d(var(--tx, 0), var(--ty, 24px), 0) scale(0.98);
+  filter: blur(8px);
   will-change: transform, opacity;
 }
+
 .scroll-progress.scroll-from-left {
-  transform: translate3d(-250px, 0, 0);
+  --tx: -24px;
+  --ty: 0;
 }
+
 .scroll-progress.scroll-from-right {
-  transform: translate3d(250px, 0, 0);
+  --tx: 24px;
+  --ty: 0;
 }
+
+.scroll-progress {
+  animation: none;
+}
+
 .scroll-progress.visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
+  animation: dx-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0ms) both;
+}
+
+@keyframes dx-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(var(--tx, 0), var(--ty, 24px), 0) scale(0.98);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
 }
 
 /* Responsive */
@@ -233,15 +254,14 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slider .slide-track {
-    animation: none;
-  }
   .scroll-progress {
     transition: none;
     opacity: 1;
     transform: none;
+    filter: none;
   }
-}
-.scroll-progress.scroll-from-right {
-  transform: translate3d(250px, 0, 0);
+  .hero > img,
+  .hero__content {
+    transform: none !important;
+  }
 }
