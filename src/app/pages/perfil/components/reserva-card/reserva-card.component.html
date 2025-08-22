@@ -1,0 +1,82 @@
+<div class="reserva-card">
+  <div class="reserva-header">
+    <div class="coche-info">
+      <div class="coche-imagen">
+        <img [src]="'../../../../../assets/img/logo_marcas/' + reserva.coche.marca.imagenLogo" [alt]="reserva.coche.nombreCoche" />
+      </div>
+      <div class="coche-detalles">
+        <h3 class="coche-nombre">{{ reserva.coche.nombreCoche }}</h3>
+        <p class="coche-marca">{{ reserva.coche.marca.nombreMarca }}</p>
+        <span class="reserva-id">#{{ reserva.idReserva }}</span>
+      </div>
+    </div>
+
+    <!-- Estado Badge -->
+    <div class="estado-badge" [class]="estadoClass">
+      <i [class]="estadoIcon"></i>
+      {{ estadoText }}
+    </div>
+  </div>
+
+  <div class="reserva-fechas">
+    <div class="fecha-item">
+      <i class="fas fa-play-circle"></i>
+      <div class="fecha-info">
+        <span class="fecha-label">Inicio</span>
+        <span class="fecha-valor">{{ reserva.fechaInicio | date:'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+
+    <div class="fecha-separador">
+      <i class="fas fa-arrow-right"></i>
+    </div>
+
+    <div class="fecha-item">
+      <i class="fas fa-stop-circle"></i>
+      <div class="fecha-info">
+        <span class="fecha-label">Fin</span>
+        <span class="fecha-valor">{{ reserva.fechaFin | date:'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reserva-ubicaciones">
+    <div class="ubicacion-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <div class="ubicacion-info">
+        <span class="ubicacion-label">Recogida</span>
+        <!-- <span class="ubicacion-valor">{{ reserva.ubicacionRecogida }}</span> -->
+      </div>
+    </div>
+
+    <div class="ubicacion-item">
+      <i class="fas fa-flag-checkered"></i>
+      <div class="ubicacion-info">
+        <span class="ubicacion-label">Entrega</span>
+        <!-- <span class="ubicacion-valor">{{ reserva.ubicacionEntrega }}</span> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="reserva-footer">
+    <div class="precio-info">
+      <span class="precio-dias">{{ diasReserva }} día{{ diasReserva !== 1 ? 's' : '' }}</span>
+      <span class="precio-total">{{ reserva.precioTotal | currency:'EUR':'symbol':'1.0-0' }}</span>
+    </div>
+
+    <!-- <div class="reserva-acciones">
+      <button class="btn-action" *ngIf="reserva.estado === 'activa'">
+        <i class="fas fa-edit"></i>
+        Modificar
+      </button>
+      <button class="btn-action" *ngIf="reserva.estado === 'completada'">
+        <i class="fas fa-star"></i>
+        Valorar
+      </button>
+      <button class="btn-action secondary">
+        <i class="fas fa-eye"></i>
+        Ver Detalles
+      </button>
+    </div> -->
+  </div>
+</div>

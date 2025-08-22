@@ -1,0 +1,243 @@
+<div class="perfil-container">
+  <!-- Header con información del usuario -->
+  <div class="perfil-header">
+    <div class="header-glass">
+      <div class="user-avatar">
+        <div class="avatar-placeholder">
+          {{ userInitials }}
+        </div>
+      </div>
+
+      <div class="user-info">
+        <h1 class="user-name">{{ userProfile?.nombre }} {{ userProfile?.apellidos }}</h1>
+        <p class="user-email">{{ userProfile?.email }}</p>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-secondary" (click)="editProfile()">
+          <i class="fas fa-edit"></i>
+          Editar Perfil
+        </button>
+        <button class="btn-danger" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          Cerrar Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación de pestañas -->
+  <div class="tabs-navigation">
+    <button
+      class="tab-button"
+      [class.active]="activeTab === 'dashboard'"
+      (click)="setActiveTab('dashboard')">
+      <i class="fas fa-chart-pie"></i>
+      Dashboard
+    </button>
+    <button
+      class="tab-button"
+      [class.active]="activeTab === 'reservas'"
+      (click)="setActiveTab('reservas')">
+      <i class="fas fa-calendar-check"></i>
+      Mis Reservas
+    </button>
+    <button
+      class="tab-button"
+      [class.active]="activeTab === 'configuracion'"
+      (click)="setActiveTab('configuracion')">
+      <i class="fas fa-cog"></i>
+      Configuración
+    </button>
+  </div>
+
+  <!-- Contenido de las pestañas -->
+  <div class="tab-content">
+    <!-- Dashboard Tab -->
+    <div class="tab-panel" *ngIf="activeTab === 'dashboard'">
+      <div class="dashboard-grid">
+        <!-- Estadísticas -->
+        <div class="stats-section">
+          <h2 class="section-title">
+            <i class="fas fa-chart-line"></i>
+            Estadísticas
+          </h2>
+
+          <div class="stats-grid" *ngIf="!isLoading">
+            <div class="stat-card">
+              <div class="stat-icon total">
+                <i class="fas fa-calendar"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">{{ dashboardStats.totalReservas }}</span>
+                <span class="stat-label">Total Reservas</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon active">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">{{ dashboardStats.reservasActivas }}</span>
+                <span class="stat-label">Activas</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon completed">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">{{ dashboardStats.reservasCompletadas }}</span>
+                <span class="stat-label">Completadas</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon money">
+                <i class="fas fa-euro-sign"></i>
+              </div>
+              <div class="stat-content">
+                <span class="stat-number">{{ dashboardStats.totalGastado | currency:'EUR':'symbol':'1.0-0' }}</span>
+                <span class="stat-label">Total Gastado</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading skeleton -->
+          <div class="stats-grid" *ngIf="isLoading">
+            <div class="stat-card loading" *ngFor="let item of [1,2,3,4]">
+              <div class="skeleton-icon"></div>
+              <div class="skeleton-content">
+                <div class="skeleton-number"></div>
+                <div class="skeleton-label"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones Rápidas -->
+        <div class="quick-actions-section">
+          <h2 class="section-title">
+            <i class="fas fa-bolt"></i>
+            Acciones Rápidas
+          </h2>
+
+          <div class="quick-actions-grid">
+            <button class="action-card" routerLink="/catalogo">
+              <div class="action-icon">
+                <i class="fas fa-car"></i>
+              </div>
+              <span class="action-title">Nueva Reserva</span>
+              <span class="action-subtitle">Explora nuestro catálogo</span>
+            </button>
+
+            <button class="action-card" (click)="setActiveTab('reservas')">
+              <div class="action-icon">
+                <i class="fas fa-list"></i>
+              </div>
+              <span class="action-title">Ver Reservas</span>
+              <span class="action-subtitle">Gestiona tus reservas</span>
+            </button>
+
+            <button class="action-card" (click)="setActiveTab('configuracion')">
+              <div class="action-icon">
+                <i class="fas fa-user-edit"></i>
+              </div>
+              <span class="action-title">Editar Perfil</span>
+              <span class="action-subtitle">Actualiza tu información</span>
+            </button>
+
+            <button class="action-card" routerLink="/about-us">
+              <div class="action-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <span class="action-title">Soporte</span>
+              <span class="action-subtitle">¿Necesitas ayuda?</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reservas Tab -->
+    <div class="tab-panel" *ngIf="activeTab === 'reservas'">
+      <div class="reservas-section">
+        <h2 class="section-title">
+          <i class="fas fa-calendar-check"></i>
+          Mis Reservas
+        </h2>
+
+        <div class="reservas-grid" *ngIf="reservas.length > 0">
+          <app-reserva-card
+            *ngFor="let reserva of reservas; trackBy: trackByReservaId"
+            [reserva]="reserva">
+          </app-reserva-card>
+        </div>
+
+        <div class="empty-state" *ngIf="reservas.length === 0">
+          <div class="empty-card">
+            <div class="empty-illustration">
+              <div class="car-icon">
+                <i class="fas fa-car"></i>
+              </div>
+              <div class="calendar-icon">
+                <i class="fas fa-calendar-times"></i>
+              </div>
+            </div>
+
+            <div class="empty-content">
+              <h3>¡Tu aventura comienza aquí!</h3>
+              <p>Aún no tienes reservas, pero eso está a punto de cambiar. Descubre nuestra increíble colección de vehículos premium y vive experiencias únicas.</p>
+
+              <div class="features-list">
+                <div class="feature-item">
+                  <i class="fas fa-star"></i>
+                  <span>Vehículos de lujo</span>
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>Seguro incluido</span>
+                </div>
+                <div class="feature-item">
+                  <i class="fas fa-clock"></i>
+                  <span>Disponibilidad 24/7</span>
+                </div>
+              </div>
+
+              <div class="cta-buttons">
+                <button class="btn-primary" routerLink="/catalogo">
+                  <i class="fas fa-search"></i>
+                  Explorar Catálogo
+                </button>
+                <button class="btn-secondary" routerLink="/marcas">
+                  <i class="fas fa-tags"></i>
+                  Ver por Marcas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Configuración Tab -->
+    <div class="tab-panel" *ngIf="activeTab === 'configuracion'">
+      <div class="configuracion-section">
+        <h2 class="section-title">
+          <i class="fas fa-cog"></i>
+          Configuración del Perfil
+        </h2>
+
+        <div class="config-placeholder">
+          <div class="placeholder-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Próximamente</h3>
+          <p>La configuración del perfil estará disponible en la próxima actualización.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

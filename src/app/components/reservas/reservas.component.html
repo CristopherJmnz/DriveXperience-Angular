@@ -1,23 +1,182 @@
-<main>
-  <h1>Historial de reservas</h1>
-  <div *ngFor="let el of reservas">
-    <button
-      (click)="desplegar(el.idReserva.toString())"
-      class="w3-button w3-block w3-hover-red w3-black"
-    >
-      {{ el.coche.nombreCoche }} {{ el.fechaInicio }}
-    </button>
-    <div [id]="el.idReserva" class="w3-hide w3-animate-zoom">
-      <div class="w3-block w3-left-align car-info">
-        <div class="car-img">
-          <img [src]="'../../../assets/img/coches/' + el.coche.imagen1" alt="" />
-        </div>
-        <div class="car-data">
-          <h3>Marca: {{ el.coche.marca.nombreMarca }}</h3>
-          <div>Desde: {{ el.fechaInicio }}</div>
-          <div>Hasta: {{ el.fechaFin }}</div>
+<div class="reservas-container">
+  <!-- Header -->
+  <div class="reservas-header">
+    <div class="header-glass">
+      <h1 class="page-title">
+        <span class="title-text">
+          <i class="fas fa-calendar-check"></i>
+          Mis Reservas
+        </span>
+        <span class="reservas-count" *ngIf="hasReservas && !isLoading">{{ reservas.length }}</span>
+      </h1>
+      <p class="page-subtitle">Gestiona tu historial de reservas y experiencias de conducción</p>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="loading-card" *ngFor="let item of [1,2,3]">
+      <div class="skeleton-header">
+        <div class="skeleton-image"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-title"></div>
+          <div class="skeleton-subtitle"></div>
+          <div class="skeleton-dates"></div>
         </div>
       </div>
     </div>
   </div>
-</main>
+
+  <!-- Error State -->
+  <div class="error-state" *ngIf="hasError && !isLoading">
+    <div class="error-card">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3>Error al cargar reservas</h3>
+      <p>No pudimos obtener tu historial de reservas. Por favor, inténtalo de nuevo.</p>
+      <button class="btn-retry" (click)="retryLoad()">
+        <i class="fas fa-redo"></i>
+        Reintentar
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="!hasReservas && !isLoading && !hasError">
+    <div class="empty-card">
+      <div class="empty-illustration">
+        <div class="car-icon">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="calendar-icon">
+          <i class="fas fa-calendar-times"></i>
+        </div>
+      </div>
+
+      <div class="empty-content">
+        <h2>¡Tu aventura comienza aquí!</h2>
+        <p>Aún no tienes reservas, pero eso está a punto de cambiar. Descubre nuestra increíble colección de vehículos premium y vive experiencias únicas.</p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <i class="fas fa-star"></i>
+            <span>Vehículos de lujo</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Seguro incluido</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-clock"></i>
+            <span>Disponibilidad 24/7</span>
+          </div>
+        </div>
+
+        <div class="cta-buttons">
+          <button class="btn-primary" (click)="goToCatalogo()">
+            <i class="fas fa-search"></i>
+            Explorar Catálogo
+          </button>
+          <button class="btn-secondary" routerLink="/marcas">
+            <i class="fas fa-tags"></i>
+            Ver por Marcas
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reservas List -->
+  <div class="reservas-list" *ngIf="hasReservas && !isLoading">
+    <div class="reserva-item"
+         *ngFor="let reserva of reservas; trackBy: trackByReservaId"
+         [class.expanded]="isExpanded(reserva.idReserva)">
+
+      <!-- Reserva Header -->
+      <div class="reserva-header" (click)="toggleReserva(reserva.idReserva)">
+        <div class="reserva-main-info">
+          <div class="coche-image">
+            <img [src]="'assets/img/coches/' + reserva.coche.imagen1"
+                 [alt]="reserva.coche.nombreCoche"
+                 onerror="this.src='assets/img/coches/default.jpg'"/>
+          </div>
+
+          <div class="reserva-summary">
+            <h3 class="coche-name">{{ reserva.coche.nombreCoche }}</h3>
+            <p class="coche-marca">{{ reserva.coche.marca.nombreMarca }}</p>
+            <div class="fecha-resumen">
+              <i class="fas fa-calendar"></i>
+              <span>{{ formatDate(reserva.fechaInicio) }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reserva-actions">
+          <div class="reserva-badges">
+            <div class="status-badge" [class]="getEstadoCssClass(reserva)">
+              <i [class]="getEstadoIcon(reserva)"></i>
+              {{ getEstadoText(reserva) }}
+            </div>
+            <div class="duration-badge">
+              <i class="fas fa-clock"></i>
+              {{ calculateDuration(reserva.fechaInicio, reserva.fechaFin) }} día{{ calculateDuration(reserva.fechaInicio, reserva.fechaFin) !== 1 ? 's' : '' }}
+            </div>
+          </div>
+          <div class="expand-icon" [class.rotated]="isExpanded(reserva.idReserva)">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reserva Details (Expandible) -->
+      <div class="reserva-details" [class.show]="isExpanded(reserva.idReserva)">
+        <div class="details-grid">
+          <div class="detail-section">
+            <h4>
+              <i class="fas fa-calendar-alt"></i>
+              Fechas de Reserva
+            </h4>
+            <div class="date-range">
+              <div class="date-item">
+                <span class="date-label">Inicio</span>
+                <span class="date-value">{{ formatDate(reserva.fechaInicio) }}</span>
+              </div>
+              <div class="date-separator">
+                <i class="fas fa-arrow-right"></i>
+              </div>
+              <div class="date-item">
+                <span class="date-label">Fin</span>
+                <span class="date-value">{{ formatDate(reserva.fechaFin) }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-section">
+            <h4>
+              <i class="fas fa-car"></i>
+              Información del Vehículo
+            </h4>
+            <div class="vehicle-details">
+              <div class="vehicle-spec">
+                <span class="spec-label">Modelo:</span>
+                <span class="spec-value">{{ reserva.coche.nombreCoche }}</span>
+              </div>
+              <div class="vehicle-spec">
+                <span class="spec-label">Marca:</span>
+                <span class="spec-value">{{ reserva.coche.marca.nombreMarca }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-actions">
+          <a class="btn-action" routerLink="/detalles/{{ reserva.coche.idCoche }}">
+            <i class="fas fa-plus"></i>
+            Nueva Reserva
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

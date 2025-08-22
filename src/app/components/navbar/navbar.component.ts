@@ -40,7 +40,6 @@ export class NavbarComponent {
     const menuEl = this.menuCheckbox?.nativeElement;
     const target = event.target as HTMLElement;
 
-    // Si el menú está abierto y el clic es fuera del menú, del botón hamburguesa y del checkbox, ciérralo
     if (
       menuEl &&
       menuEl.checked &&
