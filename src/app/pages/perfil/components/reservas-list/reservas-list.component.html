@@ -1,0 +1,57 @@
+<div class="reservas-section">
+  <h2 class="section-title">
+    <i class="fas fa-calendar-check"></i>
+    Mis Reservas
+  </h2>
+
+  <div class="reservas-grid" *ngIf="reservas.length > 0">
+    <app-reserva-card
+      *ngFor="let reserva of reservas; trackBy: trackByReservaId"
+      [reserva]="reserva">
+    </app-reserva-card>
+  </div>
+
+  <div class="empty-state" *ngIf="reservas.length === 0">
+    <div class="empty-card">
+      <div class="empty-illustration">
+        <div class="car-icon">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="calendar-icon">
+          <i class="fas fa-calendar-times"></i>
+        </div>
+      </div>
+
+      <div class="empty-content">
+        <h3>¡Tu aventura comienza aquí!</h3>
+        <p>Aún no tienes reservas, pero eso está a punto de cambiar. Descubre nuestra increíble colección de vehículos premium y vive experiencias únicas.</p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <i class="fas fa-star"></i>
+            <span>Vehículos de lujo</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Seguro incluido</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-clock"></i>
+            <span>Disponibilidad 24/7</span>
+          </div>
+        </div>
+
+        <div class="cta-buttons">
+          <button class="btn-primary" routerLink="/catalogo">
+            <i class="fas fa-search"></i>
+            Explorar Catálogo
+          </button>
+          <button class="btn-secondary" routerLink="/marcas">
+            <i class="fas fa-tags"></i>
+            Ver por Marcas
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

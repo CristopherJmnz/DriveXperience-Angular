@@ -1,0 +1,40 @@
+<div class="quick-actions-section">
+  <h2 class="section-title">
+    <i class="fas fa-bolt"></i>
+    Acciones Rápidas
+  </h2>
+
+  <div class="quick-actions-grid">
+    <button class="action-card" routerLink="/catalogo">
+      <div class="action-icon">
+        <i class="fas fa-car"></i>
+      </div>
+      <span class="action-title">Nueva Reserva</span>
+      <span class="action-subtitle">Explora nuestro catálogo</span>
+    </button>
+
+    <button class="action-card" (click)="onReservasClick()">
+      <div class="action-icon">
+        <i class="fas fa-list"></i>
+      </div>
+      <span class="action-title">Ver Reservas</span>
+      <span class="action-subtitle">Gestiona tus reservas</span>
+    </button>
+
+    <button class="action-card" (click)="onConfigClick()">
+      <div class="action-icon">
+        <i class="fas fa-user-edit"></i>
+      </div>
+      <span class="action-title">Editar Perfil</span>
+      <span class="action-subtitle">Actualiza tu información</span>
+    </button>
+
+    <button class="action-card" routerLink="/about-us">
+      <div class="action-icon">
+        <i class="fas fa-headset"></i>
+      </div>
+      <span class="action-title">Soporte</span>
+      <span class="action-subtitle">¿Necesitas ayuda?</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="stats-section">
+  <h2 class="section-title">
+    <i class="fas fa-chart-line"></i>
+    Estadísticas
+  </h2>
+
+  <div class="stats-grid" *ngIf="!isLoading">
+    <div class="stat-card">
+      <div class="stat-icon total">
+        <i class="fas fa-calendar"></i>
+      </div>
+      <div class="stat-content">
+        <span class="stat-number">{{ stats.totalReservas }}</span>
+        <span class="stat-label">Total Reservas</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon active">
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="stat-content">
+        <span class="stat-number">{{ stats.reservasActivas }}</span>
+        <span class="stat-label">Activas</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon completed">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="stat-content">
+        <span class="stat-number">{{ stats.reservasCompletadas }}</span>
+        <span class="stat-label">Completadas</span>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon money">
+        <i class="fas fa-euro-sign"></i>
+      </div>
+      <div class="stat-content">
+        <span class="stat-number">{{ stats.totalGastado | currency:'EUR':'symbol':'1.0-0' }}</span>
+        <span class="stat-label">Total Gastado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading skeleton -->
+  <div class="stats-grid" *ngIf="isLoading">
+    <div class="stat-card loading" *ngFor="let item of [1,2,3,4]">
+      <div class="skeleton-icon"></div>
+      <div class="skeleton-content">
+        <div class="skeleton-number"></div>
+        <div class="skeleton-label"></div>
+      </div>
+    </div>
+  </div>
+</div>

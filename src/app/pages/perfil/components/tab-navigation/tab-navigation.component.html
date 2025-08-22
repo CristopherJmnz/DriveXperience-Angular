@@ -1,0 +1,23 @@
+<div class="tabs-navigation">
+  <button
+    class="tab-button"
+    [class.active]="activeTab === 'dashboard'"
+    (click)="onTabClick('dashboard')">
+    <i class="fas fa-chart-pie"></i>
+    Dashboard
+  </button>
+  <button
+    class="tab-button"
+    [class.active]="activeTab === 'reservas'"
+    (click)="onTabClick('reservas')">
+    <i class="fas fa-calendar-check"></i>
+    Mis Reservas
+  </button>
+  <button
+    class="tab-button"
+    [class.active]="activeTab === 'configuracion'"
+    (click)="onTabClick('configuracion')">
+    <i class="fas fa-cog"></i>
+    Configuración
+  </button>
+</div>

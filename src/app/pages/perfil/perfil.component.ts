@@ -11,13 +11,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { ReservaEstadoService } from 'src/app/services/reserva-estado.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { Reserva } from 'src/app/interfaces/reserva';
-
-export interface DashboardStats {
-  totalReservas: number;
-  reservasActivas: number;
-  reservasCompletadas: number;
-  totalGastado: number;
-}
+import { TabType } from './components/tab-navigation/tab-navigation.component';
+import { DashboardStats } from './components/dashboard-stats/dashboard-stats.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil',
@@ -38,7 +34,7 @@ export class PerfilComponent implements OnInit, OnDestroy {
   public reservas: Reserva[] = [];
 
   public isLoading = true;
-  public activeTab: 'dashboard' | 'reservas' | 'configuracion' = 'dashboard';
+  public activeTab: TabType = 'dashboard';
 
   constructor(
     private readonly router: Router,
@@ -113,13 +109,20 @@ export class PerfilComponent implements OnInit, OnDestroy {
     }
   }
 
-  public setActiveTab(tab: 'dashboard' | 'reservas' | 'configuracion'): void {
+  public setActiveTab(tab: TabType): void {
     this.activeTab = tab;
     this.cdr.markForCheck();
   }
 
   public logout(): void {
     this.usuarioService.logout();
+    Swal.fire({
+      position: 'center',
+      icon: 'info',
+      title: 'Has cerrado sesión',
+      showConfirmButton: false,
+      timer: 1500,
+    });
     this.router.navigate(['/login']);
   }
 

@@ -1,0 +1,25 @@
+<div class="profile-header">
+  <div class="header-glass">
+    <div class="user-avatar">
+      <div class="avatar-placeholder">
+        {{ userInitials }}
+      </div>
+    </div>
+
+    <div class="user-info">
+      <h1 class="user-name">{{ userProfile?.nombre }} {{ userProfile?.apellidos }}</h1>
+      <p class="user-email">{{ userProfile?.email }}</p>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-secondary" (click)="onEditProfile()">
+        <i class="fas fa-edit"></i>
+        Editar Perfil
+      </button>
+      <button class="btn-danger" (click)="onLogout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Cerrar Sesión
+      </button>
+    </div>
+  </div>
+</div>

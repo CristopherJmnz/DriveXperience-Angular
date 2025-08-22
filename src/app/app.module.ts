@@ -26,6 +26,11 @@ import { DxButtonComponent } from './components/shared/dx-button/dx-button.compo
 import { DxAuthFormComponent } from './components/shared/dx-auth-form/dx-auth-form.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { ReservaCardComponent } from './pages/perfil/components/reserva-card/reserva-card.component';
+import { ProfileHeaderComponent } from './pages/perfil/components/profile-header/profile-header.component';
+import { TabNavigationComponent } from './pages/perfil/components/tab-navigation/tab-navigation.component';
+import { DashboardStatsComponent } from './pages/perfil/components/dashboard-stats/dashboard-stats.component';
+import { QuickActionsComponent } from './pages/perfil/components/quick-actions/quick-actions.component';
+import { ReservasListComponent } from './pages/perfil/components/reservas-list/reservas-list.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,11 @@ import { ReservaCardComponent } from './pages/perfil/components/reserva-card/res
     DxAuthFormComponent,
     PerfilComponent,
     ReservaCardComponent,
+    ProfileHeaderComponent,
+    TabNavigationComponent,
+    DashboardStatsComponent,
+    QuickActionsComponent,
+    ReservasListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
