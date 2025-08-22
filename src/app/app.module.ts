@@ -12,7 +12,6 @@ import { DetallesCocheComponent } from './components/detalles-coche/detalles-coc
 import { MenuMarcasComponent } from './pages/menu-marcas/menu-marcas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { ReservasComponent } from './components/reservas/reservas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ProcesoReservaComponent } from './components/proceso-reserva/proceso-reserva.component';
 import { CochesCardsComponent } from './components/catalogo/components/coches-cards/coches-cards.component';
@@ -44,7 +43,6 @@ import { ReservasListComponent } from './pages/perfil/components/reservas-list/r
     MenuMarcasComponent,
     LoginComponent,
     RegistroComponent,
-    ReservasComponent,
     CatalogoComponent,
     ProcesoReservaComponent,
     CochesCardsComponent,

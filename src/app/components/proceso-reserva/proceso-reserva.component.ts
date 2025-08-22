@@ -58,7 +58,7 @@ export class ProcesoReservaComponent implements OnInit {
     };
     this.usuarioService.payReserva(dataReserva).subscribe((response) => {
       if (response) {
-        this._router.navigate(['/MisReservas']);
+        this._router.navigate(['/perfil']);
         Swal.fire({
           position: 'top-end',
           icon: 'success',
