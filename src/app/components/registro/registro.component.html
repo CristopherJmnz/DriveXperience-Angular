@@ -1,21 +1,114 @@
-<main>
-  <div class="containerLogin animate__animated  animate__fadeInUp">
-      <div class="login-cont" id="itLog1">
-          <img src="/assets/img/logo.png" alt="">
-      </div>
-      <form #registroForm="ngForm" (submit)="registro(registroForm)" class="login-cont" id="itLog2">
-          <div class="login-titulo">REGISTRO</div>
-          <label class="login-label">Nombre</label>
-          <div class="login-inp"><input id="nombre" ngModel name="nombre" type="text" required></div>
-          <label class="login-label">Apellidos</label>
-          <div class="login-inp"><input id="apellidos" ngModel name="apellidos" type="text" required></div>
-          <label class="login-label">Email</label>
-          <div class="login-inp"><input id="email" ngModel name="email" type="email" required></div>
-          <label class="login-label">Password</label>
-          <div class="login-inp"><input id="password" ngModel name="password" type="password" required></div>
-          <label class="login-label">Fecha de nacimiento</label>
-          <div class="login-inp"><input id="fecha" ngModel name="fecha" type="date" required></div>
-          <div class="login-button"><input id="buttonL" type="submit" value="Ingresar"></div>
-      </form>
-  </div>
-</main>
+<app-dx-auth-form
+  title="Crear Cuenta"
+  subtitle="Únete a DriveXperience y descubre los supercoches más exclusivos"
+  [showLogo]="true"
+>
+  <form
+    #registroForm="ngForm"
+    (ngSubmit)="registro(registroForm)"
+    class="dx-registro-form"
+  >
+    <!-- Nombre y Apellidos en fila -->
+    <div class="dx-form-row">
+      <app-dx-form-field
+        label="Nombre"
+        type="text"
+        placeholder="Tu nombre"
+        icon="user"
+        [required]="true"
+        [(ngModel)]="formData.nombre"
+        name="nombre"
+        #nombreField="ngModel"
+        [error]="getNombreError(nombreField)"
+      ></app-dx-form-field>
+
+      <app-dx-form-field
+        label="Apellidos"
+        type="text"
+        placeholder="Tus apellidos"
+        icon="user"
+        [required]="true"
+        [(ngModel)]="formData.apellidos"
+        name="apellidos"
+        #apellidosField="ngModel"
+        [error]="getApellidosError(apellidosField)"
+      ></app-dx-form-field>
+    </div>
+
+    <app-dx-form-field
+      label="Correo electrónico"
+      type="email"
+      placeholder="tu@email.com"
+      icon="envelope"
+      [required]="true"
+      [(ngModel)]="formData.email"
+      name="email"
+      #emailField="ngModel"
+      [error]="getEmailError(emailField)"
+    ></app-dx-form-field>
+
+    <app-dx-form-field
+      label="Contraseña"
+      type="password"
+      placeholder="••••••••"
+      icon="lock"
+      [required]="true"
+      [(ngModel)]="formData.password"
+      name="password"
+      #passwordField="ngModel"
+      [error]="getPasswordError(passwordField)"
+      helperText="Mínimo 6 caracteres"
+    ></app-dx-form-field>
+
+    <app-dx-form-field
+      label="Fecha de nacimiento"
+      type="date"
+      icon="calendar"
+      [required]="true"
+      [(ngModel)]="formData.fechaNacimiento"
+      name="fechaNacimiento"
+      #fechaField="ngModel"
+      [error]="getFechaError(fechaField)"
+    ></app-dx-form-field>
+
+    <div class="dx-checkbox-field">
+      <label class="dx-checkbox">
+        <input
+          type="checkbox"
+          [(ngModel)]="formData.acceptTerms"
+          name="acceptTerms"
+          required
+        />
+        <span class="dx-checkbox__checkmark"></span>
+        <span class="dx-checkbox__label">
+          Acepto los
+          <a href="#" class="dx-link" (click)="$event.preventDefault()"
+            >términos y condiciones</a
+          >
+          y la
+          <a href="#" class="dx-link" (click)="$event.preventDefault()"
+            >política de privacidad</a
+          >
+        </span>
+      </label>
+    </div>
+
+    <app-dx-button
+      type="submit"
+      variant="primary"
+      size="large"
+      [fullWidth]="true"
+      [loading]="isLoading"
+      [disabled]="registroForm.invalid || !formData.acceptTerms || false"
+    >
+      Crear Cuenta
+    </app-dx-button>
+
+    <div class="dx-form-footer">
+      <p class="dx-form-link">
+        ¿Ya tienes cuenta?
+        <a [routerLink]="['/login']" class="dx-link">Inicia sesión aquí</a>
+      </p>
+    </div>
+  </form>
+</app-dx-auth-form>

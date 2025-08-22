@@ -1,0 +1,292 @@
+/* Apple-inspired button component */
+:host {
+  display: inline-block;
+}
+
+.dx-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  user-select: none;
+  -webkit-user-select: none;
+  white-space: nowrap;
+}
+
+.dx-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Sizes */
+.dx-button--small {
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 36px;
+}
+
+.dx-button--medium {
+  padding: 12px 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 48px;
+}
+
+.dx-button--large {
+  padding: 16px 32px;
+  font-size: 18px;
+  line-height: 1.5;
+  min-height: 56px;
+}
+
+/* Variants */
+.dx-button--primary {
+  background: linear-gradient(135deg, #d10000 0%, #b90000 100%);
+  color: #ffffff;
+  box-shadow:
+    0 4px 12px rgba(209, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dx-button--primary::before {
+  background: linear-gradient(135deg, #e60000 0%, #cc0000 100%);
+}
+
+.dx-button--primary:hover:not(.dx-button--disabled):not(.dx-button--loading) {
+  transform: translateY(-0.5px); /* Reduced movement */
+  background: linear-gradient(135deg, #e60000 0%, #cc0000 100%);
+  color: #ffffff; /* Ensure text stays white */
+  box-shadow:
+    0 6px 16px rgba(209, 0, 0, 0.35),
+    0 3px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dx-button--primary:hover:not(.dx-button--disabled):not(.dx-button--loading)::before {
+  opacity: 0; /* Don't use the ::before overlay on hover */
+}
+
+.dx-button--primary:active:not(.dx-button--disabled):not(.dx-button--loading) {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 8px rgba(209, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dx-button--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dx-button--secondary::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dx-button--secondary:hover:not(.dx-button--disabled):not(.dx-button--loading) {
+  transform: translateY(-0.5px); /* Reduced movement */
+  background: rgba(255, 255, 255, 0.12); /* Subtle background change */
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff; /* Ensure text stays white */
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dx-button--secondary:hover:not(.dx-button--disabled):not(.dx-button--loading)::before {
+  opacity: 0; /* Don't use the ::before overlay on hover */
+}
+
+.dx-button--ghost {
+  background: transparent;
+  color: #d10000;
+  border: 1px solid rgba(209, 0, 0, 0.3);
+}
+
+.dx-button--ghost::before {
+  background: rgba(209, 0, 0, 0.1);
+}
+
+.dx-button--ghost:hover:not(.dx-button--disabled):not(.dx-button--loading) {
+  transform: translateY(-0.5px); /* Added subtle movement */
+  background: rgba(209, 0, 0, 0.05); /* Subtle background */
+  border-color: rgba(209, 0, 0, 0.5);
+  color: #e60000; /* Slightly brighter red but not too intense */
+  box-shadow: 0 2px 8px rgba(209, 0, 0, 0.15); /* Added subtle shadow */
+}
+
+.dx-button--ghost:hover:not(.dx-button--disabled):not(.dx-button--loading)::before {
+  opacity: 0; /* Don't use the ::before overlay on hover */
+}
+
+/* States */
+.dx-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.dx-button--loading {
+  cursor: not-allowed;
+  color: transparent;
+}
+
+.dx-button--full-width {
+  width: 100%;
+}
+
+/* Icon and content */
+.dx-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.dx-button__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.2);
+}
+
+.dx-button--with-icon.dx-button--small .dx-button__icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.dx-button--with-icon.dx-button--large .dx-button__icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.dx-button__content {
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dx-button__content--hidden {
+  opacity: 0;
+}
+
+/* Loading spinner */
+.dx-button__loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dx-button__spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: dx-spin 1s linear infinite;
+}
+
+.dx-button--small .dx-button__spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 1.5px;
+}
+
+.dx-button--large .dx-button__spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 2.5px;
+}
+
+@keyframes dx-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Focus styles for accessibility */
+.dx-button:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(209, 0, 0, 0.3),
+    0 4px 12px rgba(209, 0, 0, 0.3);
+}
+
+.dx-button--secondary:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Ripple effect */
+.dx-button {
+  overflow: hidden;
+}
+
+.dx-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.dx-button:active:not(.dx-button--disabled):not(.dx-button--loading)::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Dark theme optimization */
+@media (prefers-color-scheme: dark) {
+  .dx-button--secondary {
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .dx-button {
+    transition: none;
+  }
+
+  .dx-button__spinner {
+    animation: none;
+  }
+
+  .dx-button::after {
+    transition: none;
+  }
+}

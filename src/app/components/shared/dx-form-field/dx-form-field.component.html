@@ -1,0 +1,48 @@
+<div class="dx-form-field"
+     [class.dx-form-field--focused]="focused"
+     [class.dx-form-field--error]="hasError"
+     [class.dx-form-field--disabled]="disabled"
+     [class.dx-form-field--has-label]="hasLabel"
+     [class.dx-form-field--has-value]="!!value">
+  <div class="dx-form-field__container">
+    <div class="dx-form-field__input-wrapper">
+      <!-- Icon (optional) -->
+      <div class="dx-form-field__icon" *ngIf="hasIcon">
+        <i [class]="'fas fa-' + icon" [attr.aria-label]="label"></i>
+      </div>
+
+      <!-- Input field -->
+      <input
+        #inputRef
+        class="dx-form-field__input"
+        [type]="type"
+        [placeholder]="hasLabel && !isFloatingLabel ? '' : placeholder"
+        [value]="value"
+        [disabled]="disabled"
+        [required]="required"
+        (input)="onInput($event)"
+        (focus)="onFocus($event)"
+        (blur)="onBlur($event)"
+      />
+
+      <!-- Floating label -->
+      <label
+        class="dx-form-field__label"
+        [class.dx-form-field__label--floating]="isFloatingLabel"
+        *ngIf="hasLabel"
+      >
+        {{ label }}
+        <span class="dx-form-field__required" *ngIf="required">*</span>
+      </label>
+    </div>
+
+    <!-- Focus ring -->
+    <div class="dx-form-field__focus-ring"></div>
+  </div>
+
+  <!-- Helper text or error message - Always present to reserve space -->
+  <div class="dx-form-field__helper">
+    <span class="dx-form-field__error" *ngIf="hasError">{{ error }}</span>
+    <span class="dx-form-field__helper-text" *ngIf="!hasError && helperText">{{ helperText }}</span>
+  </div>
+</div>

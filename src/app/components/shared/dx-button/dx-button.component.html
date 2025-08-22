@@ -1,0 +1,21 @@
+<button
+  [type]="type"
+  [class]="buttonClasses.join(' ')"
+  [disabled]="disabled || loading"
+  (click)="onClick($event)"
+>
+  <!-- Loading spinner -->
+  <div class="dx-button__loading" *ngIf="loading">
+    <div class="dx-button__spinner"></div>
+  </div>
+
+  <!-- Icon -->
+  <div class="dx-button__icon" *ngIf="icon && !loading">
+    <img [src]="'assets/img/iconos/' + icon + '.png'" [alt]="''" />
+  </div>
+
+  <!-- Button content -->
+  <span class="dx-button__content" [class.dx-button__content--hidden]="loading">
+    <ng-content></ng-content>
+  </span>
+</button>

@@ -22,6 +22,11 @@ import { SkeletonCocheCardComponent } from './components/skeleton-coche-card/ske
 import { DetallesCocheGalleryComponent } from './components/detalles-coche/components/gallery/gallery.component';
 import { DetallesCocheReservaModalComponent } from './components/detalles-coche/components/reserva-modal/reserva-modal.component';
 
+// Shared components
+import { DxFormFieldComponent } from './components/shared/dx-form-field/dx-form-field.component';
+import { DxButtonComponent } from './components/shared/dx-button/dx-button.component';
+import { DxAuthFormComponent } from './components/shared/dx-auth-form/dx-auth-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,9 @@ import { DetallesCocheReservaModalComponent } from './components/detalles-coche/
     AboutUsComponent,
     LoaderComponent,
     SkeletonCocheCardComponent,
+    DxFormFieldComponent,
+    DxButtonComponent,
+    DxAuthFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

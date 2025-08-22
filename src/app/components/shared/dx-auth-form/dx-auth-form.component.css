@@ -1,0 +1,236 @@
+/* Apple-inspired auth form layout */
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.dx-auth-main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(
+    1800px 900px at 50% -20%,
+    #111 0%,
+    #0b0b0e 35%,
+    #09090b 70%,
+    #070708 100%
+  );
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+.dx-auth-container {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 32px 64px rgba(0, 0, 0, 0.4),
+    0 16px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  animation: dx-auth-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.dx-auth-logo {
+  text-align: center;
+  padding: 32px 32px 0 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+}
+
+.dx-auth-logo img {
+  max-width: 120px;
+  height: auto;
+  filter: brightness(1.1) contrast(1.05);
+  margin-bottom: 24px;
+}
+
+.dx-auth-form {
+  padding: 32px;
+}
+
+.dx-auth-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.dx-auth-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dx-auth-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.dx-auth-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Animation for reveal */
+@keyframes dx-auth-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0) scale(0.95);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Scroll progress animation base (for consistency with other components) */
+.scroll-progress {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(0.98);
+  filter: blur(8px);
+  will-change: transform, opacity;
+}
+
+.scroll-progress.visible {
+  animation: dx-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes dx-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.98);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 520px) {
+  .dx-auth-main {
+    padding: 16px;
+  }
+
+  .dx-auth-container {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .dx-auth-logo {
+    padding: 24px 24px 0 24px;
+  }
+
+  .dx-auth-logo img {
+    max-width: 100px;
+    margin-bottom: 20px;
+  }
+
+  .dx-auth-form {
+    padding: 24px;
+  }
+
+  .dx-auth-title {
+    font-size: 24px;
+  }
+
+  .dx-auth-content {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .dx-auth-logo {
+    padding: 20px 20px 0 20px;
+  }
+
+  .dx-auth-form {
+    padding: 20px;
+  }
+
+  .dx-auth-title {
+    font-size: 22px;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+  .dx-auth-main {
+    padding: 12px;
+  }
+
+  .dx-auth-logo {
+    padding: 16px 24px 0 24px;
+  }
+
+  .dx-auth-logo img {
+    max-width: 80px;
+    margin-bottom: 16px;
+  }
+
+  .dx-auth-form {
+    padding: 20px 24px 24px 24px;
+  }
+
+  .dx-auth-header {
+    margin-bottom: 24px;
+  }
+
+  .dx-auth-content {
+    gap: 16px;
+  }
+}
+
+/* Background animation fix for mobile */
+@media (max-width: 900px) {
+  .dx-auth-main {
+    background-attachment: scroll;
+  }
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  .dx-auth-container {
+    animation: none;
+  }
+
+  .scroll-progress {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Dark theme optimization */
+@media (prefers-color-scheme: dark) {
+  .dx-auth-container {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}

@@ -1,42 +1,60 @@
-<main>
-  <form
-    #loginForm="ngForm"
-    class="containerLogin animate_animated animate_fadeInUp"
-  >
-    <div class="login-cont" id="itLog1"></div>
-    <div class="login-cont" id="itLog2">
-      <div class="login-titulo">LOGIN</div>
-      <label class="login-label">Email</label>
-      <div class="login-inp">
-        <input id="email1" type="email" name="inputEmail" #inputEmail required />
-      </div>
-      <label class="login-label">Contraseña</label>
-      <div class="login-inp">
+<app-dx-auth-form
+  title="Iniciar Sesión"
+  subtitle="Accede a tu cuenta para gestionar tus reservas"
+  [showLogo]="false"
+>
+  <form #loginForm="ngForm" (ngSubmit)="iniciarSesion()" class="dx-login-form">
+    <app-dx-form-field
+      label="Correo electrónico"
+      type="email"
+      icon="envelope"
+      [required]="true"
+      [(ngModel)]="formData.email"
+      name="email"
+      #emailField="ngModel"
+      [error]="getEmailError(emailField)"
+    ></app-dx-form-field>
+
+    <app-dx-form-field
+      label="Contraseña"
+      type="password"
+      placeholder="••••••••"
+      icon="lock"
+      [required]="true"
+      [(ngModel)]="formData.password"
+      name="password"
+      #passwordField="ngModel"
+      [error]="getPasswordError(passwordField)"
+    ></app-dx-form-field>
+
+    <div class="dx-checkbox-field">
+      <label class="dx-checkbox">
         <input
-          id="password1"
-          type="password"
-          #inputPassword
-          name="inputPassword"
-          required
-        />
-      </div>
-      <div id="recuerdame">
-        <label class="login-label">Recuerdame</label>
-        <div class="login-inp">
-          <input id="cookies" type="checkbox" required />
-        </div>
-      </div>
-      <div>
-        No tienes una cuenta, <a [routerLink]="['/registro']">Registrate</a>
-      </div>
-      <div class="login-button">
-        <input
-          id="buttonL"
-          type="button"
-          (click)="iniciarSesion()"
-          value="Ingresar"
-        />
-      </div>
+          type="checkbox"
+          [(ngModel)]="formData.rememberMe"
+          name="rememberMe"
+        >
+        <span class="dx-checkbox__checkmark"></span>
+        <span class="dx-checkbox__label">Recordarme</span>
+      </label>
+    </div>
+
+    <app-dx-button
+      type="submit"
+      variant="primary"
+      size="large"
+      [fullWidth]="true"
+      [loading]="isLoading"
+      [disabled]="loginForm.invalid || false"
+    >
+      Iniciar Sesión
+    </app-dx-button>
+
+    <div class="dx-form-footer">
+      <p class="dx-form-link">
+        ¿No tienes cuenta?
+        <a [routerLink]="['/registro']" class="dx-link">Regístrate aquí</a>
+      </p>
     </div>
   </form>
-</main>
+</app-dx-auth-form>

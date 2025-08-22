@@ -1,224 +1,142 @@
-/**
-   * Contenedor global del login/img
-   */
-   .containerLogin{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 3%;
-
+/* Login component specific styles */
+:host {
+  display: block;
 }
 
-.login-cont{
-    padding: 50px;
-    height: 500px;
-    box-shadow: 3px 3px 32px 3px rgba(17, 15, 15, 0.5);
-}
-
-  /**
-   * Contenedor independiente del login y img itLog
-   */
-#itLog1{
-    background-image: url('/assets/img/fc.jpg');
-    background-size: cover;
-    font-family: 'Castoro Titling', cursive;
-    font-size: 10px;
-    text-align: center;
-    width: 600px;
-}
-  /**
-   * logo pequeño
-   */
-#itLog1 img{
-    width: 200px;
-    height: auto;
-}
-
-#itLog2{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: center;
-    background-color: #1a1a1a;
-    color: #fff;
-}
-
-
-a{
-  color: red;
-  font-weight: 600;
-}
-
-.login-titulo{
-    font-size: 50px;
-    padding: 0px 0px 50px;
-}
-
-.login-label{
-    font-size: 15px;
-    display: flex;
-    text-align: left;
-    margin-left: 10px;
-    padding-bottom: 4px;
-    font-weight: 600;
-}
-.login-inp{
-    padding: 0px 0px 11px;
-
-}
-
-#email1, #password1{
-  color: #fff;
-  font-size: 16px;
-  padding: 8px 16px;
-}
-
-.login-inp > input{
-  border-radius: 13px;
- border: solid #510404;
- background-color: transparent;
- height: 30px;
-}
-
-.login-button{
-    padding-top: 20px;
-}
-
-#recuerdame{
+.dx-login-form {
   display: flex;
-  flex-direction: row;
-  gap: 10%;
-  margin-left: -10px;
+  flex-direction: column;
+  gap: 24px;
 }
 
-#recuerdame > .login-label{
-  padding-top: 7px;
+/* Custom checkbox styling */
+.dx-checkbox-field {
+  margin: 8px 0;
 }
 
-#buttonL{
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #0f0f0f;
-    padding: 0.8rem 2rem;
-    border-radius: 0.5rem;
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease-in-out;
-}
-#buttonL:hover{
-     background-color: #dd0000;
-     box-shadow: 0 6px 12px rgba(191, 0, 0, 0.4);
+.dx-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  width: fit-content;
 }
 
-  /* ---------------Responsive ---------------*/
-    /* movil*/
-
-@media (max-width: 767px) {
-
-    .containerLogin {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-    }
-
-    .login-cont {
-    height: auto;
-    }
-
-    #itLog1 {
-    width: 324px;
-    height: 142px;
-    background-size: cover;
-    padding: 20px;
-    background-color: #000000;
-    }
-    #itLog2 {
-      height: 346px;
-      padding-top: 4%;
-        }
-
-    #itLog1 img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    }
-
-    .login-titulo {
-    font-size: 40px;
-    padding: 20px 0;
-    }
-
-    .login-label {
-    font-size: 12px;
-    }
-
-    .login-inp {
-    padding: 0 0 10px;
-    }
-
-    .login-button {
-    padding-top: 15px;
-    }
-
-    #buttonL {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #0f0f0f;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.5rem;
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease-in-out;
-    }
-
+.dx-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
- /* Tablet*/
-@media (min-width: 768px) and (max-width: 1023px) {
 
-    .containerLogin {
-      padding: 20px;
-    }
+.dx-checkbox__checkmark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  margin-right: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
 
-    .login-cont {
-      padding: 20px;
+.dx-checkbox__checkmark::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
 
-    }
+.dx-checkbox input:checked ~ .dx-checkbox__checkmark {
+  background: linear-gradient(135deg, #d10000 0%, #b90000 100%);
+  border-color: #d10000;
+  box-shadow: 0 4px 12px rgba(209, 0, 0, 0.3);
+}
 
-    #itLog1 {
-      width: 300px;
-    }
+.dx-checkbox input:checked ~ .dx-checkbox__checkmark::after {
+  display: block;
+}
 
-    #itLog1 img {
-      width: 250px;
-    }
+.dx-checkbox:hover .dx-checkbox__checkmark {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+}
 
-    .login-titulo {
-      font-size: 40px;
-    }
+.dx-checkbox input:checked:hover ~ .dx-checkbox__checkmark {
+  background: linear-gradient(135deg, #ff3333 0%, #d10000 100%);
+}
 
-    .login-label {
-      font-size: 12px;
-    }
+.dx-checkbox__label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
 
-    .login-inp {
-      padding: 0px 0px 5px;
-    }
+/* Form footer */
+.dx-form-footer {
+  margin-top: 16px;
+  text-align: center;
+}
 
-    .login-button {
-      padding-top: 10px;
-    }
+.dx-form-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
 
-    #buttonL {
-      font-size: 0.8rem;
-      padding: 0.5rem 1.5rem;
-    }
+.dx-link {
+  color: #d10000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
 
-    .login-cont h1 {
-      font-size:24px;
-    }
+.dx-link:hover {
+  color: #ff3333;
+  text-decoration: underline;
+}
+
+/* Focus states for accessibility */
+.dx-checkbox input:focus-visible ~ .dx-checkbox__checkmark {
+  box-shadow: 0 0 0 3px rgba(209, 0, 0, 0.3);
+}
+
+/* Animation for smooth interactions */
+@keyframes dx-checkbox-check {
+  0% {
+    transform: rotate(45deg) scale(0);
   }
+  50% {
+    transform: rotate(45deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+.dx-checkbox input:checked ~ .dx-checkbox__checkmark::after {
+  animation: dx-checkbox-check 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 380px) {
+  .dx-login-form {
+    gap: 20px;
+  }
+
+  .dx-form-footer {
+    margin-top: 12px;
+  }
+}

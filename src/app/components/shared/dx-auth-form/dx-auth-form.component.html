@@ -1,0 +1,22 @@
+<main class="dx-auth-main">
+  <div class="dx-auth-container scroll-progress scroll-from-bottom">
+    <!-- Logo section -->
+    <div class="dx-auth-logo" *ngIf="showLogo">
+      <img src="assets/img/logo.png" alt="DriveXperience" />
+    </div>
+
+    <!-- Form container -->
+    <div class="dx-auth-form">
+      <!-- Header -->
+      <div class="dx-auth-header">
+        <h1 class="dx-auth-title">{{ title }}</h1>
+        <p class="dx-auth-subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+      </div>
+
+      <!-- Form content (projected) -->
+      <div class="dx-auth-content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</main>
