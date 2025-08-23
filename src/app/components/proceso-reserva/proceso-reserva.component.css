@@ -1,5 +1,40 @@
 /* ===== PROCESO RESERVA - PAYMENT GATEWAY DESIGN ===== */
 
+/* Global box-sizing and overflow prevention */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Container constraints */
+.payment-summary,
+.payment-form,
+.booking-details,
+.vehicle-info,
+.rental-period,
+.price-breakdown,
+.form-fields,
+.payment-actions {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Text overflow prevention */
+h1, h2, h3, h4, h5, h6,
+p, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 main {
   min-height: calc(100vh - 120px);
   padding: 2rem 1rem;
@@ -13,7 +48,9 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /* ===== RESUMEN DE PAGO ===== */
@@ -29,6 +66,9 @@ main {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .summary-header {
@@ -45,6 +85,8 @@ main {
   align-items: center;
   gap: 0.5rem;
   margin: 0;
+  word-wrap: break-word;
+  flex-wrap: wrap;
 }
 
 .summary-header h2 i {
@@ -61,12 +103,16 @@ main {
   font-size: 1.2rem;
   color: #c0c0c0;
   margin: 0 0 0.25rem 0;
+  word-wrap: break-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .vehicle-category {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
   margin: 0;
+  word-wrap: break-word;
 }
 
 /* Rental Period */
@@ -79,6 +125,8 @@ main {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .date-item {
@@ -86,6 +134,8 @@ main {
   align-items: center;
   gap: 0.75rem;
   flex: 1;
+  min-width: 0;
+  width: 100%;
 }
 
 .date-item i {
@@ -97,6 +147,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .date-label {
@@ -104,11 +156,14 @@ main {
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  word-wrap: break-word;
 }
 
 .date-value {
   color: white;
   font-weight: 500;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .date-separator {
@@ -136,6 +191,7 @@ main {
   border-radius: 12px;
   padding: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  word-wrap: break-word;
 }
 
 .price-item {
@@ -144,6 +200,20 @@ main {
   align-items: center;
   padding: 0.5rem 0;
   color: rgba(255, 255, 255, 0.8);
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.price-item span:first-child {
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+.price-item span:last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .price-item:not(:last-child) {
@@ -183,6 +253,8 @@ main {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ===== HEADERS DEL FORMULARIO ===== */
@@ -220,10 +292,17 @@ main {
 }
 
 /* ===== ESTILOS PARA COMPONENTES DX-FORM-FIELD ===== */
+.payment-form ::ng-deep app-dx-form-field {
+  width: 100%;
+  min-width: 0;
+}
+
 .payment-form ::ng-deep app-dx-form-field .form-field {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .payment-form ::ng-deep app-dx-form-field .form-field:focus-within {
@@ -236,6 +315,8 @@ main {
   color: white !important;
   background: transparent !important;
   border: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .payment-form ::ng-deep app-dx-form-field input::placeholder {
@@ -264,6 +345,7 @@ main {
 .form-fields {
   display: grid;
   gap: 1.5rem;
+  width: 100%;
 }
 
 .form-row {
@@ -271,17 +353,38 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   align-items: end;
+  width: 100%;
+  min-width: 0;
 }
 
 .form-col {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 /* ===== ACCIONES DE PAGO ===== */
 .payment-actions {
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  min-width: 0;
+}
+
+.payment-actions ::ng-deep app-dx-button {
+  width: 100%;
+  min-width: 0;
+}
+
+.payment-actions ::ng-deep app-dx-button .dx-button {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal !important;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .payment-guarantee {
@@ -301,46 +404,131 @@ main {
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
+  * {
+    box-sizing: border-box;
+  }
+
   main {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
+    min-width: 0;
+    width: 100%;
+    max-width: 100vw;
   }
 
   .payment-summary {
     position: static;
-    order: 2;
+    padding: 1.5rem 1rem;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .payment-form {
-    order: 1;
+    padding: 1.5rem 1rem;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .form-row {
     grid-template-columns: 1fr;
     gap: 1rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .form-col {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .date-range {
     flex-direction: column;
     gap: 0.75rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .date-item {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .date-info {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .date-separator {
     transform: rotate(90deg);
   }
+
+  .price-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .price-item span:last-child {
+    align-self: flex-end;
+    word-wrap: break-word;
+  }
+
+  .price-breakdown {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .vehicle-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .booking-details {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .payment-actions ::ng-deep app-dx-button .dx-button {
+    white-space: normal !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3 !important;
+  }
 }
 
 @media (max-width: 480px) {
+  main {
+    padding: 0.25rem;
+    gap: 1rem;
+    max-width: 100vw;
+  }
+
   .payment-summary,
   .payment-form {
-    padding: 1.5rem;
+    padding: 1rem 0.75rem;
     border-radius: 16px;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .payment-header h3,
   .summary-header h2 {
     font-size: 1.1rem;
+    flex-wrap: wrap;
+    word-wrap: break-word;
   }
 
   .price-item.total {
@@ -349,10 +537,60 @@ main {
 
   .form-fields {
     gap: 1.25rem;
+    width: 100%;
+    min-width: 0;
   }
 
   .payment-guarantee {
     font-size: 0.8rem;
+    flex-wrap: wrap;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  .date-info {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .date-value {
+    word-wrap: break-word;
+    hyphens: auto;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .vehicle-info h3 {
+    font-size: 1.1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .price-item span {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  .duration-text {
+    word-wrap: break-word;
+    text-align: center;
+  }
+
+  .payment-actions ::ng-deep app-dx-button .dx-button {
+    font-size: 0.9rem !important;
+    padding: 12px 8px !important;
+    min-height: 48px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+  }
+
+  .payment-actions ::ng-deep app-dx-button .dx-button__icon {
+    margin-right: 4px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 }
 
