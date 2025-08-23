@@ -16,6 +16,18 @@
     </div>
   </div>
 
+  <!-- Etiquetas especiales -->
+  <div class="etiquetas-especiales" *ngIf="esProxima || terminaPronto">
+    <div class="etiqueta etiqueta-proxima" *ngIf="esProxima">
+      <i class="fas fa-clock"></i>
+      <span>Próxima</span>
+    </div>
+    <div class="etiqueta etiqueta-termina-pronto" *ngIf="terminaPronto">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span>Termina Pronto</span>
+    </div>
+  </div>
+
   <div class="reserva-fechas">
     <div class="fecha-item">
       <i class="fas fa-play-circle"></i>
