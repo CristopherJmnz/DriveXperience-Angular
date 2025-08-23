@@ -1,48 +1,140 @@
 <main>
-  <div id="precio">{{paymentResume}}</div>
-  <form #formPago="ngForm" (ngSubmit)="handleReserva()" class="contenedor">
-    <div id="formulario-tarjeta" class="formulario-tarjeta active">
-      <div class="grupo">
-        <label for="inputNumero">Número Tarjeta</label>
-        <input type="text" id="inputNumero" maxlength="19" autocomplete="off" required/>
+  <!-- Resumen de la Reserva -->
+  <div class="payment-summary">
+    <div class="summary-header">
+      <h2><i class="fas fa-receipt"></i> Resumen de tu Reserva</h2>
+    </div>
+
+    <div class="booking-details">
+      <div class="vehicle-info">
+        <h3>{{ formData.nombreCoche }}</h3>
+        <p class="vehicle-category">Vehículo Premium</p>
       </div>
-      <div class="grupo">
-        <label for="inputNombre">Nombre</label>
-        <input type="text" id="inputNombre" maxlength="19" autocomplete="off" required/>
-      </div>
-      <div class="flexbox">
-        <div class="grupo expira">
-          <label for="selectMes">Expiracion</label>
-          <div class="flexbox">
-            <div class="grupo-select">
-              <input
-                type="text"
-                name="mes"
-                id="mes"
-                placeholder="Mes"
-                maxlength="2"
-                required
-              />
+
+      <div class="rental-period">
+        <div class="date-range">
+          <div class="date-item">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="date-info">
+              <span class="date-label">Recogida</span>
+              <span class="date-value">{{ getFechaInicioFormatted() }}</span>
             </div>
-            <div class="grupo-select">
-              <input
-                type="text"
-                name="year"
-                id="year"
-                placeholder="Año"
-                maxlength="4"
-                required
-              />
+          </div>
+          <div class="date-separator">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          <div class="date-item">
+            <i class="fas fa-calendar-check"></i>
+            <div class="date-info">
+              <span class="date-label">Devolución</span>
+              <span class="date-value">{{ getFechaFinFormatted() }}</span>
             </div>
           </div>
         </div>
-
-        <div class="grupo ccv">
-          <label for="inputCCV">CCV</label>
-          <input type="text" id="inputCCV" maxlength="3" required/>
+        <div class="duration">
+          <span class="duration-text">{{ getDiasAlquilado() }} día{{ getDiasAlquilado() !== 1 ? 's' : '' }} de alquiler</span>
         </div>
       </div>
-      <button type="submit" class="btn-enviar">Enviar</button>
+
+      <div class="price-breakdown">
+        <div class="price-item">
+          <span>Precio por día</span>
+          <span>{{ formData.precio | currency:'EUR':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="price-item">
+          <span>Duración ({{ getDiasAlquilado() }} día{{ getDiasAlquilado() !== 1 ? 's' : '' }})</span>
+          <span>{{ getDiasAlquilado() }} × {{ formData.precio | currency:'EUR':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="price-item subtotal">
+          <span>Subtotal</span>
+          <span>{{ getPrecioTotal() | currency:'EUR':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="price-item taxes">
+          <span>Impuestos incluidos</span>
+          <span>{{ getTaxes() | currency:'EUR':'symbol':'1.0-0' }}</span>
+        </div>
+        <div class="price-item total">
+          <span>Total a pagar</span>
+          <span>{{ getPrecioTotal() | currency:'EUR':'symbol':'1.0-0' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario de Pago -->
+  <form #formPago="ngForm" (ngSubmit)="handleReserva()" class="payment-form">
+    <div class="payment-header">
+      <h3><i class="fas fa-credit-card"></i> Información de Pago</h3>
+      <p class="security-note">
+        <i class="fas fa-shield-alt"></i>
+        Tus datos están protegidos con encriptación SSL
+      </p>
+    </div>
+
+    <div class="form-fields">
+      <app-dx-form-field
+        label="Nombre del Titular"
+        type="text"
+        icon="user"
+        [required]="true"
+        [(ngModel)]="cardHolder"
+        name="cardHolder">
+      </app-dx-form-field>
+
+      <app-dx-form-field
+        label="Número de Tarjeta"
+        type="text"
+        icon="credit-card"
+        [required]="true"
+        [(ngModel)]="cardNumber"
+        name="cardNumber">
+      </app-dx-form-field>
+
+      <div class="form-row">
+        <div class="form-col">
+          <app-dx-form-field
+            label="Fecha de Vencimiento"
+            placeholder="MM/AAAA"
+            type="text"
+            icon="calendar-alt"
+            [required]="true"
+            [(ngModel)]="expiryDate"
+            (input)="formatExpiryDate($event)"
+            (keydown)="onExpiryKeyDown($event)"
+            name="expiryDate"
+            maxlength="7"
+          ></app-dx-form-field>
+        </div>
+        <div class="form-col">
+          <app-dx-form-field
+            label="CVC"
+            placeholder="123"
+            type="text"
+            icon="lock"
+            [required]="true"
+            [(ngModel)]="cvv"
+            name="cvv"
+            maxlength="4">
+          </app-dx-form-field>
+        </div>
+      </div>
+
+      <div class="payment-actions">
+        <app-dx-button
+          type="submit"
+          variant="primary"
+          size="large"
+          [fullWidth]="true"
+          [loading]="isProcessing">
+          <i class="fas fa-lock"></i>
+          Completar Pago · {{ getPrecioTotal() | currency:'EUR':'symbol':'1.0-0' }}
+        </app-dx-button>
+
+        <p class="payment-guarantee">
+          <i class="fas fa-check-circle"></i>
+          Garantía de satisfacción del 100% · Cancelación gratuita
+        </p>
+      </div>
     </div>
   </form>
 </main>

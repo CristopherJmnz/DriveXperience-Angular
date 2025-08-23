@@ -1,299 +1,380 @@
+/* ===== PROCESO RESERVA - PAYMENT GATEWAY DESIGN ===== */
 
-.contenedor {
-	width: 90%;
-	max-width: 1000px;
-	padding: 40px 20px;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+main {
+  min-height: calc(100vh - 120px);
+  padding: 2rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 13, 13, 0.95) 0%,
+    rgba(29, 28, 28, 0.95) 50%,
+    rgba(13, 13, 13, 0.95) 100%
+  );
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* ---------- Estilos Generales de las Tarjetas ----------*/
-.tarjeta {
-	width: 100%;
-	max-width: 550px;
-	position: relative;
-	color: #fff;
-	transition: .3s ease all;
-	transform: rotateY(0deg);
-	transform-style: preserve-3d;
-	cursor: pointer;
-	z-index: 2;
+/* ===== RESUMEN DE PAGO ===== */
+.payment-summary {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2rem;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tarjeta.active {
-	transform: rotateY(180deg);
+.summary-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.tarjeta > div {
-	padding: 30px;
-	border-radius: 15px;
-	min-height: 315px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	box-shadow: 0 10px 10px 0 rgba(15, 15, 15, 0.813);
+.summary-header h2 {
+  font-family: "Orbitron", monospace;
+  font-size: 1.3rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
 }
 
-/* ---------- Tarjeta Delantera ----------*/
-
-.tarjeta .delantera {
-	width: 100%;
-	background: url(../../../assets/img/tarjeta/bg-tarjeta/bg-tarjeta-04.jpg);
-	background-size: cover;
+.summary-header h2 i {
+  color: #dc2626;
 }
 
-.delantera .logo-marca {
-	text-align: right;
-	min-height: 50px;
+/* Vehicle Info */
+.vehicle-info {
+  margin-bottom: 1.5rem;
 }
 
-.delantera .logo-marca .tgLogo {
-	text-align: right;
-	height: 10px;
+.vehicle-info h3 {
+  font-family: "Orbitron", monospace;
+  font-size: 1.2rem;
+  color: #c0c0c0;
+  margin: 0 0 0.25rem 0;
 }
 
-
-.delantera .logo-marca img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	max-width: 80px;
+.vehicle-category {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
-.delantera .chip {
-	width: 100%;
-	max-width: 50px;
-	margin-bottom: 20px;
+/* Rental Period */
+.rental-period {
+  margin-bottom: 2rem;
 }
 
-.delantera .grupo .label {
-	font-size: 16px;
-	color: #7d8994;
-	margin-bottom: 5px;
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.delantera .grupo .numero,
-.delantera .grupo .nombre,
-.delantera .grupo .expiracion {
-	color: #fff;
-	font-size: 22px;
-	text-transform: uppercase;
+.date-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
 }
 
-.delantera .flexbox {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 20px;
+.date-item i {
+  color: #dc2626;
+  font-size: 1.1rem;
 }
 
-/* ---------- Tarjeta Trasera ----------*/
-.trasera {
-	background: url(../../../assets/img/tarjeta/bg-tarjeta/bg-tarjeta-00.jpg);
-	background-size: cover;
-	position: absolute;
-	top: 0;
-	transform: rotateY(180deg);
-	backface-visibility: hidden;
+.date-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.trasera .barra-magnetica {
-	height: 40px;
-	background: #000;
-	width: 100%;
-	position: absolute;
-	top: 30px;
-	left: 0;
+.date-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.trasera .datos {
-	margin-top: 60px;
-	display: flex;
-	justify-content: space-between;
+.date-value {
+  color: white;
+  font-weight: 500;
 }
 
-.trasera .datos p {
-	margin-bottom: 5px;
+.date-separator {
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
 }
 
-.trasera .datos #firma {
-	width: 70%;
+.duration {
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(220, 38, 38, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(220, 38, 38, 0.2);
 }
 
-.trasera .datos #firma .firma {
-	height: 40px;
-	background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
+.duration-text {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
-.trasera .datos #firma .firma p {
-	line-height: 40px;
-	font-family: 'Liu Jian Mao Cao', cursive;
-	color: #000;
-	font-size: 30px;
-	padding: 0 10px;
-	text-transform: capitalize;
+/* Price Breakdown */
+.price-breakdown {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.trasera .datos #ccv {
-	width: 20%;
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.trasera .datos #ccv .ccv {
-	background: #fff;
-	height: 40px;
-	color: #000;
-	padding: 10px;
-	text-align: center;
+.price-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.trasera .leyenda {
-	font-size: 14px;
-	line-height: 24px;
-	color: transparent;
+.price-item.subtotal {
+  font-weight: 600;
+  color: white;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.trasera .link-banco {
-	font-size: 14px;
-	color: #fff;
+.price-item.taxes {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-/* ---------- Contenedor Boton ----------*/
-.contenedor-btn .btn-abrir-formulario {
-	width: 50px;
-	height: 50px;
-	font-size: 20px;
-	line-height: 20px;
-	background: #2364d2;
-	color: #fff;
-	position: relative;
-	top: -25px;
-	z-index: 3;
-	border-radius: 100%;
-	box-shadow: -5px 4px 8px rgba(24,56,182,0.4);
-	padding: 5px;
-	transition: all .2s ease;
-	border: none;
-	cursor: pointer;
+.price-item.total {
+  font-family: "Orbitron", monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #c0c0c0;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid rgba(220, 38, 38, 0.3);
 }
 
-.contenedor-btn .btn-abrir-formulario:hover {
-	background: #1850b1;
+/* ===== FORMULARIO DE PAGO ===== */
+.payment-form {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.contenedor-btn .btn-abrir-formulario.active {
-	transform: rotate(45deg);
+/* ===== HEADERS DEL FORMULARIO ===== */
+.payment-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ---------- Formulario Tarjeta ----------*/
-.formulario-tarjeta {
-
-	background: #111111a4;
-	width: 100%;
-	max-width: 700px;
-	/* padding: 220px 30px 30px 30px; */
-	padding: 30px;
-	border-radius: 10px;
-	height: 100%;
-	position: relative;
-	/* top: -150px; */
-	z-index: 1;
-	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-	transition: clip-path .3s ease-out;
+.payment-header h3 {
+  font-family: "Orbitron", monospace;
+  font-size: 1.4rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.5rem 0;
 }
 
-.formulario-tarjeta.active {
-	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+.payment-header h3 i {
+  color: #dc2626;
 }
 
-.formulario-tarjeta label {
-	display: block;
-	color: #ffffff;
-	margin-bottom: 5px;
-	font-size: 16px;
+.security-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
-.formulario-tarjeta input,
-.formulario-tarjeta select,
-.btn-enviar {
-	border: 2px solid #CED6E0;
-	font-size: 18px;
-	height: 50px;
-	width: 100%;
-	padding: 5px 12px;
-	transition: .3s ease all;
-	border-radius: 5px;
+.security-note i {
+  color: #22c55e;
 }
 
-.formulario-tarjeta input:hover,
-.formulario-tarjeta select:hover {
-	border: 2px solid #93BDED;
+/* ===== ESTILOS PARA COMPONENTES DX-FORM-FIELD ===== */
+.payment-form ::ng-deep app-dx-form-field .form-field {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
 }
 
-.formulario-tarjeta input:focus,
-.formulario-tarjeta select:focus {
-	outline: rgb(4,4,4);
-	box-shadow: 1px 7px 10px -5px rgba(90,116,148,0.3);
+.payment-form ::ng-deep app-dx-form-field .form-field:focus-within {
+  border-color: rgba(220, 38, 38, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1), 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.formulario-tarjeta input {
-	margin-bottom: 20px;
-	text-transform: uppercase;
+.payment-form ::ng-deep app-dx-form-field input {
+  color: white !important;
+  background: transparent !important;
+  border: none !important;
 }
 
-.formulario-tarjeta .flexbox {
-	display: flex;
-	justify-content: space-between;
+.payment-form ::ng-deep app-dx-form-field input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 
-.formulario-tarjeta .expira {
-	width: 100%;
+.payment-form ::ng-deep app-dx-form-field label {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: "Orbitron", monospace;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.formulario-tarjeta .ccv {
-	min-width: 100px;
+.payment-form ::ng-deep app-dx-form-field .icon {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
-.formulario-tarjeta .grupo-select {
-	width: 100%;
-	margin-right: 15px;
-	position: relative;
+.payment-form ::ng-deep app-dx-form-field .icon.fa-credit-card,
+.payment-form ::ng-deep app-dx-form-field .icon.fa-user,
+.payment-form ::ng-deep app-dx-form-field .icon.fa-lock {
+  color: #dc2626 !important;
 }
 
-.formulario-tarjeta select {
-	-webkit-appearance: none;
+/* ===== LAYOUTS DEL FORMULARIO ===== */
+.form-fields {
+  display: grid;
+  gap: 1.5rem;
 }
 
-.formulario-tarjeta .grupo-select i {
-	position: absolute;
-	color: #CED6E0;
-	top: 18px;
-	right: 15px;
-	transition: .3s ease all;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: end;
 }
 
-.formulario-tarjeta .grupo-select:hover i {
-	color: #93bfed;
+.form-col {
+  display: flex;
+  flex-direction: column;
 }
 
-.formulario-tarjeta .btn-enviar {
-	border: none;
-	padding: 10px;
-	font-size: 22px;
-	color: #fff;
-	background: #d10000;
-	box-shadow: 2px 2px 10px 0px rgba(212, 0, 0, 0.4);
-	cursor: pointer;
+/* ===== ACCIONES DE PAGO ===== */
+.payment-actions {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.formulario-tarjeta .btn-enviar:hover {
-	background: #9a0000;
+.payment-guarantee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 1rem 0 0 0;
 }
 
+.payment-guarantee i {
+  color: #22c55e;
+}
 
-#precio{
-	margin-top: 25px;
-	color: #ffffff;
-	font-size: 20px;
-	text-align: center;
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .payment-summary {
+    position: static;
+    order: 2;
+  }
+
+  .payment-form {
+    order: 1;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .date-range {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .date-separator {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-summary,
+  .payment-form {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .payment-header h3,
+  .summary-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .price-item.total {
+    font-size: 1.1rem;
+  }
+
+  .form-fields {
+    gap: 1.25rem;
+  }
+
+  .payment-guarantee {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

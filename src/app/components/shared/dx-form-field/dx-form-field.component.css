@@ -1,6 +1,7 @@
 /* Apple-inspired form field component */
 :host {
   display: block;
+  font-family: "Roboto", sans-serif;
 }
 
 .dx-form-field {

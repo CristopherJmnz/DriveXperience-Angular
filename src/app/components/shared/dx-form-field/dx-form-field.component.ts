@@ -35,6 +35,7 @@ export class DxFormFieldComponent implements ControlValueAccessor, OnInit {
   @Input() error: string = '';
   @Input() helperText: string = '';
   @Input() icon: string = '';
+  @Input() maxlength: string = "524288";
 
   @Output() focus = new EventEmitter<Event>();
   @Output() blur = new EventEmitter<Event>();
