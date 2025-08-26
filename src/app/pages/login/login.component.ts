@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy, NgZone } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnInit,
+  OnDestroy,
+  NgZone,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -42,12 +49,16 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private initScrollAnimations(): void {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.scroll-progress'));
+    const els = Array.from(
+      document.querySelectorAll<HTMLElement>('.scroll-progress')
+    );
     if (!els.length) return;
 
-    // Reduced motion: reveal immediately
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      els.forEach(el => {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      els.forEach((el) => {
         el.classList.add('visible');
         el.style.opacity = '1';
         el.style.transform = 'translate3d(0,0,0)';
@@ -55,18 +66,20 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Simple IntersectionObserver to toggle visibility once
     this.ngZone.runOutsideAngular(() => {
-      this.revealObserver = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            el.classList.add('visible');
+      this.revealObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            const el = entry.target as HTMLElement;
+            if (entry.isIntersecting) {
+              el.classList.add('visible');
+            }
           }
-        }
-      }, { threshold: 0.1, root: null, rootMargin: '0px 0px -10% 0px' });
+        },
+        { threshold: 0.1, root: null, rootMargin: '0px 0px -10% 0px' }
+      );
 
-      els.forEach(el => this.revealObserver!.observe(el));
+      els.forEach((el) => this.revealObserver!.observe(el));
     });
   }
 
@@ -127,7 +140,13 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         if (response) {
           localStorage.setItem('usuario', JSON.stringify(response));
-          this.router.navigate(['/']);
+          const redirectUrl = localStorage.getItem('redirectUrl');
+          if (redirectUrl) {
+            localStorage.removeItem('redirectUrl');
+            this.router.navigate([redirectUrl]);
+          } else {
+            this.router.navigate(['/']);
+          }
 
           const Toast = Swal.mixin({
             toast: true,
@@ -164,7 +183,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           text: 'No se pudo conectar con el servidor. Inténtalo más tarde.',
           confirmButtonColor: '#d10000',
         });
-      }
+      },
     });
   }
 }

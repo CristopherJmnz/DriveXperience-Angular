@@ -520,7 +520,6 @@ width: min(1200px, 92%);
   grid-template-columns: 0.9fr 1.1fr;
   gap: clamp(1.5rem, 4vw, 2rem);
   align-items: center;
-  width: 100%;
   min-width: 0;
 }
 
@@ -543,7 +542,7 @@ width: min(1200px, 92%);
 
 .dx-specs__cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: clamp(1rem, 2.5vw, 1.25rem);
   width: 100%;
   min-width: 0;

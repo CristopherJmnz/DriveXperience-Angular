@@ -95,11 +95,15 @@
   flex-direction: column;
   gap: 8px;
   margin: 10px 0;
+  width: 100%;
 }
+
 .dx-field label {
   font-size: 0.9rem;
   opacity: 0.85;
+  width: 100%;
 }
+
 .dx-field input {
   appearance: none;
   background: rgba(255, 255, 255, 0.06);
@@ -109,10 +113,57 @@
   color: #fff;
   outline: none;
   transition: border-color 0.2s ease, background 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px; /* Prevents zoom on iOS */
 }
+
 .dx-field input:focus {
   border-color: #d10000;
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* Fix date input icons and calendar visibility */
+.dx-field input[type="date"] {
+  position: relative;
+  color-scheme: dark;
+}
+
+.dx-field input[type="date"]::-webkit-calendar-picker-indicator {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.dx-field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Firefox date input styling */
+.dx-field input[type="date"]::-moz-calendar-picker-indicator {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e");
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* Ensure date input text is visible */
+.dx-field input[type="date"]::-webkit-datetime-edit-text,
+.dx-field input[type="date"]::-webkit-datetime-edit-month-field,
+.dx-field input[type="date"]::-webkit-datetime-edit-day-field,
+.dx-field input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #ffffff;
+}
+
+/* Placeholder styling for date inputs */
+.dx-field input[type="date"]:invalid {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .dx-sheet__footer {
@@ -157,8 +208,47 @@
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
   }
+
   .dx-sheet__title {
     font-size: 0.9rem;
+  }
+
+  .dx-sheet__content {
+    padding: 16px 20px 20px;
+  }
+
+  .dx-field {
+    margin: 12px 0;
+    width: 100%;
+  }
+
+  .dx-field input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
+  .dx-field input[type="date"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dx-sheet__footer {
+    padding: 12px 0 8px;
+    gap: 12px;
+  }
+
+  .dx-btn {
+    padding: 12px 20px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dx-btn.dx-btn--ghost {
+    flex: 0 0 auto;
+    min-width: 80px;
   }
 }
 
