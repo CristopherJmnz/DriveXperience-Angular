@@ -161,14 +161,18 @@ a {
   border-color: red;
   height: 100%;
   transform: translateX(0);
-  transition: 0.3s transform linear, 0.3s height linear 0.3s;
+  transition:
+    0.3s transform linear,
+    0.3s height linear 0.3s;
 }
 
 .box:hover:after {
   border-color: red;
   height: 100%;
   transform: translateX(0);
-  transition: 0.3s transform linear, 0.3s height linear 0.5s;
+  transition:
+    0.3s transform linear,
+    0.3s height linear 0.5s;
 }
 
 /* Responsive Styles */

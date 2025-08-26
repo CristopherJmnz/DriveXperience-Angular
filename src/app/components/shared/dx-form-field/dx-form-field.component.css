@@ -1,7 +1,7 @@
 /* Apple-inspired form field component */
 :host {
   display: block;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .dx-form-field {
@@ -80,27 +80,30 @@
 }
 
 /* Specific styles for date inputs */
-.dx-form-field__input[type="date"] {
+.dx-form-field__input[type='date'] {
   color-scheme: dark; /* Dark theme for date picker */
 }
 
 /* Hide date placeholder when not focused AND has no value */
-.dx-form-field:not(.dx-form-field--focused):not(.dx-form-field--has-value) .dx-form-field__input[type="date"] {
+.dx-form-field:not(.dx-form-field--focused):not(.dx-form-field--has-value)
+  .dx-form-field__input[type='date'] {
   color: transparent;
 }
 
 /* Show date input text when focused OR has value */
-.dx-form-field--focused .dx-form-field__input[type="date"],
-.dx-form-field--has-value .dx-form-field__input[type="date"] {
+.dx-form-field--focused .dx-form-field__input[type='date'],
+.dx-form-field--has-value .dx-form-field__input[type='date'] {
   color: #ffffff;
 }
 
 /* Hide webkit date picker elements when no focus and no value */
-.dx-form-field:not(.dx-form-field--focused):not(.dx-form-field--has-value) .dx-form-field__input[type="date"]::-webkit-datetime-edit {
+.dx-form-field:not(.dx-form-field--focused):not(.dx-form-field--has-value)
+  .dx-form-field__input[type='date']::-webkit-datetime-edit {
   color: transparent;
 }
 
-.dx-form-field:not(.dx-form-field--focused):not(.dx-form-field--has-value) .dx-form-field__input[type="date"]::-webkit-calendar-picker-indicator {
+.dx-form-field:not(.dx-form-field--focused):not(.dx-form-field--has-value)
+  .dx-form-field__input[type='date']::-webkit-calendar-picker-indicator {
   opacity: 0.7;
 }
 
@@ -168,18 +171,18 @@
 }
 
 /* Date input specific styles */
-.dx-form-field__input[type="date"] {
+.dx-form-field__input[type='date'] {
   color-scheme: dark;
 }
 
-.dx-form-field__input[type="date"]::-webkit-calendar-picker-indicator {
+.dx-form-field__input[type='date']::-webkit-calendar-picker-indicator {
   filter: invert(1) brightness(0.7);
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s ease;
 }
 
-.dx-form-field__input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.dx-form-field__input[type='date']::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
 }
 
@@ -234,7 +237,7 @@
   position: absolute;
   inset: -2px;
   border-radius: 14px;
-  background: linear-gradient(45deg, #E5E5E5, #C0C0C0);
+  background: linear-gradient(45deg, #e5e5e5, #c0c0c0);
   opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
@@ -257,11 +260,11 @@
 }
 
 .dx-form-field--focused .dx-form-field__icon i {
-  color: #E5E5E5;
+  color: #e5e5e5;
 }
 
 .dx-form-field--focused .dx-form-field__label {
-  color: #E5E5E5;
+  color: #e5e5e5;
 }
 
 .dx-form-field--error .dx-form-field__container {
@@ -300,7 +303,7 @@
 }
 
 .dx-form-field__error::before {
-  content: "⚠";
+  content: '⚠';
   margin-right: 4px;
   font-size: 10px;
 }
@@ -312,7 +315,9 @@
 }
 
 /* Hover effects */
-.dx-form-field__container:hover:not(.dx-form-field--disabled .dx-form-field__container) {
+.dx-form-field__container:hover:not(
+    .dx-form-field--disabled .dx-form-field__container
+  ) {
   border-color: rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.08); /* Hover también un poco más claro */
 }

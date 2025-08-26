@@ -4,7 +4,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 @Component({
   selector: 'app-profile-header',
   templateUrl: './profile-header.component.html',
-  styleUrls: ['./profile-header.component.css']
+  styleUrls: ['./profile-header.component.css'],
 })
 export class ProfileHeaderComponent {
   @Input() userProfile: Usuario | null = null;

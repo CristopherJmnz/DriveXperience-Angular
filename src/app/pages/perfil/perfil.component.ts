@@ -72,20 +72,21 @@ export class PerfilComponent implements OnInit, OnDestroy {
       .getReservasUsuario(this.userProfile.email)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (reservas) => {
+        next: reservas => {
           // Ordenar las reservas por prioridad de estado y luego alfabéticamente
-          this.reservas = this.reservaEstadoService.sortReservasByPriority(reservas);
+          this.reservas =
+            this.reservaEstadoService.sortReservasByPriority(reservas);
           this.updateDashboardStats();
           this.isLoading = false;
           this.cdr.markForCheck();
         },
-        error: (error) => {
+        error: error => {
           console.error('Error al cargar reservas:', error);
           this.reservas = [];
           this.updateDashboardStats();
           this.isLoading = false;
           this.cdr.markForCheck();
-        }
+        },
       });
   }
 
@@ -97,7 +98,10 @@ export class PerfilComponent implements OnInit, OnDestroy {
         totalReservas: stats.total,
         reservasActivas: stats.activas,
         reservasCompletadas: stats.completadas,
-        totalGastado: this.reservas.reduce((total, reserva) => total + (reserva.precioTotal || 0), 0),
+        totalGastado: this.reservas.reduce(
+          (total, reserva) => total + (reserva.precioTotal || 0),
+          0
+        ),
       };
     } else {
       this.dashboardStats = {

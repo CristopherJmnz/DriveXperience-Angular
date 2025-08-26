@@ -30,7 +30,11 @@ export class DxButtonComponent {
   }
 
   get buttonClasses(): string[] {
-    const classes = ['dx-button', `dx-button--${this.variant}`, `dx-button--${this.size}`];
+    const classes = [
+      'dx-button',
+      `dx-button--${this.variant}`,
+      `dx-button--${this.size}`,
+    ];
 
     if (this.disabled) classes.push('dx-button--disabled');
     if (this.loading) classes.push('dx-button--loading');

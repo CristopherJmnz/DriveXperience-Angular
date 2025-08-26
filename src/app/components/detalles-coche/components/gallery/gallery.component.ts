@@ -43,7 +43,8 @@ export class DetallesCocheGalleryComponent implements OnDestroy {
 
   prevImage() {
     if (!this.images.length) return;
-    this.lightboxIndex = (this.lightboxIndex - 1 + this.images.length) % this.images.length;
+    this.lightboxIndex =
+      (this.lightboxIndex - 1 + this.images.length) % this.images.length;
   }
 
   onLightboxBackdrop(ev: MouseEvent) {
@@ -51,7 +52,8 @@ export class DetallesCocheGalleryComponent implements OnDestroy {
   }
 
   onTouchStart(ev: TouchEvent) {
-    if (ev.touches && ev.touches.length) this.touchStartX = ev.touches[0].clientX;
+    if (ev.touches && ev.touches.length)
+      this.touchStartX = ev.touches[0].clientX;
   }
 
   onTouchEnd(ev: TouchEvent) {
@@ -64,7 +66,8 @@ export class DetallesCocheGalleryComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.keydownHandler) window.removeEventListener('keydown', this.keydownHandler);
+    if (this.keydownHandler)
+      window.removeEventListener('keydown', this.keydownHandler);
     document.body.style.overflow = '';
   }
 }

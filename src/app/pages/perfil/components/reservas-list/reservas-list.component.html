@@ -7,7 +7,8 @@
   <div class="reservas-grid" *ngIf="reservas.length > 0">
     <app-reserva-card
       *ngFor="let reserva of reservas; trackBy: trackByReservaId"
-      [reserva]="reserva">
+      [reserva]="reserva"
+    >
     </app-reserva-card>
   </div>
 
@@ -24,7 +25,11 @@
 
       <div class="empty-content">
         <h3>¡Tu aventura comienza aquí!</h3>
-        <p>Aún no tienes reservas, pero eso está a punto de cambiar. Descubre nuestra increíble colección de vehículos premium y vive experiencias únicas.</p>
+        <p>
+          Aún no tienes reservas, pero eso está a punto de cambiar. Descubre
+          nuestra increíble colección de vehículos premium y vive experiencias
+          únicas.
+        </p>
 
         <div class="features-list">
           <div class="feature-item">

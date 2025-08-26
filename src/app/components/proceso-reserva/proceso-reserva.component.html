@@ -32,30 +32,48 @@
           </div>
         </div>
         <div class="duration">
-          <span class="duration-text">{{ getDiasAlquilado() }} día{{ getDiasAlquilado() !== 1 ? 's' : '' }} de alquiler</span>
+          <span class="duration-text"
+            >{{ getDiasAlquilado() }} día{{
+              getDiasAlquilado() !== 1 ? 's' : ''
+            }}
+            de alquiler</span
+          >
         </div>
       </div>
 
       <div class="price-breakdown">
         <div class="price-item">
           <span>Precio por día</span>
-          <span>{{ formData.precio | currency:'EUR':'symbol':'1.0-0' }}</span>
+          <span>{{
+            formData.precio | currency: 'EUR' : 'symbol' : '1.0-0'
+          }}</span>
         </div>
         <div class="price-item">
-          <span>Duración ({{ getDiasAlquilado() }} día{{ getDiasAlquilado() !== 1 ? 's' : '' }})</span>
-          <span>{{ getDiasAlquilado() }} × {{ formData.precio | currency:'EUR':'symbol':'1.0-0' }}</span>
+          <span
+            >Duración ({{ getDiasAlquilado() }} día{{
+              getDiasAlquilado() !== 1 ? 's' : ''
+            }})</span
+          >
+          <span
+            >{{ getDiasAlquilado() }} ×
+            {{ formData.precio | currency: 'EUR' : 'symbol' : '1.0-0' }}</span
+          >
         </div>
         <div class="price-item subtotal">
           <span>Subtotal</span>
-          <span>{{ getPrecioTotal() | currency:'EUR':'symbol':'1.0-0' }}</span>
+          <span>{{
+            getPrecioTotal() | currency: 'EUR' : 'symbol' : '1.0-0'
+          }}</span>
         </div>
         <div class="price-item taxes">
           <span>Impuestos incluidos</span>
-          <span>{{ getTaxes() | currency:'EUR':'symbol':'1.0-0' }}</span>
+          <span>{{ getTaxes() | currency: 'EUR' : 'symbol' : '1.0-0' }}</span>
         </div>
         <div class="price-item total">
           <span>Total a pagar</span>
-          <span>{{ getPrecioTotal() | currency:'EUR':'symbol':'1.0-0' }}</span>
+          <span>{{
+            getPrecioTotal() | currency: 'EUR' : 'symbol' : '1.0-0'
+          }}</span>
         </div>
       </div>
     </div>
@@ -78,7 +96,8 @@
         icon="user"
         [required]="true"
         [(ngModel)]="cardHolder"
-        name="cardHolder">
+        name="cardHolder"
+      >
       </app-dx-form-field>
 
       <app-dx-form-field
@@ -87,7 +106,8 @@
         icon="credit-card"
         [required]="true"
         [(ngModel)]="cardNumber"
-        name="cardNumber">
+        name="cardNumber"
+      >
       </app-dx-form-field>
 
       <div class="form-row">
@@ -114,7 +134,8 @@
             [required]="true"
             [(ngModel)]="cvv"
             name="cvv"
-            maxlength="4">
+            maxlength="4"
+          >
           </app-dx-form-field>
         </div>
       </div>
@@ -125,9 +146,11 @@
           variant="primary"
           size="large"
           [fullWidth]="true"
-          [loading]="isProcessing">
+          [loading]="isProcessing"
+        >
           <i class="fas fa-lock"></i>
-          Completar Pago · {{ getPrecioTotal() | currency:'EUR':'symbol':'1.0-0' }}
+          Completar Pago ·
+          {{ getPrecioTotal() | currency: 'EUR' : 'symbol' : '1.0-0' }}
         </app-dx-button>
 
         <p class="payment-guarantee">

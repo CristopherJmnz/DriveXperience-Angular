@@ -15,14 +15,16 @@
         <button
           class="filter-btn filter-btn--secondary"
           (click)="sortCochesMenorMayor(marcaId)"
-          [disabled]="isLoading">
+          [disabled]="isLoading"
+        >
           <i class="fas fa-sort-amount-up"></i>
           Menor a mayor
         </button>
         <button
           class="filter-btn filter-btn--secondary"
           (click)="sortCochesMayorMenor(marcaId)"
-          [disabled]="isLoading">
+          [disabled]="isLoading"
+        >
           <i class="fas fa-sort-amount-down"></i>
           Mayor a menor
         </button>
@@ -32,6 +34,9 @@
 
   <!-- Cars Grid -->
   <section class="catalogo-content">
-    <app-coches-cards [coches]="coches" [isLoading]="isLoading"></app-coches-cards>
+    <app-coches-cards
+      [coches]="coches"
+      [isLoading]="isLoading"
+    ></app-coches-cards>
   </section>
 </main>

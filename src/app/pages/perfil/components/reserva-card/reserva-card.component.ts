@@ -1,18 +1,20 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Reserva } from 'src/app/interfaces/reserva';
-import { ReservaEstadoService, EstadoReservaInfo } from 'src/app/services/reserva-estado.service';
+import {
+  ReservaEstadoService,
+  EstadoReservaInfo,
+} from 'src/app/services/reserva-estado.service';
 
 @Component({
   selector: 'app-reserva-card',
   templateUrl: './reserva-card.component.html',
   styleUrls: ['./reserva-card.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReservaCardComponent {
   @Input() reserva!: Reserva;
 
   constructor(private readonly reservaEstadoService: ReservaEstadoService) {}
-
 
   public get estadoInfo(): EstadoReservaInfo {
     return this.reservaEstadoService.useReservaEstado(this.reserva);

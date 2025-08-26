@@ -1,0 +1,30 @@
+# Build outputs
+dist/
+build/
+coverage/
+
+# Node modules
+node_modules/
+
+# Generated files
+*.log
+*.tmp
+
+# Angular specific
+.angular/
+
+# Package files
+package-lock.json
+yarn.lock
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Specific files that shouldn't be formatted
+*.min.js
+*.min.css

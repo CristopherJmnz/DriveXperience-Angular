@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
     ) {
-      els.forEach((el) => {
+      els.forEach(el => {
         el.classList.add('visible');
         el.style.opacity = '1';
         el.style.transform = 'translate3d(0,0,0)';
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.ngZone.runOutsideAngular(() => {
       this.revealObserver = new IntersectionObserver(
-        (entries) => {
+        entries => {
           for (const entry of entries) {
             const el = entry.target as HTMLElement;
             if (entry.isIntersecting) {
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         { threshold: 0.1, root: null, rootMargin: '0px 0px -10% 0px' }
       );
 
-      els.forEach((el) => this.revealObserver!.observe(el));
+      els.forEach(el => this.revealObserver!.observe(el));
     });
   }
 
@@ -134,7 +134,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
 
     this.usuarioService.login(user).subscribe({
-      next: (response) => {
+      next: response => {
         this.isLoading = false;
         this.cdr.detectChanges();
 
@@ -154,7 +154,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             showConfirmButton: false,
             timer: 2500,
             timerProgressBar: true,
-            didOpen: (toast) => {
+            didOpen: toast => {
               toast.onmouseenter = Swal.stopTimer;
               toast.onmouseleave = Swal.resumeTimer;
             },

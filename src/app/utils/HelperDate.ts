@@ -25,7 +25,7 @@ export class HelperDate {
       return date.toLocaleDateString('es-ES', {
         day: '2-digit',
         month: '2-digit',
-        year: 'numeric'
+        year: 'numeric',
       });
     } catch {
       return fecha.toString();
@@ -35,14 +35,21 @@ export class HelperDate {
   /**
    * Calcula la diferencia en días entre dos fechas
    */
-  static SubstractDates(initialDate: string | Date, finalDate: string | Date): number {
+  static SubstractDates(
+    initialDate: string | Date,
+    finalDate: string | Date
+  ): number {
     try {
-      const date1 = typeof initialDate === 'string' ? new Date(initialDate) : initialDate;
-      const date2 = typeof finalDate === 'string' ? new Date(finalDate) : finalDate;
-      
+      const date1 =
+        typeof initialDate === 'string' ? new Date(initialDate) : initialDate;
+      const date2 =
+        typeof finalDate === 'string' ? new Date(finalDate) : finalDate;
+
       const differenceInMilliseconds = date2.getTime() - date1.getTime();
-      const differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
-      
+      const differenceInDays = Math.floor(
+        differenceInMilliseconds / (1000 * 60 * 60 * 24)
+      );
+
       // Asegurar que siempre devuelva al menos 1 día
       return Math.max(1, differenceInDays);
     } catch {
@@ -53,14 +60,21 @@ export class HelperDate {
   /**
    * Calcula la duración en días de una reserva (incluye día de inicio y fin)
    */
-  static calculateReservationDuration(fechaInicio: string | Date, fechaFin: string | Date): number {
+  static calculateReservationDuration(
+    fechaInicio: string | Date,
+    fechaFin: string | Date
+  ): number {
     try {
-      const date1 = typeof fechaInicio === 'string' ? new Date(fechaInicio) : fechaInicio;
-      const date2 = typeof fechaFin === 'string' ? new Date(fechaFin) : fechaFin;
-      
+      const date1 =
+        typeof fechaInicio === 'string' ? new Date(fechaInicio) : fechaInicio;
+      const date2 =
+        typeof fechaFin === 'string' ? new Date(fechaFin) : fechaFin;
+
       const differenceInMilliseconds = date2.getTime() - date1.getTime();
-      const differenceInDays = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
-      
+      const differenceInDays = Math.floor(
+        differenceInMilliseconds / (1000 * 60 * 60 * 24)
+      );
+
       // Para reservas, incluimos el día de inicio, por lo que sumamos 1
       return Math.max(1, differenceInDays + 1);
     } catch {

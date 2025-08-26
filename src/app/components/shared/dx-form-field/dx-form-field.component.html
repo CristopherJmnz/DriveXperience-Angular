@@ -1,9 +1,11 @@
-<div class="dx-form-field"
-     [class.dx-form-field--focused]="focused"
-     [class.dx-form-field--error]="hasError"
-     [class.dx-form-field--disabled]="disabled"
-     [class.dx-form-field--has-label]="hasLabel"
-     [class.dx-form-field--has-value]="!!value">
+<div
+  class="dx-form-field"
+  [class.dx-form-field--focused]="focused"
+  [class.dx-form-field--error]="hasError"
+  [class.dx-form-field--disabled]="disabled"
+  [class.dx-form-field--has-label]="hasLabel"
+  [class.dx-form-field--has-value]="!!value"
+>
   <div class="dx-form-field__container">
     <div class="dx-form-field__input-wrapper">
       <!-- Icon (optional) -->
@@ -44,6 +46,8 @@
   <!-- Helper text or error message - Always present to reserve space -->
   <div class="dx-form-field__helper">
     <span class="dx-form-field__error" *ngIf="hasError">{{ error }}</span>
-    <span class="dx-form-field__helper-text" *ngIf="!hasError && helperText">{{ helperText }}</span>
+    <span class="dx-form-field__helper-text" *ngIf="!hasError && helperText">{{
+      helperText
+    }}</span>
   </div>
 </div>

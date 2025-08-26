@@ -6,10 +6,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg,
+  background: linear-gradient(
+    135deg,
     rgba(13, 13, 13, 0.9) 0%,
     rgba(29, 28, 28, 0.9) 50%,
-    rgba(13, 13, 13, 0.9) 100%);
+    rgba(13, 13, 13, 0.9) 100%
+  );
 }
 
 .about-us {
@@ -60,13 +62,17 @@ main {
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* ===== TIPOGRAFÍA ===== */
 .about-us h1 {
-  font-family: "Orbitron", monospace;
+  font-family: 'Orbitron', monospace;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 700;
   text-align: center;
@@ -81,7 +87,7 @@ main {
 }
 
 .about-us h2 {
-  font-family: "Orbitron", monospace;
+  font-family: 'Orbitron', monospace;
   font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-weight: 600;
   color: #c0c0c0;
@@ -145,7 +151,12 @@ main {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.5), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(192, 192, 192, 0.5),
+    transparent
+  );
 }
 
 .about-us p:last-of-type {

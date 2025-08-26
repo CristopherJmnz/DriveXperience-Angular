@@ -44,7 +44,11 @@ export class ProcesoReservaComponent implements OnInit {
     this.formData = this.dataSharingService.getFormData();
 
     // Verificar que tenemos datos de reserva
-    if (!this.formData || !this.formData.fechaInicio || !this.formData.fechaFin) {
+    if (
+      !this.formData ||
+      !this.formData.fechaInicio ||
+      !this.formData.fechaFin
+    ) {
       // Si no hay datos, redirigir al catálogo
       Swal.fire({
         icon: 'warning',
@@ -93,7 +97,7 @@ export class ProcesoReservaComponent implements OnInit {
       precioTotal: precioTotal,
     };
 
-    this.usuarioService.payReserva(dataReserva).subscribe((response) => {
+    this.usuarioService.payReserva(dataReserva).subscribe(response => {
       this.isProcessing = false;
       if (response) {
         // Limpiar los datos de reserva después de completar exitosamente
@@ -136,7 +140,7 @@ export class ProcesoReservaComponent implements OnInit {
     // Simulamos un 21% de IVA ya incluido en el precio
     const total = this.getPrecioTotal();
     if (total === 0) return 0;
-    return Math.round(total * 0.21 / 1.21);
+    return Math.round((total * 0.21) / 1.21);
   }
 
   // Variable para rastrear el valor anterior
@@ -153,7 +157,10 @@ export class ProcesoReservaComponent implements OnInit {
 
     if (isDeleting) {
       // Si estamos borrando y el valor actual termina en barra, borramos también el dígito anterior
-      if (currentValue.endsWith('/') && previousValue.length > currentValue.length) {
+      if (
+        currentValue.endsWith('/') &&
+        previousValue.length > currentValue.length
+      ) {
         currentValue = currentValue.slice(0, -1);
       }
 
@@ -176,9 +183,11 @@ export class ProcesoReservaComponent implements OnInit {
     if (numbersOnly.length <= 2) {
       formattedValue = numbersOnly;
     } else if (numbersOnly.length <= 6) {
-      formattedValue = numbersOnly.substring(0, 2) + '/' + numbersOnly.substring(2);
+      formattedValue =
+        numbersOnly.substring(0, 2) + '/' + numbersOnly.substring(2);
     } else {
-      formattedValue = numbersOnly.substring(0, 2) + '/' + numbersOnly.substring(2, 6);
+      formattedValue =
+        numbersOnly.substring(0, 2) + '/' + numbersOnly.substring(2, 6);
     }
 
     this.expiryDate = formattedValue;
@@ -190,7 +199,11 @@ export class ProcesoReservaComponent implements OnInit {
       input.value = formattedValue;
 
       // Ajustar cursor si acabamos de agregar la barra
-      if (formattedValue.length === 3 && formattedValue.charAt(2) === '/' && cursorPosition === 2) {
+      if (
+        formattedValue.length === 3 &&
+        formattedValue.charAt(2) === '/' &&
+        cursorPosition === 2
+      ) {
         input.setSelectionRange(3, 3);
       }
       this.cdr.detectChanges();
@@ -204,14 +217,28 @@ export class ProcesoReservaComponent implements OnInit {
     const cursorPosition = input.selectionStart || 0;
 
     // Permitir teclas de navegación y control
-    const controlKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+    const controlKeys = [
+      'Backspace',
+      'Delete',
+      'Tab',
+      'Escape',
+      'Enter',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowUp',
+      'ArrowDown',
+      'Home',
+      'End',
+    ];
 
     if (controlKeys.includes(event.key)) {
       // Caso especial: Backspace cuando estamos justo después de la barra y solo hay MM/
-      if (event.key === 'Backspace' &&
-          cursorPosition === 3 &&
-          value.length === 3 &&
-          value.endsWith('/')) {
+      if (
+        event.key === 'Backspace' &&
+        cursorPosition === 3 &&
+        value.length === 3 &&
+        value.endsWith('/')
+      ) {
         event.preventDefault();
 
         // Borrar la barra y el último dígito del mes

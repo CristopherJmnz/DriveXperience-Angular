@@ -1,14 +1,20 @@
 <div class="cars-grid">
   <!-- Loading State -->
   <ng-container *ngIf="isLoading; else carsList">
-    <div class="car-card car-card--skeleton" *ngFor="let skel of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+    <div
+      class="car-card car-card--skeleton"
+      *ngFor="let skel of [1, 2, 3, 4, 5, 6, 7, 8, 9]"
+    >
       <app-skeleton-coche-card></app-skeleton-coche-card>
     </div>
   </ng-container>
 
   <!-- Cars List -->
   <ng-template #carsList>
-    <article class="car-card" *ngFor="let coche of coches; trackBy: trackByCoche">
+    <article
+      class="car-card"
+      *ngFor="let coche of coches; trackBy: trackByCoche"
+    >
       <a [routerLink]="['/detalles', coche.idCoche]" class="car-card__link">
         <!-- Image Container -->
         <div class="car-card__image-container">
@@ -35,7 +41,9 @@
             <div class="car-card__info">
               <h3 class="car-card__title">{{ coche.nombreCoche }}</h3>
               <div class="car-card__price">
-                <span class="car-card__price-amount">{{ coche.precioDia }}€</span>
+                <span class="car-card__price-amount"
+                  >{{ coche.precioDia }}€</span
+                >
                 <span class="car-card__price-period">/día</span>
               </div>
             </div>

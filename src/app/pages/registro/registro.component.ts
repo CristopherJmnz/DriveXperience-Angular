@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit, OnDestroy, NgZone } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnInit,
+  OnDestroy,
+  NgZone,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario';
@@ -49,11 +56,16 @@ export class RegistroComponent implements OnInit, OnDestroy {
   }
 
   private initScrollAnimations(): void {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.scroll-progress'));
+    const els = Array.from(
+      document.querySelectorAll<HTMLElement>('.scroll-progress')
+    );
     if (!els.length) return;
 
     // Reduced motion: reveal immediately
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       els.forEach(el => {
         el.classList.add('visible');
         el.style.opacity = '1';
@@ -64,14 +76,17 @@ export class RegistroComponent implements OnInit, OnDestroy {
 
     // Simple IntersectionObserver to toggle visibility once
     this.ngZone.runOutsideAngular(() => {
-      this.revealObserver = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            el.classList.add('visible');
+      this.revealObserver = new IntersectionObserver(
+        entries => {
+          for (const entry of entries) {
+            const el = entry.target as HTMLElement;
+            if (entry.isIntersecting) {
+              el.classList.add('visible');
+            }
           }
-        }
-      }, { threshold: 0.1, root: null, rootMargin: '0px 0px -10% 0px' });
+        },
+        { threshold: 0.1, root: null, rootMargin: '0px 0px -10% 0px' }
+      );
 
       els.forEach(el => this.revealObserver!.observe(el));
     });
@@ -168,11 +183,11 @@ export class RegistroComponent implements OnInit, OnDestroy {
       password: this.formData.password,
       fechaNacimiento: new Date(this.formData.fechaNacimiento),
       telefono: '',
-      tarjetas: []
+      tarjetas: [],
     };
 
     this.usuarioService.registarUser(user).subscribe({
-      next: (response) => {
+      next: response => {
         this.isLoading = false;
         this.cdr.detectChanges();
 
@@ -185,7 +200,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
             showConfirmButton: false,
             timer: 3000,
             timerProgressBar: true,
-            didOpen: (toast) => {
+            didOpen: toast => {
               toast.onmouseenter = Swal.stopTimer;
               toast.onmouseleave = Swal.resumeTimer;
             },
@@ -194,7 +209,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
           Toast.fire({
             icon: 'success',
             title: 'Registro completado exitosamente',
-            text: 'Ya puedes iniciar sesión con tu nueva cuenta'
+            text: 'Ya puedes iniciar sesión con tu nueva cuenta',
           });
         } else {
           Swal.fire({
@@ -215,7 +230,7 @@ export class RegistroComponent implements OnInit, OnDestroy {
           text: 'No se pudo conectar con el servidor. Inténtalo más tarde.',
           confirmButtonColor: '#d10000',
         });
-      }
+      },
     });
   }
 }

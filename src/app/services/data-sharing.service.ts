@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataSharingService {
-
   private formData: any = {};
   private readonly FORM_DATA_KEY = 'reservaFormData';
 
@@ -45,6 +44,12 @@ export class DataSharingService {
 
   hasValidReservationData(): boolean {
     const data = this.getFormData();
-    return !!(data && data.fechaInicio && data.fechaFin && data.precio && data.idCoche);
+    return !!(
+      data &&
+      data.fechaInicio &&
+      data.fechaFin &&
+      data.precio &&
+      data.idCoche
+    );
   }
 }

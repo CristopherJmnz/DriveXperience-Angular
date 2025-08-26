@@ -44,7 +44,10 @@ export class DetallesCocheReservaModalComponent
   private currentTranslateY = 0;
   private isDragging = false;
 
-  constructor(private host: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private host: ElementRef,
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.syncBodyScroll();
@@ -129,7 +132,7 @@ export class DetallesCocheReservaModalComponent
       root.querySelectorAll<HTMLElement>(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       )
-    ).filter((el) => !el.hasAttribute('disabled'));
+    ).filter(el => !el.hasAttribute('disabled'));
   }
 
   // Simple swipe-to-close for mobile

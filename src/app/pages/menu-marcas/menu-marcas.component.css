@@ -126,13 +126,6 @@ body {
   word-spacing: 100vw;
 } */
 
-
-
-
-
-
-
-
 /* TEST */
 :root {
   --background-dark: #2d3548;
@@ -226,7 +219,9 @@ body {
   top: 0;
   transform-origin: center;
   transform: scale(1) translateZ(0);
-  transition: filter 200ms linear, transform 200ms linear;
+  transition:
+    filter 200ms linear,
+    transform 200ms linear;
 }
 
 .card:hover .card__background {

@@ -10,7 +10,9 @@
   background: rgba(0, 0, 0, 0);
   backdrop-filter: saturate(180%) blur(0px);
   opacity: 0;
-  transition: opacity 280ms ease, background 280ms ease,
+  transition:
+    opacity 280ms ease,
+    background 280ms ease,
     backdrop-filter 280ms ease;
   pointer-events: none;
 }
@@ -39,7 +41,8 @@
   border-top-right-radius: 18px;
   box-shadow: 0 -2px 40px rgba(0, 0, 0, 0.35);
   transform: translate3d(0, 100%, 0);
-  transition: transform 380ms cubic-bezier(0.32, 0.72, 0.25, 1),
+  transition:
+    transform 380ms cubic-bezier(0.32, 0.72, 0.25, 1),
     opacity 200ms ease;
   opacity: 0.98;
   color: #f2f2f2;
@@ -63,7 +66,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 .dx-sheet__title {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.95rem;
@@ -112,7 +115,9 @@
   padding: 12px 14px;
   color: #fff;
   outline: none;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
   width: 100%;
   box-sizing: border-box;
   font-size: 16px; /* Prevents zoom on iOS */
@@ -124,12 +129,12 @@
 }
 
 /* Fix date input icons and calendar visibility */
-.dx-field input[type="date"] {
+.dx-field input[type='date'] {
   position: relative;
   color-scheme: dark;
 }
 
-.dx-field input[type="date"]::-webkit-calendar-picker-indicator {
+.dx-field input[type='date']::-webkit-calendar-picker-indicator {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e");
   background-size: 20px 20px;
   background-repeat: no-repeat;
@@ -139,12 +144,12 @@
   transition: opacity 0.2s ease;
 }
 
-.dx-field input[type="date"]::-webkit-calendar-picker-indicator:hover {
+.dx-field input[type='date']::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
 }
 
 /* Firefox date input styling */
-.dx-field input[type="date"]::-moz-calendar-picker-indicator {
+.dx-field input[type='date']::-moz-calendar-picker-indicator {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd'/%3e%3c/svg%3e");
   background-size: 20px 20px;
   background-repeat: no-repeat;
@@ -154,15 +159,15 @@
 }
 
 /* Ensure date input text is visible */
-.dx-field input[type="date"]::-webkit-datetime-edit-text,
-.dx-field input[type="date"]::-webkit-datetime-edit-month-field,
-.dx-field input[type="date"]::-webkit-datetime-edit-day-field,
-.dx-field input[type="date"]::-webkit-datetime-edit-year-field {
+.dx-field input[type='date']::-webkit-datetime-edit-text,
+.dx-field input[type='date']::-webkit-datetime-edit-month-field,
+.dx-field input[type='date']::-webkit-datetime-edit-day-field,
+.dx-field input[type='date']::-webkit-datetime-edit-year-field {
   color: #ffffff;
 }
 
 /* Placeholder styling for date inputs */
-.dx-field input[type="date"]:invalid {
+.dx-field input[type='date']:invalid {
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -182,7 +187,9 @@
   font-weight: 700;
   padding: 10px 16px;
   box-shadow: 0 10px 24px rgba(209, 0, 0, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
     background-color 0.2s ease;
 }
 .dx-btn:hover {
@@ -230,7 +237,7 @@
     font-size: 16px;
   }
 
-  .dx-field input[type="date"] {
+  .dx-field input[type='date'] {
     width: 100%;
     box-sizing: border-box;
   }

@@ -2,7 +2,13 @@
   <div class="reserva-header">
     <div class="coche-info">
       <div class="coche-imagen">
-        <img [src]="'../../../../../assets/img/logo_marcas/' + reserva.coche.marca.imagenLogo" [alt]="reserva.coche.nombreCoche" />
+        <img
+          [src]="
+            '../../../../../assets/img/logo_marcas/' +
+            reserva.coche.marca.imagenLogo
+          "
+          [alt]="reserva.coche.nombreCoche"
+        />
       </div>
       <div class="coche-detalles">
         <h3 class="coche-nombre">{{ reserva.coche.nombreCoche }}</h3>
@@ -33,7 +39,9 @@
       <i class="fas fa-play-circle"></i>
       <div class="fecha-info">
         <span class="fecha-label">Inicio</span>
-        <span class="fecha-valor">{{ reserva.fechaInicio | date:'dd/MM/yyyy' }}</span>
+        <span class="fecha-valor">{{
+          reserva.fechaInicio | date: 'dd/MM/yyyy'
+        }}</span>
       </div>
     </div>
 
@@ -45,15 +53,21 @@
       <i class="fas fa-stop-circle"></i>
       <div class="fecha-info">
         <span class="fecha-label">Fin</span>
-        <span class="fecha-valor">{{ reserva.fechaFin | date:'dd/MM/yyyy' }}</span>
+        <span class="fecha-valor">{{
+          reserva.fechaFin | date: 'dd/MM/yyyy'
+        }}</span>
       </div>
     </div>
   </div>
 
   <div class="reserva-footer">
     <div class="precio-info">
-      <span class="precio-dias">{{ diasReserva }} día{{ diasReserva !== 1 ? 's' : '' }}</span>
-      <span class="precio-total">{{ reserva.precioTotal | currency:'EUR':'symbol':'1.0-0' }}</span>
+      <span class="precio-dias"
+        >{{ diasReserva }} día{{ diasReserva !== 1 ? 's' : '' }}</span
+      >
+      <span class="precio-total">{{
+        reserva.precioTotal | currency: 'EUR' : 'symbol' : '1.0-0'
+      }}</span>
     </div>
   </div>
 </div>

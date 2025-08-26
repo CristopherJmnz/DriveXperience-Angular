@@ -1,11 +1,16 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Coche } from 'src/app/interfaces/coche';
 
 @Component({
   selector: 'app-coches-cards',
   templateUrl: './coches-cards.component.html',
   styleUrls: ['./coches-cards.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CochesCardsComponent implements OnInit {
   @Input() coches!: Array<Coche>;

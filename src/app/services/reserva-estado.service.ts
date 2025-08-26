@@ -18,11 +18,10 @@ export interface EstadoReservaInfo {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservaEstadoService {
-
-  constructor() { }
+  constructor() {}
 
   public useReservaEstado(reserva: Reserva): EstadoReservaInfo {
     const estado = this.calculateEstado(reserva);
@@ -36,7 +35,7 @@ export class ReservaEstadoService {
       cssClass: `estado-${estado}`,
       esProxima: this.esProxima(estado, fechaInfo.diasParaInicio),
       terminaPronto: this.terminaPronto(estado, fechaInfo.diasRestantes),
-      ...fechaInfo
+      ...fechaInfo,
     };
   }
 
@@ -49,13 +48,28 @@ export class ReservaEstadoService {
     const fechaFin = new Date(reserva.fechaFin);
 
     // Normalizar las fechas para comparar solo días (sin horas)
-    const hoyNormalizada = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-    const inicioNormalizada = new Date(fechaInicio.getFullYear(), fechaInicio.getMonth(), fechaInicio.getDate());
-    const finNormalizada = new Date(fechaFin.getFullYear(), fechaFin.getMonth(), fechaFin.getDate());
+    const hoyNormalizada = new Date(
+      hoy.getFullYear(),
+      hoy.getMonth(),
+      hoy.getDate()
+    );
+    const inicioNormalizada = new Date(
+      fechaInicio.getFullYear(),
+      fechaInicio.getMonth(),
+      fechaInicio.getDate()
+    );
+    const finNormalizada = new Date(
+      fechaFin.getFullYear(),
+      fechaFin.getMonth(),
+      fechaFin.getDate()
+    );
 
     if (hoyNormalizada < inicioNormalizada) {
       return 'pendiente';
-    } else if (hoyNormalizada >= inicioNormalizada && hoyNormalizada <= finNormalizada) {
+    } else if (
+      hoyNormalizada >= inicioNormalizada &&
+      hoyNormalizada <= finNormalizada
+    ) {
       return 'activa';
     } else if (hoyNormalizada > finNormalizada) {
       return 'completada';
@@ -72,14 +86,20 @@ export class ReservaEstadoService {
     const fechaInicio = new Date(reserva.fechaInicio);
     const fechaFin = new Date(reserva.fechaFin);
 
-    const diasParaInicio = Math.ceil((fechaInicio.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
-    const diasRestantes = Math.ceil((fechaFin.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
-    const diasDesdeFinalizacion = Math.floor((hoy.getTime() - fechaFin.getTime()) / (1000 * 60 * 60 * 24));
+    const diasParaInicio = Math.ceil(
+      (fechaInicio.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    const diasRestantes = Math.ceil(
+      (fechaFin.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    const diasDesdeFinalizacion = Math.floor(
+      (hoy.getTime() - fechaFin.getTime()) / (1000 * 60 * 60 * 24)
+    );
 
     return {
       diasParaInicio,
       diasRestantes,
-      diasDesdeFinalizacion
+      diasDesdeFinalizacion,
     };
   }
 
@@ -172,7 +192,10 @@ export class ReservaEstadoService {
   /**
    * Indica si la reserva está terminando pronto (termina en los próximos 2 días)
    */
-  private terminaPronto(estado: EstadoReserva, diasRestantes?: number): boolean {
+  private terminaPronto(
+    estado: EstadoReserva,
+    diasRestantes?: number
+  ): boolean {
     if (estado !== 'activa' || diasRestantes === undefined) return false;
     return diasRestantes <= 2;
   }
@@ -203,7 +226,10 @@ export class ReservaEstadoService {
    * Utilidades adicionales
    */
   public getDuration(reserva: Reserva): number {
-    return HelperDate.calculateReservationDuration(reserva.fechaInicio, reserva.fechaFin);
+    return HelperDate.calculateReservationDuration(
+      reserva.fechaInicio,
+      reserva.fechaFin
+    );
   }
 
   public getFormattedStartDate(reserva: Reserva): string {
@@ -232,7 +258,7 @@ export class ReservaEstadoService {
       expiradas: 0,
       proximasAComenzar: 0,
       terminandoPronto: 0,
-      total: reservas.length
+      total: reservas.length,
     };
 
     reservas.forEach(reserva => {
@@ -252,10 +278,10 @@ export class ReservaEstadoService {
    */
   public sortReservasByPriority(reservas: Reserva[]): Reserva[] {
     const estadoPrioridad: Record<EstadoReserva, number> = {
-      'activa': 1,
-      'pendiente': 2,
-      'completada': 3,
-      'expirada': 4
+      activa: 1,
+      pendiente: 2,
+      completada: 3,
+      expirada: 4,
     };
 
     return [...reservas].sort((a, b) => {
@@ -276,7 +302,7 @@ export class ReservaEstadoService {
 
       return nombreA.localeCompare(nombreB, 'es', {
         numeric: true,
-        sensitivity: 'base'
+        sensitivity: 'base',
       });
     });
   }
@@ -284,7 +310,10 @@ export class ReservaEstadoService {
   /**
    * Ordena las reservas por fecha (más recientes primero)
    */
-  public sortReservasByDate(reservas: Reserva[], order: 'asc' | 'desc' = 'desc'): Reserva[] {
+  public sortReservasByDate(
+    reservas: Reserva[],
+    order: 'asc' | 'desc' = 'desc'
+  ): Reserva[] {
     return [...reservas].sort((a, b) => {
       const fechaA = new Date(a.fechaInicio).getTime();
       const fechaB = new Date(b.fechaInicio).getTime();
@@ -312,7 +341,10 @@ export class ReservaEstadoService {
     return [...reservas].sort((a, b) => {
       const nombreA = a.coche.nombreCoche.toLowerCase();
       const nombreB = b.coche.nombreCoche.toLowerCase();
-      return nombreA.localeCompare(nombreB, 'es', { numeric: true, sensitivity: 'base' });
+      return nombreA.localeCompare(nombreB, 'es', {
+        numeric: true,
+        sensitivity: 'base',
+      });
     });
   }
 }

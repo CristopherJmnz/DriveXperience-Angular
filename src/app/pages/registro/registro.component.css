@@ -29,7 +29,7 @@
   -webkit-user-select: none;
 }
 
-.dx-checkbox input[type="checkbox"] {
+.dx-checkbox input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -158,11 +158,11 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .dx-registro-form {
     gap: 20px;
   }
-  
+
   .dx-form-footer {
     margin-top: 12px;
   }
@@ -172,11 +172,11 @@
   .dx-form-row {
     gap: 16px;
   }
-  
+
   .dx-registro-form {
     gap: 16px;
   }
-  
+
   .dx-checkbox__label {
     font-size: 13px;
   }

@@ -30,33 +30,41 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private initScrollAnimations(): void {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.scroll-progress'));
+    const els = Array.from(
+      document.querySelectorAll<HTMLElement>('.scroll-progress')
+    );
     const hero = document.querySelector<HTMLElement>('.hero');
-    
+
     if (!els.length && !hero) return;
 
     // Reduced motion: reveal immediately
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      els.forEach(el => { 
-        el.classList.add('visible'); 
-        el.style.opacity = '1'; 
-        el.style.transform = 'translate3d(0,0,0)'; 
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      els.forEach(el => {
+        el.classList.add('visible');
+        el.style.opacity = '1';
+        el.style.transform = 'translate3d(0,0,0)';
       });
       return;
     }
 
     // Simple IntersectionObserver to toggle visibility once
     this.ngZone.runOutsideAngular(() => {
-      this.revealObserver = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            el.classList.add('visible');
-          } else {
-            el.classList.remove('visible');
+      this.revealObserver = new IntersectionObserver(
+        entries => {
+          for (const entry of entries) {
+            const el = entry.target as HTMLElement;
+            if (entry.isIntersecting) {
+              el.classList.add('visible');
+            } else {
+              el.classList.remove('visible');
+            }
           }
-        }
-      }, { threshold: 0.1, root: null, rootMargin: '0px 0px -15% 0px' });
+        },
+        { threshold: 0.1, root: null, rootMargin: '0px 0px -15% 0px' }
+      );
 
       els.forEach(el => this.revealObserver!.observe(el));
 

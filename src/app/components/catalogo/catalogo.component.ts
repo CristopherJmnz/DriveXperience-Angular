@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil, finalize } from 'rxjs';
 import { Coche } from 'src/app/interfaces/coche';
@@ -12,7 +18,7 @@ interface MarcaMap {
   selector: 'app-catalogo',
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatalogoComponent implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
@@ -46,12 +52,10 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   }
 
   private subscribeToRouteParams(): void {
-    this.route.params
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(params => {
-        const marca = params['marca'];
-        this.handleRouteChange(marca);
-      });
+    this.route.params.pipe(takeUntil(this.destroy$)).subscribe(params => {
+      const marca = params['marca'];
+      this.handleRouteChange(marca);
+    });
   }
 
   private handleRouteChange(marca: string): void {
@@ -69,7 +73,8 @@ export class CatalogoComponent implements OnInit, OnDestroy {
   private getCoches(): void {
     this.setLoadingState(true);
 
-    this.cocheService.getAllCoches()
+    this.cocheService
+      .getAllCoches()
       .pipe(
         takeUntil(this.destroy$),
         finalize(() => this.setLoadingState(false))
@@ -78,17 +83,18 @@ export class CatalogoComponent implements OnInit, OnDestroy {
         next: (response: Array<Coche>) => {
           this.coches = response;
         },
-        error: (error) => {
+        error: error => {
           console.error('Error loading cars:', error);
           this.coches = [];
-        }
+        },
       });
   }
 
   private getCochesPorMarca(id: number): void {
     this.setLoadingState(true);
 
-    this.cocheService.getCochesPorIdMarca(id)
+    this.cocheService
+      .getCochesPorIdMarca(id)
       .pipe(
         takeUntil(this.destroy$),
         finalize(() => this.setLoadingState(false))
@@ -97,19 +103,20 @@ export class CatalogoComponent implements OnInit, OnDestroy {
         next: (response: Array<Coche>) => {
           this.coches = response;
         },
-        error: (error) => {
+        error: error => {
           console.error('Error loading cars by brand:', error);
           this.coches = [];
-        }
+        },
       });
   }
 
   public sortCochesMayorMenor(idMarca?: number): void {
     this.setLoadingState(true);
 
-    const serviceCall = idMarca !== undefined
-      ? this.cocheService.getCochesMayorMenor(idMarca)
-      : this.cocheService.getCochesMayorMenor();
+    const serviceCall =
+      idMarca !== undefined
+        ? this.cocheService.getCochesMayorMenor(idMarca)
+        : this.cocheService.getCochesMayorMenor();
 
     serviceCall
       .pipe(
@@ -120,18 +127,19 @@ export class CatalogoComponent implements OnInit, OnDestroy {
         next: (response: Array<Coche>) => {
           this.coches = response;
         },
-        error: (error) => {
+        error: error => {
           console.error('Error sorting cars (high to low):', error);
-        }
+        },
       });
   }
 
   public sortCochesMenorMayor(idMarca?: number): void {
     this.setLoadingState(true);
 
-    const serviceCall = idMarca !== undefined
-      ? this.cocheService.getCochesMenorMayor(idMarca)
-      : this.cocheService.getCochesMenorMayor();
+    const serviceCall =
+      idMarca !== undefined
+        ? this.cocheService.getCochesMenorMayor(idMarca)
+        : this.cocheService.getCochesMenorMayor();
 
     serviceCall
       .pipe(
@@ -142,9 +150,9 @@ export class CatalogoComponent implements OnInit, OnDestroy {
         next: (response: Array<Coche>) => {
           this.coches = response;
         },
-        error: (error) => {
+        error: error => {
           console.error('Error sorting cars (low to high):', error);
-        }
+        },
       });
   }
 

@@ -62,10 +62,12 @@ img {
   will-change: transform;
 }
 .hero h1 {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.1;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 6px 18px rgba(0, 0, 0, 0.55);
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.55),
+    0 6px 18px rgba(0, 0, 0, 0.55);
 }
 .hero__subtitle {
   opacity: 0.92;
@@ -83,7 +85,9 @@ img {
   padding: 0.9rem 1.4rem;
   border-radius: 0.75rem;
   box-shadow: 0 18px 38px rgba(209, 0, 0, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
     background-color 0.2s ease;
 }
 .btn-primary:hover {
@@ -109,7 +113,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 .dx-split__content h2 {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   margin-bottom: 8px;
 }
 .dx-split__content p {
@@ -118,7 +122,7 @@ img {
 
 /* Reviews */
 .reviews h2 {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   text-align: center;
   margin-bottom: 18px;
 }
@@ -170,7 +174,7 @@ img {
 /* Brands wall (logo cloud) */
 .brands-wall h2 {
   text-align: center;
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   margin-bottom: 18px;
 }
 .brands-wall__grid {
@@ -192,13 +196,28 @@ img {
   max-width: 300px;
   filter: grayscale(100%) contrast(1.05) brightness(1.05);
   opacity: 0.92;
-  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
   will-change: transform;
   -webkit-filter: grayscale(100%) contrast(1.05) brightness(1.05);
-  -webkit-transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-  -moz-transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-  -ms-transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-  -o-transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  -webkit-transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  -moz-transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  -ms-transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  -o-transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 .brand:hover img {
   filter: none;

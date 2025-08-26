@@ -1,8 +1,17 @@
 /* Ensure the custom element behaves like a block container */
-:host { display: block; width: 100%; }
+:host {
+  display: block;
+  width: 100%;
+}
 /* Bring shared layout into this component (encapsulation-safe) */
-.dx-section { padding: 72px 0; overflow-x: clip; }
-.dx-container { width: min(1200px, 92%); margin-inline: auto; }
+.dx-section {
+  padding: 72px 0;
+  overflow-x: clip;
+}
+.dx-container {
+  width: min(1200px, 92%);
+  margin-inline: auto;
+}
 /* Gallery */
 .dx-gallery__rail {
   display: grid;
@@ -28,7 +37,9 @@
   display: block;
   transition: transform 0.25s ease;
 }
-.dx-gallery__item:hover img { transform: scale(1.04); }
+.dx-gallery__item:hover img {
+  transform: scale(1.04);
+}
 .dx-gallery__zoom {
   position: absolute;
   right: 10px;
@@ -83,18 +94,30 @@
   cursor: pointer;
 }
 .dx-lightbox__close {
-  top: 14px; right: 16px;
-  width: 40px; height: 40px;
-  font-size: 24px; line-height: 40px;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  line-height: 40px;
 }
 .dx-lightbox__nav {
-  top: 50%; transform: translateY(-50%);
-  width: 42px; height: 42px;
-  font-size: 28px; line-height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  font-size: 28px;
+  line-height: 40px;
 }
-.dx-lightbox__nav--prev { left: 20px; }
-.dx-lightbox__nav--next { right: 20px; }
+.dx-lightbox__nav--prev {
+  left: 20px;
+}
+.dx-lightbox__nav--next {
+  right: 20px;
+}
 
 @media (max-width: 640px) {
-  .dx-gallery__item img { height: 240px; }
+  .dx-gallery__item img {
+    height: 240px;
+  }
 }

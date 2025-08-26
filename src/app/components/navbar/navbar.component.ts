@@ -17,7 +17,10 @@ import Swal from 'sweetalert2';
 export class NavbarComponent {
   @ViewChild('menuCheckbox') menuCheckbox!: ElementRef<HTMLInputElement>;
   @ViewChild('menu', { static: false }) menu!: ElementRef;
-  constructor(public usuarioService: UsuarioService, private router: Router) {}
+  constructor(
+    public usuarioService: UsuarioService,
+    private router: Router
+  ) {}
 
   logout() {
     this.usuarioService.logout();

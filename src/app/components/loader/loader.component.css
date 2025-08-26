@@ -34,7 +34,7 @@
   display: inline-block;
   opacity: 0;
   transform: scale(0.7);
-  animation: dxp-type 0.3s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+  animation: dxp-type 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
 @keyframes dxp-type {
@@ -68,14 +68,20 @@
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, #b71c1c 0%, #fff 100%);
-  animation: dxp-barload 1.4s cubic-bezier(.4,0,.2,1) infinite;
+  animation: dxp-barload 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   border-radius: 3px;
 }
 
 @keyframes dxp-barload {
-  0% { width: 0%; }
-  60% { width: 100%; }
-  100% { width: 0%; }
+  0% {
+    width: 0%;
+  }
+  60% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
 }
 
 /* Responsive */

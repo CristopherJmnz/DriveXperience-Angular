@@ -8,7 +8,8 @@
 }
 
 main {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       1200px 600px at 50% -10%,
       rgba(209, 0, 0, 0.18),
       transparent 60%
@@ -44,7 +45,7 @@ video {
 
 /* Container with proper constraints */
 .dx-container {
-width: min(1200px, 92%);
+  width: min(1200px, 92%);
   margin-inline: auto;
   box-sizing: border-box;
 }
@@ -87,12 +88,13 @@ width: min(1200px, 92%);
 
 /* Full-cover dark layer as background, independent of overlay content */
 .banner::before {
-  content: "";
+  content: '';
   position: absolute;
   /* bleed 1px to avoid hairline gaps due to sub-pixel rounding */
   inset: -1px;
   background:
-    /* stronger opacity at the very top to ensure full cover */ linear-gradient(
+    /* stronger opacity at the very top to ensure full cover */
+    linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.85) 0%,
       rgba(0, 0, 0, 0.55) 40%,
@@ -140,7 +142,9 @@ width: min(1200px, 92%);
   hyphens: auto;
   /* stronger outline and shadow for readability */
   -webkit-text-stroke: 1px rgba(0, 0, 0, 0.35);
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), 0 6px 18px rgba(0, 0, 0, 0.55);
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.55),
+    0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
 .overlay h1 span {
@@ -175,8 +179,12 @@ width: min(1200px, 92%);
   padding: 0.85rem 2rem;
   border-radius: 0.5rem;
   border: none;
-  box-shadow: inset 2px -2px #0000001a, 0 6px 16px rgba(0, 0, 0, 0.35);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+  box-shadow:
+    inset 2px -2px #0000001a,
+    0 6px 16px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
     background-color 0.2s ease-in-out;
   position: fixed;
   left: 50%;
@@ -253,11 +261,8 @@ width: min(1200px, 92%);
   margin-bottom: 40px;
   padding: 48px 18px;
   border-radius: 16px;
-  background: radial-gradient(
-      1200px 400px at 50% 0%,
-      rgba(209, 0, 0, 0.18),
-      transparent
-    ),
+  background:
+    radial-gradient(1200px 400px at 50% 0%, rgba(209, 0, 0, 0.18), transparent),
     linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.06),
@@ -269,14 +274,18 @@ width: min(1200px, 92%);
 }
 
 .text-3d {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(2rem, 6vw, 4rem);
   line-height: 1.1;
   text-transform: uppercase;
   letter-spacing: 0.25em;
   color: #fff;
-  text-shadow: 0 1px 0 #b30000, 0 2px 0 #9a0000, 0 3px 0 #7a0000,
-    0 4px 6px rgba(0, 0, 0, 0.45), 0 10px 18px rgba(209, 0, 0, 0.35);
+  text-shadow:
+    0 1px 0 #b30000,
+    0 2px 0 #9a0000,
+    0 3px 0 #7a0000,
+    0 4px 6px rgba(0, 0, 0, 0.45),
+    0 10px 18px rgba(209, 0, 0, 0.35);
   transform: perspective(700px) rotateX(12deg) translateZ(0);
   /* backplate for readability on busy backgrounds */
   display: inline-block;
@@ -291,8 +300,12 @@ width: min(1200px, 92%);
   .text-3d {
     letter-spacing: 0.12em;
     font-size: clamp(1.6rem, 8vw, 2.2rem);
-    text-shadow: 0 1px 0 #7a0000, 0 2px 0 #5c0000, 0 3px 0 #3a0000,
-      0 3px 6px rgba(0, 0, 0, 0.55), 0 10px 18px rgba(209, 0, 0, 0.35);
+    text-shadow:
+      0 1px 0 #7a0000,
+      0 2px 0 #5c0000,
+      0 3px 0 #3a0000,
+      0 3px 6px rgba(0, 0, 0, 0.55),
+      0 10px 18px rgba(209, 0, 0, 0.35);
   }
 }
 
@@ -376,7 +389,7 @@ width: min(1200px, 92%);
 }
 
 .dx-stat__value {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(1.2rem, 4vw, 2rem);
   margin-top: 6px;
   color: #ffffff;
@@ -423,7 +436,7 @@ width: min(1200px, 92%);
 }
 
 .dx-split__content h2 {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -479,7 +492,9 @@ width: min(1200px, 92%);
   padding: clamp(1rem, 3vw, 1.25rem);
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
@@ -500,7 +515,7 @@ width: min(1200px, 92%);
 }
 
 .dx-specs__card h3 {
-  font-family: "Orbitron", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: clamp(0.9rem, 2.5vw, 1rem);

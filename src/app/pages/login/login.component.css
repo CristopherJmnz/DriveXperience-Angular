@@ -23,7 +23,7 @@
   width: fit-content;
 }
 
-.dx-checkbox input[type="checkbox"] {
+.dx-checkbox input[type='checkbox'] {
   position: absolute;
   opacity: 0;
   cursor: pointer;

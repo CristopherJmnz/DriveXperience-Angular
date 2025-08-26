@@ -50,7 +50,7 @@ export class UsuarioService {
     return this._http.get(url);
   }
 
-  registarUser(user:Usuario) : Observable<any> {
+  registarUser(user: Usuario): Observable<any> {
     let url = `${this.baseUrl}usuario/registro`;
     let jsonData = JSON.stringify(user);
     let headerOptions = new HttpHeaders();

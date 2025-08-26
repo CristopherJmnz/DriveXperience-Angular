@@ -8,7 +8,7 @@ describe('ProcesoReservaComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProcesoReservaComponent]
+      declarations: [ProcesoReservaComponent],
     });
     fixture = TestBed.createComponent(ProcesoReservaComponent);
     component = fixture.componentInstance;

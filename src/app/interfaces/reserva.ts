@@ -1,5 +1,5 @@
-import { Coche } from "./coche";
-import { Usuario } from "./usuario";
+import { Coche } from './coche';
+import { Usuario } from './usuario';
 
 export interface Reserva {
   idReserva: number;
